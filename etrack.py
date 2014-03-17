@@ -10,6 +10,7 @@
 
 import os
 import time
+import csv
 
 import cv
 import cv2 # do you need both cv and cv2? Apparently cv2 returns everything in Numpy, that's the main difference
@@ -17,18 +18,19 @@ import numpy
 import glob
 
 from sklearn.ensemble import RandomForestRegressor # can you use the Q splitting criterion instead of the information gain one?
-from random import randint
+import random
 from itertools import combinations
 
 import cvnumpyconvert
 from mouse import setMousePosition
 
+from face_finder import * # is this bad style, since it's unclear later in the code where those functions are scoped?
 
 # for GraphViz tree visualization, testing purposes only:
 import StringIO
 import pydot
 from sklearn.tree import export_graphviz # can you use the Q splitting criterion instead of the information gain one?
-
+import copy
 
 # Parameters from the paper:
 # n trees: 100 ('n_estimators')
@@ -37,6 +39,8 @@ from sklearn.tree import export_graphviz # can you use the Q splitting criterion
 # 
 # shrinkage, nu = 0.4 ('learning_rate'?)
 # 
+# TODO: 
+#   put classes into files.
 
 
 # note: the current face/eye detection scheme is a combintation of the one from Tom's 'gazer' and the OpenCV tutorial "Face Detection using Haar Cascades".
@@ -50,8 +54,11 @@ nu = 0.4 # shrinkage parameter, value from markus paper
 
 
 
+
+
+
 class EyeTracker(object):
-    def __init__(self):
+    def __init__(self, tree_depth):
         self.storage = cv.CreateMemStorage(0)
         self.last_face_position = None
         self.face_cascade = cv.Load(os.path.expanduser('/usr/local/Cellar/opencv/2.4.7.1//share/OpenCV/haarcascades/haarcascade_frontalface_default.xml'))
@@ -66,158 +73,72 @@ class EyeTracker(object):
         self.xpos_history = []
         self.ypos_history = []
 
-        # CJR:
-        self.rfr = RandomForestRegressor(n_estimators=ntrees, max_depth=tree_depth)
-#        add the classifier stuff here
+        self.tree_depth = tree_depth
 
 
-
-    def detect(self, image):
-
-        f = self.find_face(image)
-        if f:
-            eyes = self.find_eyes(image, f)
-            num_eyes_found = numpy.shape(eyes)[0]
-            if num_eyes_found == 2:
-
-                for (ex,ey,ew,eh) in eyes:
-                    cv2.rectangle(numpy.asarray(image),(f[0][0]+ex,f[0][1]+ey),(f[0][0]+ex+ew,f[0][1]+ey+eh),(0,255,0),2)
-
-                cv.ShowImage('a_window', image)
-                #cv2.imshow('a_window', image)
-                cv.WaitKey(0)
-
-
-    # self is needed here?
-    def get_pixel_samples(self, image, nsamples):
-        w, h = cv.GetSize(image)
+#    def get_pixel_samples(self, image, nsamples):
+#        w, h = cv.GetSize(image)
             # it's uninuitive how height should be indexed first when referring to pixel values later...
 #        return [ (randint(0, h - 1), randint(0, w - 1)) ] for _ in range(nsamples) ]
         # check for a numpy funtion that does this too
 
-        rand_pixel_indices = [(randint(0, h - 1), randint(0, w - 1)) for _ in range(nsamples)]
+#        rand_pixel_indices = [(randint(0, h - 1), randint(0, w - 1)) for _ in range(nsamples)]
 
 
 
+    def cluster_images(image_list, d): # d is node depth
 
-    def train(self, training_data_files):
+        if d < self.tree_depth:
+
+            # generate random features on [(-1,+1), (-1,+1)]:
+            ncandidate_features = 4*d + 4
+            # you might make this a list of (doubled) named tuples, to make the "pixelcoord_ =" lines more readble
+            rand_feature_list = [( (random.uniform(-1,1), random.uniform(-1,1)), (random.uniform(-1,1), random.uniform(-1,1)))
+                             for r in range(ncandidate_features)]
+
+            # for each feature, calculate the intensity differences for all training eye images clustered at this node:
+            # (there's probably a crafty functional-ish way to do this):
+            cluster0 = []
+            cluster1 = []
+            for imgfile in image_list:
+                for feature in rand_feature_list:
+                    image = cv2.imread(imgfile, cv2.CV_LOAD_IMAGE_GRAYSCALE)
+                    w, h = image.shape # TODO: is this the correct respective height and width values?
+                    pixelcoord1 = ( round((feature[0][0])*w), round((feature[0][1])*h) )
+                    pixelcoord2 = ( round((feature[1][0])*w), round((feature[1][1])*h) )
+                    intensity_diff = pixelcoord1 - pixelcoord2
+                    if intensity_diff < 0:
+                        cluster0.append(image)
+                    else:
+                        cluster1.append(image)
 
 
-        rfr = RandomForestRegressor(max_depth=tree_depth)
+            # recurse:
+            child0 = cluster_images(cluster0, d-1)
+            child1 = cluster_images(cluster1, d-1)
 
-        # for each regression tree...:
-        for t in range(ntrees):
+            return [child1, child0]
 
-
-            # "at each node"
-            # (set up a recursive scheme for this)
-
-            # uniformly at random, choose the set of 100 pixel samples:
-            samples = []
-            samples_coords = self.get_pixel_samples(image, nsamples)
-            for sc in samples_coords:
-               samples.append(image[sc[0], sc[1]])
-
-
-            for trainingface in training_data_files:
-                # the second option below might be unnecessary (check this), the images are gray
-                image = cv2.imread(trainingface, cv2.CV_LOAD_IMAGE_GRAYSCALE)
-
-                # convert from numpy array to CvArr for use with cv instead of cv2 (for now, but use either cv or cv2 consistently at some point)
-                image = cv.fromarray(image)
-
-                # if you find 2 eye boxes in the image with 2 landmarked pupils inside...:
-                pupil_coords_file = numpy.genfromtxt(os.path.splitext(trainingface)[0]+'.eye')
-                if et.check_usability(image, pupil_coords_file):
-
-                    # calculate the intensities between each pixel pair (feature set size is (nsamples choose 2):
-                    # intensity_features := [(xcood, ycoord), intensity_difference] for each sampled pixel pairing
-#                    intensity_features = []
-#                    for p1, p2 in combinations(range(0,nsamples), 2):
-                        # this should be absolute value, right?:
-#                        intensity_features.append([(p1, p2), abs(samples[p1] - samples[p2])])
-
-                    # fit the image data to a random forest
-                    # can X and y be unpacked in 1 line?
-                    y = [coord for (coord, idiff) in intensity_features]
-                    X_list = [idiff for (coord, idiff) in intensity_features]
-                    X = numpy.array(X_list)[:,None] # this is needed to change the shape of X from (nfeatures,) to (nfeatures,1), but you should find a cleaner way to do this (maybe just work with arrays earlier on)
-                    rfr.fit(X, y) 
+        else:
+            # is this ok, or should these be empty lists?
+            return
 
 
 
 
 
+class training_data_gen():
 
-                    # test: make graph images of the forest:
-                    # for idx,tr in enumerate(rfr.estimators_):
-                    #     out = StringIO.StringIO()
-                    #     export_graphviz(tr, out_file = out)
-                    #     graph = pydot.graph_from_dot_data(out.getvalue())
-
-                    #     graphviz_dir = './temp_graphviz/tree' + str(idx)
-                    #     os.makedirs(graphviz_dir)
-                    #     graph.write_png(graphviz_dir+"/decision_tree.png")
+    def __init__(self):
+        self.ff = FaceFinder()
 
 
+    def draw_plus(self, image, coord, width=20, color=(0,0,255)):    
+        img_size = numpy.shape(image)
 
-
-
-#               Notes:
-#               * rfr.get_params(deep=True) doesn't return anything extra compared to rint rfr.get_params(deep=True), I think becuase it considers all relevant params to be in each individual tree and then averages the om the fly later when called upon to.
-
-                # cluster, in a regression tree, based on the intensity differences
-
-                # 1) for each training set, grow a regression tree based on the MSE criterion where X is the pixel intensity difference
-                # 2) at each leaf, get the mean coordinates of the associated pixels
-                # 2a) plot each cluster. does it look okay?
-                # 3) what mean pupil cluster location is closest to the real one? Save this "threshold window" 
-
-
-                # average the coordinates that are clustered in each leaf node
-
-                # compare the mean coord of each leaf to the real pupil coord.
-
-                # what's the best threshold [window]? Save these parameters (add them to a running average) and then train another tree. On a new set of pixels.
-
-
-
-
-
-    # this is somewhat reduundant with detect(), find some way to avoid code reuse
-    def check_usability(self, image, pupil_coords):
-
-        f = self.find_face(image)
-        if f:
-            eyes = self.find_eyes(image, f)
-
-            # for training the classifier, only use the images where 2 eye boxes are found, and check that the "landmarked" pupil coordinates lie within these boxes
-            num_eyes_found = numpy.shape(eyes)[0]
-
-            if num_eyes_found == 2:
-
-                # make the coordinates of the eye boxes refer to the image frame and not the face box:
-                eyes[:,0] += f[0][0]
-                eyes[:,1] += f[0][1]
-
-                # draw a rectangle around each eye:
-                for (ex,ey,ew,eh) in eyes:
-                    cv2.rectangle(numpy.asarray(image),(ex, ey),(ex+ew, ey+eh),(0,255,0),2)
-
-                # draw pre-annotated pupil coordinates for training set:
-                pupil_left, pupil_right = pupil_coords[0:2], pupil_coords[2:4]
-                draw_plus(image, pupil_left)
-                draw_plus(image, pupil_right)
-
-
-                if self.in_eye_box(pupil_left, eyes) and self.in_eye_box(pupil_right, eyes):
-                    return True
-                    ##cv2.imshow('a_window', image)
-                    #cv.ShowImage('a_window', image)
-                    #cv.WaitKey(0)
-                else:
-                    return False
-
+        # note: aguments of the CvPoint type must be tuples and not lists
+        cv2.line(image, tuple(map(int, numpy.around((coord[0], coord[1]-width/2)))), tuple(map(int, numpy.around((coord[0], coord[1]+width/2)))), color)
+        cv2.line(image, tuple(map(int, numpy.around((coord[0]-width/2, coord[1])))), tuple(map(int, numpy.around((coord[0]+width/2, coord[1])))), color)
 
 
     def in_eye_box(self, (pupx, pupy), eyes):
@@ -228,87 +149,91 @@ class EyeTracker(object):
             return False
 
 
-    def find_eyes(self, image, f):
-        # get the total image size:
-        w, h = cv.GetSize(image)
+    def write_eye_data(self, eyes, trainingfacefile, image, pupil_coords, subimg_num=''):
+        for idx,(ex,ey,ew,eh) in enumerate(eyes):
 
-        # CreateImage((width, 2/3*(height)),8 bits, 1 channel) # see rect() to better understand what f is
-        faceimg = cv.CreateImage((f[0][2], f[0][3],), 8, 1)
-        src_region = cv.GetSubRect(image, (f[0][0], f[0][1], f[0][2], f[0][3]))
-        cv.Copy(src_region, faceimg)
+            # deepcopying a separate object for annotation seems to be necessary:
+            image_annotated = copy.deepcopy(image)
 
-        eyes = self.eye_cascade.detectMultiScale(numpy.asarray(faceimg[:,:]))
+            filename = './training_data_folder_processed/'+os.path.splitext(os.path.basename(trainingfacefile))[0]+'_eye'+str(idx)+'_'+subimg_num
+            # write eye image without annotation:
+            eye_imfile = filename+'.jpg'
+            cv2.imwrite(eye_imfile, image[ey:ey+eh, ex:ex+ew])
 
-        return eyes
+            # draw pre-annotated pupil coordinates:
+            # (use named tuples eventually)
+            self.draw_plus(image_annotated, pupil_coords[0])
+            self.draw_plus(image_annotated, pupil_coords[1])
 
+            # write eye image with annotation:
+            eye_clean_imfile = filename+'_landmarked.jpg'
+            cv2.imwrite(eye_clean_imfile, image_annotated[ey:ey+eh, ex:ex+ew])
 
-    def find_face(self, image):
-
-        w, h = cv.GetSize(image)
-        # I actually think cv.CreateImage returns a BGR image, but it gets gray-scaled in the line after:
-        grayscale = cv.CreateImage((w, h), 8, 1)
-        #print 'num channels =',image.channels
-        #cv.CvtColor(image, grayscale, cv.CV_BGR2GRAY)
-
-
-        # OpenCV method to detect faces, already trained machine (decision stump [1-leve decision tree] with adaboost)
-        # note: if face detecton seems off you might have to tweak the minimum object size argument
-        faces = cv.HaarDetectObjects(grayscale, self.face_cascade, self.storage, 1.2, 2, 0, (100, 100))
-
-        if faces:
-            print 'face detected!'
-            # if it found more than 1 face it will cycle through each:
-            for f in faces:
-                rect(image, f, (0, 255, 0)) # this draws a green (black in grayscale) rectangle to frame the object that was found
-                self.frames_since_face = 0 # a hack, mainly for the no-face-detected case
-                self.last_face_position = f # remember this face as the last one, again for the no-face-detected case
-                # won't this only return the 1st face found, exiting the function? I think you'd need to return a list of faces outside of the for loop to return both
-
-                # show the image (box will be black since `image' is 1-channel)
-                return f
-
-        # if it didn't find a face it will draw one where the last one was, so there's no blank. this is a good guess anyway
-        # (BUG (maybe): I think if 2 or more faces were detected in the last frame, this will only draw the most recent of them)
-        elif self.last_face_position:
-            # print 'can\'t find face, using old postion'
-            self.frames_since_face += 1
-            f = self.last_face_position
-            rect(image, f, (0, 100, 200)) # gray in grayscale
-            return f
-        else:
-            print 'no face'
+            # convert the pupil coords to ([-1, +1], [-1, +1]) interval & write to file:
+            pupil_coords_mapped = ((pupil_coords[idx][0]-ex)/ew*2-1,  (pupil_coords[idx][1]-ey)/eh*2-1)
+            pupcoordfile = open(filename+'.eye','w')
+            pupcoordfile.write('# pupil coords on [-1,+1], [-1,+1] interval \n')
+            writer = csv.writer(pupcoordfile, delimiter='\t')
+            writer.writerow(pupil_coords_mapped)
+            pupcoordfile.close()
 
 
 
+    def make_training_data(self, training_data_filelist, training_data_folder_processed, maxjitx=10):
 
-def rect(image, result, color=(0,0,255)):
-    f = result
-    cv.Rectangle(image, (f[0][0], f[0][1]),
-            (f[0][0]+f[0][2], f[0][1]+f[0][3]),
-            cv.RGB(*color), 3, 8, 0)
+        maxjity = 0.5*maxjitx
 
+        for trainingfacefile in training_data_filelist:
+            # (not sure why the second arg is necessary, since the images are gray to start with)
+            image = cv2.imread(trainingfacefile, cv2.CV_LOAD_IMAGE_GRAYSCALE)
 
-def draw_plus(image, coord, width=20, color=(0,0,255)):    
-    img_size = numpy.shape(image)
-    # note: aguments of the CvPoint type must be tuples and not lists
-    cv.Line(image, tuple(map(int, numpy.around((coord[0], coord[1]-width/2)))), tuple(map(int, numpy.around((coord[0], coord[1]+width/2)))), color)
-    cv.Line(image, tuple(map(int, numpy.around((coord[0]-width/2, coord[1])))), tuple(map(int, numpy.around((coord[0]+width/2, coord[1])))), color)
+            # read in landmarked pupil coords, reverse them so 0=left eye on image, 1=right eye on image:
+            pupil_coords = numpy.genfromtxt(os.path.splitext(trainingfacefile)[0]+'.eye')
+            pupil_coords = [pupil_coords[2:4], pupil_coords[0:2]]
 
+            # search for a face on the image using OpenCV subroutines:
+            f = self.ff.find_face(cv.fromarray(image))
+            if f:
+                # search for eyes on the face using OpenCV subroutines:
+                eyes = self.ff.find_eyes(cv.fromarray(image), f)
 
+                # for training, only use the images where 2 eye boxes are found, and check that the "landmarked" pupil coordinates lie within these boxes
+                # TODO: allow for 1 eye only to be found (though, note that sometimes 2 boxes find the same eye. can this be specified against in OpenCV coords?)
+                num_eyes_found = numpy.shape(eyes)[0]
+                if num_eyes_found == 2:
 
-# each node of the regression tree is binary, and classifies the eye based on pixel intensity
-# this means that 
-# coordinates are normalzied, so this does not depend on box size at all
-#def find_pupils():
+                    if self.in_eye_box(pupil_coords[0], eyes) and self.in_eye_box(pupil_coords[1], eyes):
 
+                        # sort the eyes, so you can index left and right:
+                        eyes = eyes[numpy.argsort(eyes[:,0])]
 
-def make_training_data():
+                        # write the un-jittered, original eye images:
+                        self.write_eye_data(eyes, trainingfacefile, image, pupil_coords, ('%04d' % 1))
+
+                        # generate 99 jitterings of the eye to artificially expand the data set:
+                        for i in range(2,11):
+                            jitterleft  = eyes[0] + numpy.array((random.randint(-maxjitx,maxjitx), random.randint(-maxjity,maxjity), 0, 0))
+                            jitterright = eyes[1] + numpy.array((random.randint(-maxjitx,maxjitx), random.randint(-maxjity,maxjity), 0, 0))
+                            self.write_eye_data((jitterleft, jitterright), trainingfacefile, image, pupil_coords, ('%04d' % i))
+
+                    else:
+                        print 'image not found, or not usable' 
+
+        # print a running status to the terminal of what face you are on
 
 
 
 if __name__ == '__main__':
 
-    
+    training_data_folder_processed = './training_data_folder_processed'
+
+    # if the training data folder is empty, make the training data
+    if os.listdir(training_data_folder_processed) == []:
+        # identify the indices of good training face data, along with eye coords
+        tdg = training_data_gen()
+        training_data_filelist = glob.glob("./training_data_raw/BioID/BioID-FaceDatabase-V1.2/*pgm")
+
+        tdg.make_training_data(training_data_filelist, training_data_folder_processed)
 
     # TODO:
     # if training data folder does not exist, generate training data
@@ -319,43 +244,14 @@ if __name__ == '__main__':
     #               save each random jittering as a file along with the scaled pupil coord (check this by saving the iamge with and without the plus sign adeed)
 
 
-    cv.NamedWindow('a_window', cv.CV_WINDOW_AUTOSIZE)
+#    cv.NamedWindow('a_window', cv.CV_WINDOW_AUTOSIZE)
 
     # initialize (instantiate?) the eye tracker object
-    et = EyeTracker()
+#    et = EyeTracker()
 
-    # identify the indices of good training face data, along with eye coords
+
 
     ##### train the random forest classifier #####
-    bioid_database = glob.glob("./training_data/BioID/BioID-FaceDatabase-V1.2/*pgm")
-    et.train(bioid_database)
+#    et.train(bioid_database)
 
-
-        # detect the face and eyes from the image
-#        et.detect(image)
-
-        # display the image, which now contains boxes drawn on the face and eyes:
-#        cv.ShowImage('asdf', image)
-#        cv2.imshow('a_window', image)
-#        cv.WaitKey(0)
-
-	# train the random forest regressor:
-	# for each training image:
-	# a) find the face
-	# b) find the eyes
-	# c) 
-	# function: get previously landmarked eyecoords
-
-
-	# 1. Obtain a face bounding box using a face detector (i.e., OpenCV's mmthod).
-
-	# open the image with imread(filename)
-
-
-
-
-	# 2. Estimate eye regions using simple anthropometric relations (also OpenCV?).
-
-
-	# 3. Estimate pupil location for each eye region using a chain of multi-scale tree ensembles ().
 
