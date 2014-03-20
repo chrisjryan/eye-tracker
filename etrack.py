@@ -7,54 +7,30 @@
 
 	guided also by Tom Ballinger's `gazer' (see Github) """
 
+import warnings
+warnings.simplefilter('error')
 
 import os
-import time
-import csv
-
-import cv
-import cv2 # do you need both cv and cv2? Apparently cv2 returns everything in Numpy, that's the main difference
+import cv, cv2
 import numpy
-import glob
-
-from sklearn.ensemble import RandomForestRegressor # can you use the Q splitting criterion instead of the information gain one?
 import random
-from itertools import combinations
+import glob
+import argparse
+import sys
 
-import cvnumpyconvert
-from mouse import setMousePosition
 
 from face_finder import * # is this bad style, since it's unclear later in the code where those functions are scoped?
+from training_data_gen import *
 
-# for GraphViz tree visualization, testing purposes only:
-import StringIO
-import pydot
-from sklearn.tree import export_graphviz # can you use the Q splitting criterion instead of the information gain one?
-import copy
+parser = argparse.ArgumentParser(description='An eye tracker, developed from the method described by Markus et al 2014 (doi: 10.1016/j.patcog.2013.08.008).', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+parser.add_argument('--tree-depth', type=int, default=3, help='The depth of the tree (=10 in the paper).')
+parser.add_argument('--training-data-folder', metavar='TDF',  dest='training_data_folder_processed', default='./training_data_processed', help='Folder containing the training data.')
+parser.add_argument('--training-data-folder-raw', metavar='TDFr',  dest='training_data_folder_raw', default='./training_data_raw/BioID/BioID-FaceDatabase-V1.2', help='Folder containing the raw training data (faces), which is to be processed into usable training data (just eyes).')
+parser.add_argument('--ntrees', type=int, default=100, help='The number of trees in the random ensemble.')
+parser.add_argument('--shrinkage', metavar='NU', type=float, default=0.4, help='Shrinkage parameter for the boosted ensemble.')
 
-# Parameters from the paper:
-# n trees: 100 ('n_estimators')
-# tree depth: 10 ('max_depth')
-# n_features: 1, since binary? I think pixel intensity if the only feature ('max_features')
-# 
-# shrinkage, nu = 0.4 ('learning_rate'?)
-# 
-# TODO: 
-#   put classes into files.
-
-
-# note: the current face/eye detection scheme is a combintation of the one from Tom's 'gazer' and the OpenCV tutorial "Face Detection using Haar Cascades".
-
-
-# take these as command line parameters, via argparse, eventually (right?):
-ntrees = 100 # value from markus paper
-nsamples = 100 # value from markus paper, (# sample sets?)
-tree_depth = 10 # value from markus paper
-nu = 0.4 # shrinkage parameter, value from markus paper
-
-
-
-
+args = parser.parse_args()
+globals().update(vars(args)) # is this bad style?
 
 
 class EyeTracker(object):
@@ -86,168 +62,107 @@ class EyeTracker(object):
 
 
 
-    def cluster_images(image_list, d): # d is node depth
+    # this is kind of a trivial use of a generator:
+    def rand_feature_gen(self):
+        while True:
+            yield ( (random.uniform(-1,1), random.uniform(-1,1)), (random.uniform(-1,1), random.uniform(-1,1)) )
+
+    def get_best_clustering(self, splitting_candidates):
+
+        # TODO: eliminate (or minimize) redundant usages of genfromtxt() here in this subroutine.
+        Qlist = []
+        for (cluster0, cluster1, feature) in splitting_candidates:
+            # get the eye coordinate file list from the image file list:
+            # TODO: see if you can make this all a little cleaner
+            cluster0_pupilfiles = [os.path.splitext(f)[0]+'.eye' for f in cluster0]
+            cluster1_pupilfiles = [os.path.splitext(f)[0]+'.eye' for f in cluster1]
+            pupcoodlist0 = [numpy.genfromtxt(pupilcoord) for pupilcoord in cluster0_pupilfiles]
+            pupcoodlist1 = [numpy.genfromtxt(pupilcoord) for pupilcoord in cluster1_pupilfiles]
+
+            # is this different from the standard deviation? can you just use a standard subroutine?
+            avgpupilcoord0 = numpy.mean(pupcoodlist0, axis=0)
+            avgpupilcoord1 = numpy.mean(pupcoodlist1, axis=0)
+            # TODO: probably don't need the lambda function here
+            Q  =  sum(map(lambda x0, x0avg=avgpupilcoord0: sum((x0-x0avg)**2), pupcoodlist0))
+            Q +=  sum(map(lambda x1, x1avg=avgpupilcoord1: sum((x1-x1avg)**2), pupcoodlist1))
+            Qlist.append(Q)
+
+        # I think this is working, because Qs get smaller as you get deeper into the tree:
+#        print Qlist
+
+        return numpy.argmin(Qlist)
+
+
+
+    def cluster_images(self, image_list, d=0): # d is the depth of this node
 
         if d < self.tree_depth:
 
             # generate random features on [(-1,+1), (-1,+1)]:
-            ncandidate_features = 4*d + 4
             # you might make this a list of (doubled) named tuples, to make the "pixelcoord_ =" lines more readble
-            rand_feature_list = [( (random.uniform(-1,1), random.uniform(-1,1)), (random.uniform(-1,1), random.uniform(-1,1)))
-                             for r in range(ncandidate_features)]
+            ncandidate_features = 4*d + 4
+            minclustersize = 2.0**(self.tree_depth - d) # this might still slow things down, if min cluster size is achieved near the root of the tree and the min cluster sizes need to be found at each level on the way down
 
-            # for each feature, calculate the intensity differences for all training eye images clustered at this node:
-            # (there's probably a crafty functional-ish way to do this):
-            cluster0 = []
-            cluster1 = []
-            for imgfile in image_list:
-                for feature in rand_feature_list:
+            splitting_candidates = []
+            done_clustering = False
+
+            while done_clustering == False:
+                # kind of trivial use of a generator:
+                feature = self.rand_feature_gen().next()
+
+                # calculate the intensity difference for all training eye images clustered at this node:
+                cluster0 = []
+                cluster1 = []
+                for imgfile in image_list:
                     image = cv2.imread(imgfile, cv2.CV_LOAD_IMAGE_GRAYSCALE)
-                    w, h = image.shape # TODO: is this the correct respective height and width values?
-                    pixelcoord1 = ( round((feature[0][0])*w), round((feature[0][1])*h) )
-                    pixelcoord2 = ( round((feature[1][0])*w), round((feature[1][1])*h) )
-                    intensity_diff = pixelcoord1 - pixelcoord2
+                    w, h = image.shape # TODO: are these the correct respective height and width values?
+                    image = numpy.int_(image) # since cv2 images are numpy arrays of unsigned ints, make them signed
+                    pixelcoord1 = ( round((feature[0][0]+1)/2*(w-1)), round((feature[0][1]+1)/2*(h-1)) )
+                    pixelcoord2 = ( round((feature[1][0]+1)/2*(w-1)), round((feature[1][1]+1)/2*(h-1)) )
+                    intensity_diff = image[pixelcoord1] - image[pixelcoord2]
                     if intensity_diff < 0:
-                        cluster0.append(image)
+                        cluster0.append(imgfile)
                     else:
-                        cluster1.append(image)
+                        cluster1.append(imgfile)
 
+                if len(cluster0) >= minclustersize and len(cluster1) >= minclustersize:
+                    splitting_candidates.append([cluster0, cluster1, feature])
+                if len(splitting_candidates) == ncandidate_features:
+                    done_clustering = True
+
+
+            optimal = self.get_best_clustering(splitting_candidates)
 
             # recurse:
-            child0 = cluster_images(cluster0, d-1)
-            child1 = cluster_images(cluster1, d-1)
+            child0 = self.cluster_images(splitting_candidates[optimal][0], d+1)
+            child1 = self.cluster_images(splitting_candidates[optimal][1], d+1)
 
-            return [child1, child0]
+            sys.stdout.write('.')
+            sys.stdout.flush()
+
+            return [ child1, child0, splitting_candidates[optimal][2] ]
 
         else:
-            # is this ok, or should these be empty lists?
             return
-
-
-
-
-
-class training_data_gen():
-
-    def __init__(self):
-        self.ff = FaceFinder()
-
-
-    def draw_plus(self, image, coord, width=20, color=(0,0,255)):    
-        img_size = numpy.shape(image)
-
-        # note: aguments of the CvPoint type must be tuples and not lists
-        cv2.line(image, tuple(map(int, numpy.around((coord[0], coord[1]-width/2)))), tuple(map(int, numpy.around((coord[0], coord[1]+width/2)))), color)
-        cv2.line(image, tuple(map(int, numpy.around((coord[0]-width/2, coord[1])))), tuple(map(int, numpy.around((coord[0]+width/2, coord[1])))), color)
-
-
-    def in_eye_box(self, (pupx, pupy), eyes):
-        for (ex,ey,ew,eh) in eyes:
-            if pupx > ex and pupx < ex+ew and pupy > ey and pupy < ey+eh:
-                return True
-        if True:
-            return False
-
-
-    def write_eye_data(self, eyes, trainingfacefile, image, pupil_coords, subimg_num=''):
-        for idx,(ex,ey,ew,eh) in enumerate(eyes):
-
-            # deepcopying a separate object for annotation seems to be necessary:
-            image_annotated = copy.deepcopy(image)
-
-            filename = './training_data_folder_processed/'+os.path.splitext(os.path.basename(trainingfacefile))[0]+'_eye'+str(idx)+'_'+subimg_num
-            # write eye image without annotation:
-            eye_imfile = filename+'.jpg'
-            cv2.imwrite(eye_imfile, image[ey:ey+eh, ex:ex+ew])
-
-            # draw pre-annotated pupil coordinates:
-            # (use named tuples eventually)
-            self.draw_plus(image_annotated, pupil_coords[0])
-            self.draw_plus(image_annotated, pupil_coords[1])
-
-            # write eye image with annotation:
-            eye_clean_imfile = filename+'_landmarked.jpg'
-            cv2.imwrite(eye_clean_imfile, image_annotated[ey:ey+eh, ex:ex+ew])
-
-            # convert the pupil coords to ([-1, +1], [-1, +1]) interval & write to file:
-            pupil_coords_mapped = ((pupil_coords[idx][0]-ex)/ew*2-1,  (pupil_coords[idx][1]-ey)/eh*2-1)
-            pupcoordfile = open(filename+'.eye','w')
-            pupcoordfile.write('# pupil coords on [-1,+1], [-1,+1] interval \n')
-            writer = csv.writer(pupcoordfile, delimiter='\t')
-            writer.writerow(pupil_coords_mapped)
-            pupcoordfile.close()
-
-
-
-    def make_training_data(self, training_data_filelist, training_data_folder_processed, maxjitx=10):
-
-        maxjity = 0.5*maxjitx
-
-        for trainingfacefile in training_data_filelist:
-            # (not sure why the second arg is necessary, since the images are gray to start with)
-            image = cv2.imread(trainingfacefile, cv2.CV_LOAD_IMAGE_GRAYSCALE)
-
-            # read in landmarked pupil coords, reverse them so 0=left eye on image, 1=right eye on image:
-            pupil_coords = numpy.genfromtxt(os.path.splitext(trainingfacefile)[0]+'.eye')
-            pupil_coords = [pupil_coords[2:4], pupil_coords[0:2]]
-
-            # search for a face on the image using OpenCV subroutines:
-            f = self.ff.find_face(cv.fromarray(image))
-            if f:
-                # search for eyes on the face using OpenCV subroutines:
-                eyes = self.ff.find_eyes(cv.fromarray(image), f)
-
-                # for training, only use the images where 2 eye boxes are found, and check that the "landmarked" pupil coordinates lie within these boxes
-                # TODO: allow for 1 eye only to be found (though, note that sometimes 2 boxes find the same eye. can this be specified against in OpenCV coords?)
-                num_eyes_found = numpy.shape(eyes)[0]
-                if num_eyes_found == 2:
-
-                    if self.in_eye_box(pupil_coords[0], eyes) and self.in_eye_box(pupil_coords[1], eyes):
-
-                        # sort the eyes, so you can index left and right:
-                        eyes = eyes[numpy.argsort(eyes[:,0])]
-
-                        # write the un-jittered, original eye images:
-                        self.write_eye_data(eyes, trainingfacefile, image, pupil_coords, ('%04d' % 1))
-
-                        # generate 99 jitterings of the eye to artificially expand the data set:
-                        for i in range(2,11):
-                            jitterleft  = eyes[0] + numpy.array((random.randint(-maxjitx,maxjitx), random.randint(-maxjity,maxjity), 0, 0))
-                            jitterright = eyes[1] + numpy.array((random.randint(-maxjitx,maxjitx), random.randint(-maxjity,maxjity), 0, 0))
-                            self.write_eye_data((jitterleft, jitterright), trainingfacefile, image, pupil_coords, ('%04d' % i))
-
-                    else:
-                        print 'image not found, or not usable' 
-
-        # print a running status to the terminal of what face you are on
-
 
 
 if __name__ == '__main__':
 
-    training_data_folder_processed = './training_data_folder_processed'
-
-    # if the training data folder is empty, make the training data
+    # if the training data folder is empty, make the training data:
     if os.listdir(training_data_folder_processed) == []:
-        # identify the indices of good training face data, along with eye coords
         tdg = training_data_gen()
-        training_data_filelist = glob.glob("./training_data_raw/BioID/BioID-FaceDatabase-V1.2/*pgm")
+        tdg.make_training_data(training_data_folder_raw, training_data_folder_processed)
 
-        tdg.make_training_data(training_data_filelist, training_data_folder_processed)
+    training_data_filelist = glob.glob(training_data_folder_processed+'/BioID_????_eye?_????.jpg')
 
-    # TODO:
-    # if training data folder does not exist, generate training data
-    #   loop over all face images for usable eyes (either 1 or 2 eyes is ok)
-    #       for each eye box cotaining a landmarked pupil:
-    #           generate 100 random "jitterings" of this eye box
-    #           (note that the authors used a "basic rectangle" since the eye is roughly rectangular, and you'll have to estimate this hueristically in your choice of sampling window)
-    #               save each random jittering as a file along with the scaled pupil coord (check this by saving the iamge with and without the plus sign adeed)
-
-
-#    cv.NamedWindow('a_window', cv.CV_WINDOW_AUTOSIZE)
 
     # initialize (instantiate?) the eye tracker object
-#    et = EyeTracker()
+    et = EyeTracker(tree_depth)
+
+    print 'number of splitting to calculate:', sum([2**d for d in range(tree_depth-1)])
+    tree = et.cluster_images(training_data_filelist)
+
+    sys.stdout.write('\n')
 
 
 

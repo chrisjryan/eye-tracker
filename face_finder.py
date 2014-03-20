@@ -12,7 +12,7 @@ class FaceFinder(object):
         self.eyepair_cascade = cv.Load(os.path.expanduser('./parojosG45x11.xml'))
         self.eye_cascade = cv2.CascadeClassifier('/usr/local/Cellar/opencv/2.4.7.1/share/OpenCV/haarcascades/haarcascade_eye.xml')
 
-        # Tom:
+        # Tom uses these:
         self.detect_times = []
         self.eye_pair_history = []
         self.xamount_histories = [[], []]
