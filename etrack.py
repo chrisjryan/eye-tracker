@@ -22,6 +22,7 @@ import sys
 from face_finder import * # is this bad style, since it's unclear later in the code where those functions are scoped?
 from training_data_gen import *
 
+
 parser = argparse.ArgumentParser(description='An eye tracker, developed from the method described by Markus et al 2014 (doi: 10.1016/j.patcog.2013.08.008).', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 parser.add_argument('--tree-depth', type=int, default=3, help='The depth of the tree (=10 in the paper).')
 parser.add_argument('--training-data-folder', metavar='TDF',  dest='training_data_folder_processed', default='./training_data_processed', help='Folder containing the training data.')
@@ -61,8 +62,8 @@ class EyeTracker(object):
 #        rand_pixel_indices = [(randint(0, h - 1), randint(0, w - 1)) for _ in range(nsamples)]
 
 
-
-    # this is kind of a trivial use of a generator:
+    # generate random features on [(-1,+1), (-1,+1)]:
+    # (this is kind of a trivial use of a generator)
     def rand_feature_gen(self):
         while True:
             yield ( (random.uniform(-1,1), random.uniform(-1,1)), (random.uniform(-1,1), random.uniform(-1,1)) )
@@ -96,16 +97,14 @@ class EyeTracker(object):
 
     def cluster_images(self, image_list, d=0): # d is the depth of this node
 
-        if d < self.tree_depth:
+        if d < self.tree_depth-1:
 
-            # generate random features on [(-1,+1), (-1,+1)]:
             # you might make this a list of (doubled) named tuples, to make the "pixelcoord_ =" lines more readble
             ncandidate_features = 4*d + 4
             minclustersize = 2.0**(self.tree_depth - d) # this might still slow things down, if min cluster size is achieved near the root of the tree and the min cluster sizes need to be found at each level on the way down
 
             splitting_candidates = []
             done_clustering = False
-
             while done_clustering == False:
                 # kind of trivial use of a generator:
                 feature = self.rand_feature_gen().next()
@@ -159,7 +158,7 @@ if __name__ == '__main__':
     # initialize (instantiate?) the eye tracker object
     et = EyeTracker(tree_depth)
 
-    print 'number of splitting to calculate:', sum([2**d for d in range(tree_depth-1)])
+    print 'number of splittings to calculate per tree:', sum([2**d for d in range(tree_depth-1)])
     tree = et.cluster_images(training_data_filelist)
 
     sys.stdout.write('\n')
