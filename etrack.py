@@ -26,8 +26,6 @@ args = parser.parse_args()
 globals().update(vars(args)) # is this bad style?
 
 
-
-
 if __name__ == '__main__':
 
     # if the training data folder is empty, make the training data:
@@ -43,8 +41,9 @@ if __name__ == '__main__':
     tree_ens = TreeEnsemble(ntrees, tree_depth, training_data_filelist)
     tree_ens.train()
 
-    # print the trained results so you know they look okay:
+    # (a) test on some other images:
 
-
+    # (b) Set up the webcame stuff:
+    #     Predict pupil coords from webcam.
 
     sys.stdout.write('\n')
