@@ -186,13 +186,8 @@ class TreeEnsemble(object):
     # this should be a "functional" function; eye image goes in, predicted coordinate (mapped to the correct pixel) comes out.
     def predict(self, eye_img): #, face_img_size): # 3rd argument will help get the correct coordinate later on
         sys.exit('predict() function not made yet.')
-        pass
 
         # map cam image to gray
-
-        # find face
-
-        # find eye
 
         # calculate
 
@@ -200,7 +195,6 @@ class TreeEnsemble(object):
 
     def read_trained_params(paramfile):
         sys.exit('read_trained_params() function not made yet.')
-        pass
         # might be neater just tp put this into __init__()
 
 
