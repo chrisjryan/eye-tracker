@@ -27,7 +27,7 @@ parser.add_argument('--ntrees', type=int, default=10, help='The number of trees 
 parser.add_argument('--shrinkage', metavar='NU', type=float, default=0.4, help='Shrinkage parameter for the boosted ensemble.')
 parser.add_argument('--exportgv', type=bool, default=False, help='(True/False) Export results of each tree in a file that can be used to produce tree graphs using GraphViz.')
 parser.add_argument('--subsample', metavar='FRAC', type=float, default=1.0, help='The subsample fraction of the entire dataset used for creating each tree in the ensemble (i.e., no subsampling done if subsample=1.0).')
-parser.add_argument('--minNeighbors', metavar='neigh', type=int, default=3, help='This parameter for the Haar classifier generally sets how strictly to look for eyes (still kind of mysterious). Setting it higher makes this classifier more discriminating, and might avoid detection of non-eye things things like nostrils.')
+parser.add_argument('--min_neighbors', metavar='neigh', type=int, default=3, help='This parameter for the Haar classifier generally sets how strictly to look for eyes (still kind of mysterious). Setting it higher makes this classifier more discriminating, and might avoid detection of non-eye things things like nostrils.')
 parser.add_argument('--min_eyeface_ratio', metavar='RAT', type=float, default=1.0/6.0, help="The minimum size ratio between the eyes and face. Used so that things much smaller than eyes (e.g., nostrils) aren't accidentally classified as eyes.")
 parser.add_argument('--max_eyeface_ratio', metavar='RAT', type=float, default=5.0/12.0, help="The maximum size ratio between the eyes and face. Used so that things much larger than eyes aren't accidentally classified as eyes.")
 
@@ -49,32 +49,34 @@ if __name__ == '__main__':
     tree_ens = TreeEnsemble(ntrees, tree_depth, subsample, exportgv)
 
     # TODO: make it so that you can either train the eye tracker, or load pre-trained parameters (with some metadata in the header):
-    #tree_ens.train(training_data_filelist)
+    tree_ens.train(training_data_filelist)
  
 
     # (a) test on some other images, rather than the webcam:
 
 
 
-    ff = FaceFinder(minNeighbors, min_eyeface_ratio, max_eyeface_ratio)
+    ff = FaceFinder(min_neighbors, min_eyeface_ratio, max_eyeface_ratio)
     cv.NamedWindow('a_window', cv.CV_WINDOW_AUTOSIZE)
 
     while True:
-        # get image from webcam:
+        # get image from webcam & get the subimages containing eyes:
         capture = cv.CaptureFromCAM(0)
         image = cv.QueryFrame(capture)
+        eyes = ff.detect_eyes(image)
 
-        # detect the eyes from the image:
-        eyes = ff.detect_eyes(image,)
-        # if eyes:
-        #     left_pupil  = self.tree_ens.predict(left_eye[0])
-        #     right_pupil = self.tree_ens.predict(right_eye[1])
+        # use the trained random forest to predict the pupil coordinates:
+        if eyes and len(eyes[0]) == 2:
+            eyes_imgs, eyes_loc = eyes
+            left_pupil  = tree_ens.predict_forest(eyes_imgs[0])
+            right_pupil = tree_ens.predict_forest(eyes_imgs[1])
 
-        # et.draw_pupils(image, left_pupil, right_pupil)
+            ff.draw_pupil(image, eyes_loc[0], left_pupil)
+            ff.draw_pupil(image, eyes_loc[1], right_pupil)
 
-        # display the image, which now contains boxes drawn on the face and eyes:
-        # cv.ShowImage('asdf', image)
-        # cv.WaitKey(0)
+            # display the image, which now contains boxes drawn on the face and eyes:
+            cv.ShowImage('asdf', image)
+            cv.WaitKey(0)
 
 
 

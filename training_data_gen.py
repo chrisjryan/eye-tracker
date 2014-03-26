@@ -58,8 +58,8 @@ class training_data_gen():
             if self.make_landmarked_images:
                 # draw pre-annotated pupil coordinates:
                 # (use named tuples eventually)
-                self.draw_plus(image_annotated, pupil_coords[0])
-                self.draw_plus(image_annotated, pupil_coords[1])
+                ff.draw_plus(image_annotated, pupil_coords[0])
+                ff.draw_plus(image_annotated, pupil_coords[1])
 
                 # write eye image with annotation:
                 eye_clean_imfile = filename+'_landmarked.jpg'

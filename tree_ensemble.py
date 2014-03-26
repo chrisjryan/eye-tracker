@@ -17,7 +17,6 @@ class Node(object):
         self.clustersize = clustersize
 
 
-
     # TODO: fix this __repr__().
     # def __repr__(self):
     #     if not self.leaf:
@@ -26,6 +25,7 @@ class Node(object):
     #         return 'splitting_feature:', str(self.splitting_feature)
     #     else:
     #         return 'average pupil coordinates:', str(self.trained_pupil_avg)
+
 
     def graphviz_print_node_lines(self, f, idx=0):
         if not self.leaf:
@@ -99,6 +99,7 @@ class RegressionTree(object):
                 feature = self.rand_feature_gen().next()
 
                 # calculate the intensity difference for all training eye images clustered at this node:
+                # TODO: wrap all this clustering into a function, such that image_list and feature go in and cluster0, cluster1 comes out.
                 cluster0 = []
                 cluster1 = []
                 for imgfile in image_list:
@@ -135,7 +136,7 @@ class RegressionTree(object):
             return n
 
         else:
-            # caculate & return the average pupil coords? This is the point of the tree. (& the standard error of this)
+            # TODO: caculate the  standard error of the pupil coords, too
             # TODO: optimize code requse between this and get_best_clustering() (i.e., make a get_avg_pupilcood() function)
             pupilfiles = [os.path.splitext(f)[0]+'.eye' for f in image_list]
             pupcoodlist = [numpy.genfromtxt(pupilcoord) for pupilcoord in pupilfiles]
@@ -155,6 +156,21 @@ class RegressionTree(object):
         outfile.write('}')
         outfile.close()
 
+
+    def predict_tree(self, eye_img, (w,h), node):
+        if not node.leaf:
+            feat = node.splitting_feature
+            pixelcoord1 = ( round((feat[0][0]+1)/2*(w-1)), round((feat[0][1]+1)/2*(h-1)) )
+            pixelcoord2 = ( round((feat[1][0]+1)/2*(w-1)), round((feat[1][1]+1)/2*(h-1)) )
+            intensity_diff = eye_img[pixelcoord1] - eye_img[pixelcoord2]
+            if intensity_diff < 0:
+                return self.predict_tree(eye_img, (w,h), node.children[0])
+#                cluster0.append(imgfile)
+            else:
+                return self.predict_tree(eye_img, (w,h), node.children[1])
+#                cluster1.append(imgfile)
+        else:
+            return node.trained_pupil_avg
 
 
 class TreeEnsemble(object):
@@ -183,19 +199,24 @@ class TreeEnsemble(object):
                 t.export_graphviz_file(idx)
 
 
-    # this should be a "functional" function; eye image goes in, predicted coordinate (mapped to the correct pixel) comes out.
-    def predict(self, eye_img): #, face_img_size): # 3rd argument will help get the correct coordinate later on
-        sys.exit('predict() function not made yet.')
-
-        # map cam image to gray
-
-        # calculate
-
-
-
     def read_trained_params(paramfile):
         sys.exit('read_trained_params() function not made yet.')
         # might be neater just tp put this into __init__()
+
+
+    def predict_forest(self, eye_img): #, face_img_size): # 3rd argument will help get the correct coordinate later on
+
+        # convert the eye image to grayscale
+        eye_img = cv2.cvtColor(eye_img, cv2.COLOR_BGR2GRAY);
+
+        w, h = eye_img.shape # TODO: are these the correct respective height and width values?
+
+        # calculate the prediction of each tree:
+        pupil_predictions = [ t.predict_tree(numpy.int_(eye_img), (w,h), t.rootnode) for t in self.tree_list ]
+
+        # return pupil_coord, avg of predictions of all trees?
+        return numpy.mean(pupil_predictions, axis=0)
+
 
 
 
