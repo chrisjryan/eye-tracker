@@ -4,12 +4,14 @@ import os
 import random
 import numpy
 import sys
+import xml.etree.ElementTree as ET
+from ElementTree_pretty import prettify
 
 
 
 
 class Node(object):
-    def __init__(self, clustersize, splitting_feature = None, children = None, trained_pupil_avg = None, leaf = False):
+    def __init__(self, clustersize = None, splitting_feature = None, children = [], trained_pupil_avg = None, leaf = False):
         self.splitting_feature = splitting_feature
         self.trained_pupil_avg = trained_pupil_avg
         self.leaf = leaf
@@ -43,11 +45,13 @@ class Node(object):
 
 
 class RegressionTree(object):
-    def __init__(self, tree_depth):
+    def __init__(self, tree_depth = None):
 
-        self.tree_depth = tree_depth
+        self.tree_depth = tree_depth # TODO: this is parameter optional since it is not needed if parameters are loaded instead of trained, and it can be gotten from XML metadata if you need to report to the terminal.
         self.rootnode = None
 
+        # right now this object is constructed in parallel to the tree I created, and contains the same information. It is only used for saving and loading XML parameter files. Eventually I should use only this object, rather than the tree class I made.
+        self.rootnode_elemtree = None
 
     # generate random features on [(-1,+1), (-1,+1)]:
     # (this is kind of a trivial use of a generator)
@@ -79,7 +83,6 @@ class RegressionTree(object):
         # TODO: Test that sqrt(Q)/Nimages gets smaller as you go further down the tree (i.e., less variance in the landmarked pupil coordinates in each cluster)
 
         return numpy.argmin(Qlist)
-
 
 
     def cluster_images(self, image_list, d=0): # d is the depth of this node
@@ -123,29 +126,54 @@ class RegressionTree(object):
             optimal = self.get_best_clustering(splitting_candidates)
 
             # recurse:
-            child0 = self.cluster_images(splitting_candidates[optimal][0], d+1)
-            child1 = self.cluster_images(splitting_candidates[optimal][1], d+1)
+            child0, child0_et = self.cluster_images(splitting_candidates[optimal][0], d+1)
+            child1, child1_et = self.cluster_images(splitting_candidates[optimal][1], d+1)
 
             sys.stdout.write('.')
             sys.stdout.flush()
 
+            # save the node in your format:
             # TODO: consider whether you really need to save the image list for each cluster (you probably just need the params, maybe a report of Q and the cluster sizes)
-            n = Node(clustersize, children = (child0, child1), splitting_feature = splitting_candidates[optimal][2])
+            n = Node(clustersize, children = [child0, child1], splitting_feature = splitting_candidates[optimal][2])
+
+            # save the node in the element tree format:
+#            et_node = ET.Element('temp', {'splitting_feature': splitting_candidates[optimal][2], 'clustersize': clustersize})
+            et_node = ET.Element('midnode')
+            sc = ET.SubElement(et_node, 'splitting_feature')
+            sc.text = str(splitting_candidates[optimal][2])
+            cl = ET.SubElement(et_node, 'clustersize')
+            cl.text = str(clustersize)
+            et_node.extend([child0_et, child1_et, sc, cl])#, ET.SubElement('splitting_feature', splitting_candidates[optimal][2]), ET.SubElement('clustersize', clustersize)])
+
             if d==0:
                 self.rootnode = n
-            return n
+                et_node.tag = 'root'
+                self.elemtree = ET.ElementTree(et_node)
+
+            return n, et_node
 
         else:
             # TODO: caculate the  standard error of the pupil coords, too
             # TODO: optimize code requse between this and get_best_clustering() (i.e., make a get_avg_pupilcood() function)
             pupilfiles = [os.path.splitext(f)[0]+'.eye' for f in image_list]
             pupcoodlist = [numpy.genfromtxt(pupilcoord) for pupilcoord in pupilfiles]
-            return Node(clustersize, leaf = True, trained_pupil_avg = numpy.mean(pupcoodlist, axis=0))
+
+            # save the node in your format:
+            n = Node(clustersize, leaf = True, trained_pupil_avg = numpy.mean(pupcoodlist, axis=0))
+
+            # save the node the element tree format:
+#            et_node = ET.Element('temp', {'trained_pupil_avg': numpy.mean(pupcoodlist, axis=0), 'clustersize': clustersize})
+            et_node = ET.Element('leaf')
+            avg = ET.SubElement(et_node,'trained_pupil_avg')
+            avg.text = str(numpy.mean(pupcoodlist, axis=0))
+            cl = ET.SubElement(et_node, 'clustersize') 
+            cl.text = str(clustersize)
+
+            return n, et_node
 
 
-
-    def export_graphviz_file(self, i):
-        outfile = open('tree'+str(i)+'.dot', 'w')
+    def export_graphviz_file(self, i, folder):
+        outfile = open(folder+'tree'+str(i)+'.dot', 'w')
         outfile.write('## [header material...]\n')
         outfile.write('## Command to get the layout: "dot -Teps thisfile > thisfile.eps"\n')
         outfile.write('graph "test"\n')
@@ -165,43 +193,87 @@ class RegressionTree(object):
             intensity_diff = eye_img[pixelcoord1] - eye_img[pixelcoord2]
             if intensity_diff < 0:
                 return self.predict_tree(eye_img, (w,h), node.children[0])
-#                cluster0.append(imgfile)
             else:
                 return self.predict_tree(eye_img, (w,h), node.children[1])
-#                cluster1.append(imgfile)
         else:
             return node.trained_pupil_avg
 
 
 class TreeEnsemble(object):
-    def __init__(self, ntrees, tree_depth, subsample_frac, exportgv):
-        self.tree_depth = tree_depth
-        self.tree_list = [RegressionTree(tree_depth) for _ in range(ntrees)]
+    def __init__(self, subsample_frac, exportgv):
+        self.subsample_frac = subsample_frac
         self.exportgv = exportgv
 
-        self.subsample_frac = subsample_frac
+        # these are set either in train() or loadparams():
+        self.tree_depth = None
+        self.tree_list = None
+
+        # make a directory to contain trained tree info:
+        # TODO: ask the user if they want to overwrite files in this dir or not.
+        self.training_result_dir = './random_forest_params/'
+        if not os.path.exists(self.training_result_dir):
+            os.mkdir(self.training_result_dir)
 
 
-    def train(self, filelist):
+    def train(self, training_data_filelist, tree_depth, Ntrees):
 
-        Nimages = len(filelist)
+        self.tree_depth = tree_depth
+        self.tree_list = [RegressionTree(tree_depth) for _ in range(Ntrees)]
+
+        Nimages = len(training_data_filelist)
         subsample_size = int(round(self.subsample_frac*Nimages))
 
         for idx,t in enumerate(self.tree_list):
+            # create each tree w/ training data:
             if self.subsample_frac == 1.0:
-                t.cluster_images(filelist)
+                t.cluster_images(training_data_filelist)
             else:
-                filelist_subsamp = random.sample(filelist, subsample_size)
+                filelist_subsamp = random.sample(training_data_filelist, subsample_size)
                 t.cluster_images(filelist_subsamp)
+
+            # write XML parameter file for each tree (more human-readable than elemtree.write()):
+            with open(self.training_result_dir+'/test'+str(idx)+'.xml','w') as f:
+                f.write(prettify(t.elemtree.getroot()))
+
+            # t.elemtree.write('test'+str(idx)+'.xml')
+
 
             # output trained tree result for graph visualization:
             if self.exportgv:
-                t.export_graphviz_file(idx)
+                t.export_graphviz_file(idx, self.training_result_dir)
 
 
-    def read_trained_params(paramfile):
-        sys.exit('read_trained_params() function not made yet.')
-        # might be neater just tp put this into __init__()
+    # TODO: This is a little cunky, since it maps the element tree onto my own, more specialized RegressionTree object; Eventually I should use just Element trees so no conversion is necessary.
+    def map_node_params(self, elem):
+
+        n = Node()
+
+        for e in list(elem):
+            if e.tag == 'clustersize':
+                n.clustersize = int(e.text)
+            elif e.tag == 'splitting_feature':
+                n.splitting_feature = eval(e.text)
+            elif e.tag == 'trained_pupil_avg':
+                n.trained_pupil_avg = tuple(map(float, e.text[1:-1].split())) # TODO: do this more cleanly
+                n.leaf = True
+            elif e.tag == 'leaf' or e.tag == 'midnode':
+                n.children.append(self.map_node_params(e))
+            else:
+                sys.exit("Error: invalid XML parameter file (unknown subelement).")
+
+        return n
+
+
+    def loadparams(self, tree_param_filelist):
+
+        Ntrees = len(tree_param_filelist)
+        self.tree_list = [RegressionTree() for _ in range(Ntrees)]
+
+        for t, f in zip(self.tree_list, tree_param_filelist):
+            etree = ET.ElementTree()
+            etree.parse(f)
+            t.rootnode = self.map_node_params(etree.getroot())
+
 
 
     def predict_forest(self, eye_img): #, face_img_size): # 3rd argument will help get the correct coordinate later on
@@ -214,8 +286,52 @@ class TreeEnsemble(object):
         # calculate the prediction of each tree:
         pupil_predictions = [ t.predict_tree(numpy.int_(eye_img), (w,h), t.rootnode) for t in self.tree_list ]
 
-        # return pupil_coord, avg of predictions of all trees?
+        # return avg of predictions of all trees:
         return numpy.mean(pupil_predictions, axis=0)
+
+
+    def partitiondata_cv(self, filelist, trainingset_frac = 0.5):
+        Nimages = len(filelist)
+        subsample_size = int(round(self.subsample_frac*Nimages))
+        filelist_subsamp = random.sample(filelist, subsample_size)
+        random.shuffle(filelist_subsamp)
+        # print 'Nimages:', Nimages
+        # print 'self.subsample_frac:', self.subsample_frac
+        # print 'subsample_size:', subsample_size
+        # print 'filelist_subsamp:', filelist_subsamp
+        filelist_len = len(filelist_subsamp)
+        divider = int(filelist_len*trainingset_frac)
+        return filelist_subsamp[:divider], filelist_subsamp[divider:]
+
+
+    def cross_validation(self, filelist, ff):
+
+        # use the subsample_frac to get the "full" file list (i.e., not every file but before taking the 50% CV sample), then shuffle it
+        training_set, prediction_set = self.partitiondata_cv(filelist)
+
+        self.train(training_set)
+
+        for img_file in prediction_set:
+
+            eye_img = cv2.imread(img_file)#, cv2.CV_LOAD_IMAGE_GRAYSCALE)
+            pupil_predicted = self.predict_forest(eye_img)
+            pupil_landmarked = numpy.genfromtxt(os.path.splitext(img_file)[0]+'.eye')
+            # print 'predicted:', pupil_predicted
+            # print 'landmarked:', pupil_landmarked
+
+            # draw & show eye, with landmark and prediction
+            w, h = eye_img.shape[:2]
+            ff.draw_pupil(eye_img, pupil_predicted, (0,0,w,h))
+            ff.draw_plus(eye_img, pupil_landmarked, (0,0,w,h), map_to_pixeldims=True)
+            cv.ShowImage('asdf', cv.fromarray(eye_img))
+            cv.WaitKey(0)
+
+            # calcualte squared-error
+            # save squared-error to running ist
+
+
+
+
 
 
 

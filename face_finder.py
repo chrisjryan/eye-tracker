@@ -35,10 +35,22 @@ class FaceFinder(object):
         cv.Rectangle(image, (x, y), (x+w, y+h), cv.RGB(*color), 3, 8, 0)
 
 
-    def draw_pupil(self, face_img, (ex, ey, ew, eh), pupcoord_normalized, rad=5, color=(0,0,255)):
+    # TODO: put draw pupil, draw_plus, and maybe drawrect in the same function and request parameters when called
+    def draw_pupil(self, face_img, pupcoord_normalized, (ex, ey, ew, eh), rad=5, color=(0,0,255)):
         pupcoord = ((pupcoord_normalized[0]+1)/2*ew+ex, (pupcoord_normalized[1]+1)/2*eh+ey)
         pupcoord = tuple([int(round(p)) for p in pupcoord])
         cv2.circle(numpy.asarray(face_img[:,:]), pupcoord, rad, color)
+
+
+    def draw_plus(self, image, coord, (ex,ey,ew,eh)=(None,None,None,None), map_to_pixeldims = False, width=20, color=(0,100,200)):
+        if map_to_pixeldims:
+            assert ew and eh, "To map eye coordinates from [-1,+1] interval to pixels, please list the eye box size."
+            coord = ((coord[0]+1)/2*ew+ex, (coord[1]+1)/2*eh+ey)
+            coord = tuple([int(round(p)) for p in coord])
+
+        # note: aguments of the CvPoint type must be tuples and not lists
+        cv2.line(image, tuple(map(int, numpy.around((coord[0], coord[1]-width/2)))), tuple(map(int, numpy.around((coord[0], coord[1]+width/2)))), color)
+        cv2.line(image, tuple(map(int, numpy.around((coord[0]-width/2, coord[1])))), tuple(map(int, numpy.around((coord[0]+width/2, coord[1])))), color)
 
 
     def get_subimg(self, image, (x,y,w,h)):
@@ -48,7 +60,7 @@ class FaceFinder(object):
         return subimg
 
 
-    # write cv2 versions of this eventually:
+    # TODO: write cv2 versions of this eventually:
     def find_eyes(self, image, f):
         w, h = cv.GetSize(image)
         (fx, fy, fw, fh) = f[0]
@@ -58,16 +70,15 @@ class FaceFinder(object):
 
         faceimg = self.get_subimg(image, f[0])
 
-        # TODO : maybe figure this out later why , ...
+        # TODO : maybe figure this out later why these parameters help...
         eyes = self.eye_cascade.detectMultiScale(numpy.asarray(faceimg[:,:]), minNeighbors=self.min_neighbors)#, maxSize = max_eye)
-
 
         if eyes != ():
             # make their coordinates refer to the image frame and not the face box:
             eyes[:,0] += f[0][0]
             eyes[:,1] += f[0][1]
 
-            # keep only "eyes" that are not too big or small (detectMultiScale() seems to do this, but the documentation is insufficient)
+            # keep only "eyes" that are not too big or small (detectMultiScale() seems to do this somehow, but the documentation is insufficient)
             eyes = [ e for e in eyes if e[2]<max_width and e[3]<max_height ]
             eyes = [ e for e in eyes if e[2]>min_width and e[3]>min_height ]
 

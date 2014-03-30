@@ -26,12 +26,6 @@ class training_data_gen():
         self.make_landmarked_images = make_landmarked_images
 
 
-    def draw_plus(self, image, coord, width=20, color=(0,0,255)):    
-        img_size = numpy.shape(image)
-
-        # note: aguments of the CvPoint type must be tuples and not lists
-        cv2.line(image, tuple(map(int, numpy.around((coord[0], coord[1]-width/2)))), tuple(map(int, numpy.around((coord[0], coord[1]+width/2)))), color)
-        cv2.line(image, tuple(map(int, numpy.around((coord[0]-width/2, coord[1])))), tuple(map(int, numpy.around((coord[0]+width/2, coord[1])))), color)
 
 
     def in_eye_box(self, (pupx, pupy), eyes):
@@ -66,6 +60,7 @@ class training_data_gen():
                 cv2.imwrite(eye_clean_imfile, image_annotated[ey:ey+eh, ex:ex+ew])
 
             # convert the pupil coords to ([-1, +1], [-1, +1]) interval & write to file:
+            # TODO: save these as pixel coordinates too, not just mapped to that interval
             pupil_coords_mapped = ((pupil_coords[idx][0]-ex)/ew*2-1,  (pupil_coords[idx][1]-ey)/eh*2-1)
             pupcoordfile = open(filename+'.eye','w')
             pupcoordfile.write('# pupil coords on [-1,+1], [-1,+1] interval \n')
