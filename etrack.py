@@ -13,6 +13,7 @@
 import glob
 import argparse
 import sys
+import matplotlib.pylab as plt
 
 from face_finder import * # is 'import *' bad style, since it's unclear later in the code where those functions are scoped?
 from tree_ensemble import *
@@ -30,64 +31,89 @@ parser.add_argument('--subsample', metavar='FRAC', type=float, default=1.0, help
 parser.add_argument('--min_neighbors', metavar='neigh', type=int, default=3, help='This parameter for the Haar classifier generally sets how strictly to look for eyes (still kind of mysterious). Setting it higher makes this classifier more discriminating, and might avoid detection of non-eye things things like nostrils.')
 parser.add_argument('--min_eyeface_ratio', metavar='RAT', type=float, default=1.0/6.0, help="The minimum size ratio between the eyes and face. Used so that things much smaller than eyes (e.g., nostrils) aren't accidentally classified as eyes.")
 parser.add_argument('--max_eyeface_ratio', metavar='RAT', type=float, default=5.0/12.0, help="The maximum size ratio between the eyes and face. Used so that things much larger than eyes aren't accidentally classified as eyes.")
-parser.add_argument('--cross-validation', metavar='cvTF', type=bool, default=False, help="(True/False) Use the learned tree to predict image files, rather than the webcam, for cross validation tests.")
+parser.add_argument('--cross-validation-test', metavar='cvTF', type=bool, default=False, help="(True/False) Use the learned tree to predict image files, rather than the webcam, for cross validation tests.")
 parser.add_argument('--treeparams-folder', metavar='TPF', default=None, help='Folder containing a set of XML files that define the (trained) tree ensemble. Note: this makes user-specified parameters like ntrees & tree_depth irrelevant.')
-
+parser.add_argument('--saveXML', type=bool, default=False, help="(True/False) If you train random tree ensemble, save the result as XML files.")
 
 args = parser.parse_args()
-globals().update(vars(args)) # is this bad style?
+#globals().update(vars(args)) # is this bad style?
 
-assert subsample<=1.0 and subsample>=0.0, "subsample parameter %g is not in [0,1] interval" % subsample
+assert args.subsample<=1.0 and args.subsample>=0.0, "subsample parameter %g is not in [0,1] interval" % subsample
+
+
+
+def crossval_test(training_files, tree_ens, tree_depth_min = 3, tree_depth_max = 4, ntrees_min = 1, ntrees_max = 2):
+    print """Cross validation test.
+             This will generate plots of the mean squared prediction error as a 
+             function of tree_depth (from range %i to %i) and ntrees (from 
+             range %i to %i). User specifications of these parameters at 
+             the command line will be ignored.""" % (tree_depth_min , tree_depth_max, ntrees_min, ntrees_max)
+
+    results = [[tree_ens.crossval(training_files, ff, depth, ntrees) \
+                for depth in range(tree_depth_min, tree_depth_max+1)] \
+                for ntrees in range(ntrees_min, ntrees_max+1)]
+
+    # output results to a file:
+    cv_results = open('cv_results.txt','w')
+    nimages = len(training_data_filelist)
+    subsample_size = int(round(tree_ens.subsample_frac*nimages))
+    cv_results.write('# using sets of %i of %i training files per tree\n' % (subsample_size, nimages))
+    cv_results.write('# rows: tree_depth (from range %i to %i), cols: ntrees (from range %i to %i)\n' % (tree_depth_min , tree_depth_max, ntrees_min, ntrees_max))
+    numpy.savetxt(cv_results, results)
+    cv_results.close()
+
+
+def detect_webcam(tree_ens, ff):
+    while True:
+        # get image from webcam & get the subimages containing eyes:
+        capture = cv.CaptureFromCAM(0)
+        image = cv.QueryFrame(capture)
+        eyes = ff.detect_eyes(image)
+
+        # use the trained random forest to predict the pupil coordinates:
+        if eyes and len(eyes[0]) == 2:
+            eyes_imgs, eyes_loc = eyes
+            left_pupil  = tree_ens.predict_forest(eyes_imgs[0])
+            right_pupil = tree_ens.predict_forest(eyes_imgs[1])
+
+            ff.draw_pupil(image, left_pupil, eyes_loc[0])
+            ff.draw_pupil(image, right_pupil, eyes_loc[1])
+
+            # display the image, which now contains boxes drawn on the face and eyes:
+            cv.ShowImage('asdf', image)
+            # cv.WaitKey(0)
+
+
 
 if __name__ == '__main__':
 
-    # TODO: abstract some of this a bit better:
-    if treeparams_folder:
-        tree_ens = TreeEnsemble(subsample, exportgv)
-        tree_param_filelist = glob.glob(treeparams_folder+'/*.xml')
-        tree_ens.loadparams(tree_param_filelist)
-    elif os.listdir(training_data_folder_processed) != []:
-        tree_ens = TreeEnsemble(subsample, exportgv)
-        training_data_filelist = glob.glob(training_data_folder_processed+'/BioID_????_eye?_????.jpg')
-        tree_ens.train(training_data_filelist, tree_depth, ntrees)
-    else:
-        sys.exit("Error: No processed training data found in", training_data_folder_processed)
-
-    print 'number of trees:\t\t', ntrees
-    print 'number of splittings per tree:\t', sum([2**d for d in range(tree_depth-1)])
-
- 
-    # (a) test on some other images, rather than the webcam, for cross validation.
-    # get error estimates, as a function of parametesr like depth, too.
-    ff = FaceFinder(min_neighbors, min_eyeface_ratio, max_eyeface_ratio)
-
+    # TODO: in the following functions, pass 'args' then unpack it inside.
+    ff = FaceFinder(args.min_neighbors, args.min_eyeface_ratio, args.max_eyeface_ratio)
     cv.NamedWindow('a_window', cv.CV_WINDOW_AUTOSIZE)
+    tree_ens = TreeEnsemble(args.subsample, args.exportgv, args.saveXML)
 
-    if cross_validation:
-        results = tree_ens.cross_validation(training_data_filelist, ff) # add some parameters to desctibe the cross validation tests
-
-        # plot the results
-
+    if args.cross_validation_test:
+        training_data_filelist = glob.glob(args.training_data_folder_processed+'/BioID_????_eye?_????.jpg')
+        crossval_test(training_data_filelist, tree_ens)
 
     else:
-        while True:
-            # get image from webcam & get the subimages containing eyes:
-            capture = cv.CaptureFromCAM(0)
-            image = cv.QueryFrame(capture)
-            eyes = ff.detect_eyes(image)
+        # TODO: abstract some of this a bit better:
+        if args.treeparams_folder:
+            print 'loading params from '+ args.treeparams_folder+'...'
+            tree_param_filelist = glob.glob(args.treeparams_folder+'/*.xml')
+            tree_ens.loadparams(tree_param_filelist)
 
-            # use the trained random forest to predict the pupil coordinates:
-            if eyes and len(eyes[0]) == 2:
-                eyes_imgs, eyes_loc = eyes
-                left_pupil  = tree_ens.predict_forest(eyes_imgs[0])
-                right_pupil = tree_ens.predict_forest(eyes_imgs[1])
+        elif os.listdir(args.training_data_folder_processed) != []:
+            print 'building trees using training data in '+args.training_data_folder_processed+'...'
+            print 'number of trees:\t\t', args.ntrees
+            print 'number of splittings per tree:\t', sum([2**d for d in range(args.tree_depth-1)])
+            training_data_filelist = glob.glob(args.training_data_folder_processed+'/BioID_????_eye?_????.jpg')
+            tree_ens.train(training_data_filelist, args.tree_depth, args.ntrees)
+        else:
+            sys.exit("Error: No processed training data found in", args.training_data_folder_processed)
 
-                ff.draw_pupil(image, left_pupil, eyes_loc[0])
-                ff.draw_pupil(image, right_pupil, eyes_loc[1])
 
-                # display the image, which now contains boxes drawn on the face and eyes:
-                cv.ShowImage('asdf', image)
-                # cv.WaitKey(0)
+        detect_webcam(tree_ens, ff)
 
 
     sys.stdout.write('\n')
