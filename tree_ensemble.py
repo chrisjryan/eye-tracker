@@ -8,7 +8,7 @@ import sys
 import xml.etree.ElementTree as ET
 from ElementTree_pretty import prettify
 
-
+# TODO: make unit tests.
 
 
 class Node(object):
@@ -53,6 +53,9 @@ class RegressionTree(object):
 
         # right now this object is constructed in parallel to the tree I created, and contains the same information. It is only used for saving and loading XML parameter files. Eventually I should use only this object, rather than the tree class I made.
         self.rootnode_elemtree = None
+
+    # def __repr__(self):
+    #     return 'depth: %i' % self.tree_depth
 
     # generate random features on [(-1,+1), (-1,+1)]:
     # (this is kind of a trivial use of a generator)
@@ -254,7 +257,7 @@ class TreeEnsemble(object):
 
 
     # TODO: This is a little cunky, since it maps the element tree onto my own, more specialized RegressionTree object; Eventually I should use just Element trees so no conversion is necessary. Or it's probably easier to just write my own XML file writer for my object.
-    def map_node_params(self, elem):
+    def map_node_params(self, elem, d=0):
 
         n = Node()
 
@@ -263,12 +266,17 @@ class TreeEnsemble(object):
             if e.tag == 'clustersize':
                 n.clustersize = int(e.text)
             elif e.tag == 'splitting_feature':
-                n.splitting_feature = eval(e.text)
+                # don't use the next line, since evals are unsafe:
+                # n.splitting_feature = eval(e.text) #change this from an eval statement
+                # note: next line is untested:
+                x1, y1, x2, y2 = [float(p) for p in re.findall(r'[-\d.]+', e.text)]
+                n.splitting_feature = ((x1, y1), (x2, y2))
             elif e.tag == 'trained_pupil_avg':
                 n.trained_pupil_avg = tuple(map(float, e.text[1:-1].split())) # TODO: do this more cleanly
                 n.leaf = True
+                self.tree_depth = d+1
             elif e.tag == 'leaf' or e.tag == 'midnode':
-                n.children.append(self.map_node_params(e))
+                n.children.append(self.map_node_params(e, d+1))
             else:
                 sys.exit("Error: misformatted XML parameter file (unknown subelement).")
 
@@ -284,6 +292,7 @@ class TreeEnsemble(object):
             etree = ET.ElementTree()
             etree.parse(f)
             t.rootnode = self.map_node_params(etree.getroot())
+            t.tree_depth = self.tree_depth
 
 
     def predict_forest(self, eye_img): #, face_img_size): # 3rd argument will help get the correct coordinate later on
@@ -295,6 +304,9 @@ class TreeEnsemble(object):
 
         # calculate the prediction of each tree:
         pupil_predictions = [ t.predict_tree(numpy.int_(eye_img), (w,h), t.rootnode) for t in self.tree_list ]
+
+        print [ t.rootnode.splitting_feature for t in self.tree_list ]
+        # print numpy.array(pupil_predictions) # BUG: there's very little variation each tree's prediction. Why?
 
         # return avg of predictions of all trees:
         return numpy.mean(pupil_predictions, axis=0)

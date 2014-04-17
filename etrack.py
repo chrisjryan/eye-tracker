@@ -41,8 +41,8 @@ args = parser.parse_args()
 assert args.subsample<=1.0 and args.subsample>=0.0, "subsample parameter %g is not in [0,1] interval" % subsample
 
 
-
-def crossval_test(training_files, tree_ens, tree_depth_min = 3, tree_depth_max = 4, ntrees_min = 1, ntrees_max = 2):
+# TODO: read these parameters from the command line rather than hardcoding them.
+def crossval_test(training_files, tree_ens, tree_depth_min = 3, tree_depth_max = 10, ntrees_min = 1, ntrees_max = 20):
     print """Cross validation test.
              This will generate plots of the mean squared prediction error as a 
              function of tree_depth (from range %i to %i) and ntrees (from 
@@ -61,6 +61,8 @@ def crossval_test(training_files, tree_ens, tree_depth_min = 3, tree_depth_max =
     cv_results.write('# rows: tree_depth (from range %i to %i), cols: ntrees (from range %i to %i)\n' % (tree_depth_min , tree_depth_max, ntrees_min, ntrees_max))
     numpy.savetxt(cv_results, results)
     cv_results.close()
+
+    # TODO: automate plotting.
 
 
 def detect_webcam(tree_ens, ff):
@@ -81,7 +83,7 @@ def detect_webcam(tree_ens, ff):
 
             # display the image, which now contains boxes drawn on the face and eyes:
             cv.ShowImage('asdf', image)
-            # cv.WaitKey(0)
+            cv.WaitKey(0)
 
 
 

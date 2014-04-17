@@ -119,7 +119,7 @@ class FaceFinder(object):
             print 'no face'
 
 
-    # write cv2 versions of this eventually:
+    # TODO: write cv2 versions of this eventually:
     def detect_eyes(self, image):
         f = self.find_face(image)
         if f:
