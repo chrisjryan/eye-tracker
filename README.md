@@ -12,7 +12,7 @@ Features:
 * Various other tuning parameter specifications.
 
 
-![alt text](https://github.com/christopherjamesryan/Eye-Tracker/blob/master/me.png "cjr")
+![alt text](https://raw.githubusercontent.com/christopherjamesryan/Eye-Tracker/master/me.png "cjr")
 
 
 To do:
