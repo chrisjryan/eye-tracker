@@ -11,8 +11,9 @@ Features:
 * Saving trained tree parameter information in Graphviz format for easy visualization of regression trees in image files.
 * Various other tuning parameter specifications.
 
-
-![alt text](https://raw.githubusercontent.com/christopherjamesryan/Eye-Tracker/master/me.png =300x)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/christopherjamesryan/Eye-Tracker/master/me.png" alt="Me" style="width: 300px;"/>
+</p>
 
 
 To do:
