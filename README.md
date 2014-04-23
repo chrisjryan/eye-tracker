@@ -11,10 +11,10 @@ Features:
 * Saving trained tree parameter information in Graphviz format for easy visualization of regression trees in image files.
 * Various other tuning parameter specifications.
 
-<p align="center">
+<!-- <p align="center">
   <img src="https://raw.githubusercontent.com/christopherjamesryan/Eye-Tracker/master/me.png" alt="Me" style="width: 300px;"/>
 </p>
-
+ -->
 
 To do:
 
