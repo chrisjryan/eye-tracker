@@ -11,6 +11,10 @@ Features:
 * Saving trained tree parameter information in Graphviz format for easy visualization of regression trees in image files.
 * Various other tuning parameter specifications.
 
+
+![alt text](https://github.com/christopherjamesryan/Eye-Tracker/blob/master/me.png "cjr")
+
+
 To do:
 
 * Finish statistical cross validation test, so that parameter choices can be assessed for statistical accuracy.
