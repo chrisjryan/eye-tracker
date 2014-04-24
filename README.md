@@ -11,10 +11,7 @@ Features:
 * Saving trained tree parameter information in Graphviz format for easy visualization of regression trees in image files.
 * Various other tuning parameter specifications.
 
-<!-- <p align="center">
-  <img src="https://raw.githubusercontent.com/christopherjamesryan/Eye-Tracker/master/me.png" alt="Me" style="width: 300px;"/>
-</p>
- -->
+
 
 To do:
 
@@ -28,3 +25,9 @@ To do:
 Reference:
 
 Markuš N, Frljak M, Pandžic IS, Ahlberg J, Forchheimer R. "Eye pupil localization with an ensemble of randomized trees," *Pattern Recognition* (2014). [doi: 10.1016/j.patcog.2013.08.008](http://dx.doi.org/10.1016/j.patcog.2013.08.008)
+
+
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/christopherjamesryan/Eye-Tracker/master/me.png"  width=300/>
+</p>
