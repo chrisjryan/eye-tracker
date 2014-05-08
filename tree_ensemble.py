@@ -6,28 +6,28 @@ import numpy
 # from scipy import stats
 import sys
 import xml.etree.ElementTree as ET
+import re
 from ElementTree_pretty import prettify
+
 
 # TODO: make unit tests.
 
 
 class Node(object):
-    def __init__(self, clustersize = None, splitting_feature = None, children = [], trained_pupil_avg = None, leaf = False):
+    def __init__(self, clustersize = None, splitting_feature = None, children = None, trained_pupil_avg = None, leaf = False):
         self.splitting_feature = splitting_feature
         self.trained_pupil_avg = trained_pupil_avg
         self.leaf = leaf
-        self.children = children
         self.clustersize = clustersize
+        if children is None:
+	        self.children = []
 
 
-    # TODO: fix this __repr__().
-    # def __repr__(self):
-    #     if not self.leaf:
-    #         self.children[0]
-    #         self.children[1]
-    #         return 'splitting_feature:', str(self.splitting_feature)
-    #     else:
-    #         return 'average pupil coordinates:', str(self.trained_pupil_avg)
+    def __repr__(self):
+        if not self.leaf:
+            return 'splitting feature: ' + str(self.splitting_feature)
+        else:
+            return 'avg pupil coords: ' + str(self.trained_pupil_avg)
 
 
     def graphviz_print_node_lines(self, f, idx=0):
@@ -92,7 +92,6 @@ class RegressionTree(object):
     def cluster_images(self, image_list, d=0): # d is the depth of this node
 
         clustersize = len(image_list)
-
 
         if d < self.tree_depth-1:
 
@@ -256,20 +255,18 @@ class TreeEnsemble(object):
                 t.export_graphviz_file(idx, self.training_result_dir)
 
 
-    # TODO: This is a little cunky, since it maps the element tree onto my own, more specialized RegressionTree object; Eventually I should use just Element trees so no conversion is necessary. Or it's probably easier to just write my own XML file writer for my object.
+    # TODO: This is a little clunky, since it maps the element tree onto my own, more specialized RegressionTree object; Eventually I should use just Element trees so no conversion is necessary. Or it's probably easier to just write my own XML file writer for my object.
     def map_node_params(self, elem, d=0):
 
         n = Node()
 
-        # this loop iterates over ElementTree subelements for each node, which in our case includes child nodes, features, avgs, and clsuters sizes.
+        # this loop iterates over ElementTree subelements for each node, which in our case includes child nodes, features, avgs, and cluster sizes.
         for e in list(elem):
             if e.tag == 'clustersize':
                 n.clustersize = int(e.text)
             elif e.tag == 'splitting_feature':
-                # don't use the next line, since evals are unsafe:
-                # n.splitting_feature = eval(e.text) #change this from an eval statement
-                # note: next line is untested:
-                x1, y1, x2, y2 = [float(p) for p in re.findall(r'[-\d.]+', e.text)]
+                # TODO: understand the regex in the next line better (you got it from S.O.)
+                x1, y1, x2, y2 = [float(p) for p in re.findall(r'-?[\d.]+(?:e-?\d+)?', e.text)]
                 n.splitting_feature = ((x1, y1), (x2, y2))
             elif e.tag == 'trained_pupil_avg':
                 n.trained_pupil_avg = tuple(map(float, e.text[1:-1].split())) # TODO: do this more cleanly
@@ -304,9 +301,6 @@ class TreeEnsemble(object):
 
         # calculate the prediction of each tree:
         pupil_predictions = [ t.predict_tree(numpy.int_(eye_img), (w,h), t.rootnode) for t in self.tree_list ]
-
-        print [ t.rootnode.splitting_feature for t in self.tree_list ]
-        # print numpy.array(pupil_predictions) # BUG: there's very little variation each tree's prediction. Why?
 
         # return avg of predictions of all trees:
         return numpy.mean(pupil_predictions, axis=0)

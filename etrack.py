@@ -7,8 +7,7 @@
 
 	guided also by Tom Ballinger's `gazer' (see Github) """
 
-# TODO:
-#   why does this hang when subsample_size = 0?    
+# TODO: why does this hang when subsample_size = 0?    
 
 import glob
 import argparse
@@ -114,8 +113,6 @@ if __name__ == '__main__':
         else:
             sys.exit("Error: No processed training data found in", args.training_data_folder_processed)
 
-
         detect_webcam(tree_ens, ff)
-
 
     sys.stdout.write('\n')

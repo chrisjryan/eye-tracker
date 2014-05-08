@@ -1,0 +1,4099 @@
+## [header material...]
+## Command to get the layout: "dot -Teps thisfile > thisfile.eps"
+graph "test"
+{
+node [shape="rectangle", fontsize=10, width=".2", height=".2", margin=0];
+graph[fontsize=8];
+
+n000 [label="clustersize = 14060
+splitting feature:
+((-0.774,0.0155)-(-0.882,0.665))"] ;
+n000 -- n001 ;
+n001 [label="clustersize = 9080
+splitting feature:
+((0.281,0.323)-(0.0807,-0.926))"] ;
+n001 -- n002 ;
+n002 [label="clustersize = 4721
+splitting feature:
+((-0.244,-0.946)-(-0.939,0.608))"] ;
+n002 -- n003 ;
+n003 [label="clustersize = 2792
+splitting feature:
+((-0.477,0.751)-(-0.498,-0.786))"] ;
+n003 -- n004 ;
+n004 [label="clustersize = 1299
+splitting feature:
+((-0.0483,-0.931)-(0.187,0.574))"] ;
+n004 -- n005 ;
+n005 [label="clustersize = 361
+splitting feature:
+((-0.17,-0.655)-(-0.562,0.0933))"] ;
+n005 -- n006 ;
+n006 [label="clustersize = 136
+splitting feature:
+((-0.893,0.0661)-(-0.203,0.151))"] ;
+n006 -- n007 ;
+n007 [label="clustersize = 53
+splitting feature:
+((0.502,0.9)-(0.682,0.206))"] ;
+n007 -- n008 ;
+n008 [label="clustersize = 25
+splitting feature:
+((-0.495,0.819)-(-0.327,-0.516))"] ;
+n008 -- n009 ;
+n009 [label="clustersize = 11
+pupil avg:
+[ 0.18014247  0.09091378]"] ;
+n008 -- n010 ;
+n010 [label="clustersize = 14
+pupil avg:
+[-0.13436159 -0.06509125]"] ;
+n007 -- n011 ;
+n011 [label="clustersize = 28
+splitting feature:
+((-0.0832,-0.637)-(-0.064,0.937))"] ;
+n011 -- n012 ;
+n012 [label="clustersize = 22
+pupil avg:
+[-0.4345742   0.10343981]"] ;
+n011 -- n013 ;
+n013 [label="clustersize = 6
+pupil avg:
+[-0.08532318 -0.03379724]"] ;
+n006 -- n014 ;
+n014 [label="clustersize = 83
+splitting feature:
+((0.366,0.657)-(-0.256,-0.514))"] ;
+n014 -- n015 ;
+n015 [label="clustersize = 15
+splitting feature:
+((-0.737,-0.799)-(0.565,0.271))"] ;
+n015 -- n016 ;
+n016 [label="clustersize = 4
+pupil avg:
+[-0.0156041   0.13044885]"] ;
+n015 -- n017 ;
+n017 [label="clustersize = 11
+pupil avg:
+[ 0.43195647  0.13746223]"] ;
+n014 -- n018 ;
+n018 [label="clustersize = 68
+splitting feature:
+((-0.72,-0.704)-(0.211,-0.621))"] ;
+n018 -- n019 ;
+n019 [label="clustersize = 24
+pupil avg:
+[-0.18241536 -0.10053177]"] ;
+n018 -- n020 ;
+n020 [label="clustersize = 44
+pupil avg:
+[ 0.07977954  0.03786447]"] ;
+n005 -- n021 ;
+n021 [label="clustersize = 225
+splitting feature:
+((-0.714,-0.241)-(0.0846,0.356))"] ;
+n021 -- n022 ;
+n022 [label="clustersize = 73
+splitting feature:
+((-0.469,0.865)-(0.122,-0.105))"] ;
+n022 -- n023 ;
+n023 [label="clustersize = 23
+splitting feature:
+((0.198,-0.816)-(-0.458,0.0744))"] ;
+n023 -- n024 ;
+n024 [label="clustersize = 8
+pupil avg:
+[ 0.22515113  0.09958106]"] ;
+n023 -- n025 ;
+n025 [label="clustersize = 15
+pupil avg:
+[ 0.13566548 -0.13944899]"] ;
+n022 -- n026 ;
+n026 [label="clustersize = 50
+splitting feature:
+((0.111,-0.981)-(-0.89,0.927))"] ;
+n026 -- n027 ;
+n027 [label="clustersize = 34
+pupil avg:
+[-0.05375062  0.0783555 ]"] ;
+n026 -- n028 ;
+n028 [label="clustersize = 16
+pupil avg:
+[-0.21090424 -0.10376684]"] ;
+n021 -- n029 ;
+n029 [label="clustersize = 152
+splitting feature:
+((-0.854,0.198)-(-0.607,0.244))"] ;
+n029 -- n030 ;
+n030 [label="clustersize = 13
+splitting feature:
+((-0.942,-0.136)-(-0.71,-0.575))"] ;
+n030 -- n031 ;
+n031 [label="clustersize = 9
+pupil avg:
+[-0.18867106 -0.10089887]"] ;
+n030 -- n032 ;
+n032 [label="clustersize = 4
+pupil avg:
+[ 0.25109649  0.16154971]"] ;
+n029 -- n033 ;
+n033 [label="clustersize = 139
+splitting feature:
+((-0.42,0.146)-(0.0428,0.192))"] ;
+n033 -- n034 ;
+n034 [label="clustersize = 49
+pupil avg:
+[ 0.32594945 -0.03098693]"] ;
+n033 -- n035 ;
+n035 [label="clustersize = 90
+pupil avg:
+[ 0.19851493  0.11456814]"] ;
+n004 -- n036 ;
+n036 [label="clustersize = 938
+splitting feature:
+((0.535,-0.447)-(-0.81,-0.123))"] ;
+n036 -- n037 ;
+n037 [label="clustersize = 436
+splitting feature:
+((0.1,0.657)-(-0.593,0.143))"] ;
+n037 -- n038 ;
+n038 [label="clustersize = 255
+splitting feature:
+((0.341,-0.643)-(0.426,0.576))"] ;
+n038 -- n039 ;
+n039 [label="clustersize = 77
+splitting feature:
+((0.105,0.269)-(0.923,-0.415))"] ;
+n039 -- n040 ;
+n040 [label="clustersize = 70
+pupil avg:
+[ 0.22985344  0.18279036]"] ;
+n039 -- n041 ;
+n041 [label="clustersize = 7
+pupil avg:
+[ 0.47310353 -0.03273249]"] ;
+n038 -- n042 ;
+n042 [label="clustersize = 178
+splitting feature:
+((0.441,0.748)-(-0.212,0.934))"] ;
+n042 -- n043 ;
+n043 [label="clustersize = 103
+pupil avg:
+[ 0.53956602  0.25893485]"] ;
+n042 -- n044 ;
+n044 [label="clustersize = 75
+pupil avg:
+[ 0.4206565   0.21011853]"] ;
+n037 -- n045 ;
+n045 [label="clustersize = 181
+splitting feature:
+((0.156,-0.534)-(-0.212,0.163))"] ;
+n045 -- n046 ;
+n046 [label="clustersize = 105
+splitting feature:
+((-0.0754,0.531)-(0.152,0.163))"] ;
+n046 -- n047 ;
+n047 [label="clustersize = 12
+pupil avg:
+[ 0.35677492  0.05870603]"] ;
+n046 -- n048 ;
+n048 [label="clustersize = 93
+pupil avg:
+[ 0.14919262  0.26326902]"] ;
+n045 -- n049 ;
+n049 [label="clustersize = 76
+splitting feature:
+((0.539,0.326)-(-0.834,-0.283))"] ;
+n049 -- n050 ;
+n050 [label="clustersize = 64
+pupil avg:
+[ 0.29740814  0.11959648]"] ;
+n049 -- n051 ;
+n051 [label="clustersize = 12
+pupil avg:
+[ 0.39727252 -0.11134265]"] ;
+n036 -- n052 ;
+n052 [label="clustersize = 502
+splitting feature:
+((-0.844,-0.0361)-(-0.723,0.622))"] ;
+n052 -- n053 ;
+n053 [label="clustersize = 268
+splitting feature:
+((-0.419,0.845)-(0.226,-0.025))"] ;
+n053 -- n054 ;
+n054 [label="clustersize = 101
+splitting feature:
+((-0.103,0.963)-(-0.407,-0.293))"] ;
+n054 -- n055 ;
+n055 [label="clustersize = 44
+pupil avg:
+[ 0.31274137  0.02379802]"] ;
+n054 -- n056 ;
+n056 [label="clustersize = 57
+pupil avg:
+[ 0.10207551 -0.13977285]"] ;
+n053 -- n057 ;
+n057 [label="clustersize = 167
+splitting feature:
+((0.0557,0.345)-(-0.00459,-0.239))"] ;
+n057 -- n058 ;
+n058 [label="clustersize = 87
+pupil avg:
+[ 0.12150384  0.06406414]"] ;
+n057 -- n059 ;
+n059 [label="clustersize = 80
+pupil avg:
+[-0.09490391 -0.01516993]"] ;
+n052 -- n060 ;
+n060 [label="clustersize = 234
+splitting feature:
+((-0.229,0.597)-(0.17,0.915))"] ;
+n060 -- n061 ;
+n061 [label="clustersize = 141
+splitting feature:
+((-0.0957,-0.146)-(-0.187,0.694))"] ;
+n061 -- n062 ;
+n062 [label="clustersize = 83
+pupil avg:
+[ 0.09705405  0.00853616]"] ;
+n061 -- n063 ;
+n063 [label="clustersize = 58
+pupil avg:
+[ 0.34569821  0.02662725]"] ;
+n060 -- n064 ;
+n064 [label="clustersize = 93
+splitting feature:
+((-0.593,0.131)-(-0.123,0.901))"] ;
+n064 -- n065 ;
+n065 [label="clustersize = 66
+pupil avg:
+[ 0.32264509  0.1926445 ]"] ;
+n064 -- n066 ;
+n066 [label="clustersize = 27
+pupil avg:
+[ 0.51651762  0.1291996 ]"] ;
+n003 -- n067 ;
+n067 [label="clustersize = 1493
+splitting feature:
+((0.983,-0.745)-(-0.0565,0.869))"] ;
+n067 -- n068 ;
+n068 [label="clustersize = 449
+splitting feature:
+((0.391,-0.178)-(0.0261,-0.293))"] ;
+n068 -- n069 ;
+n069 [label="clustersize = 159
+splitting feature:
+((-0.167,-0.434)-(0.587,0.888))"] ;
+n069 -- n070 ;
+n070 [label="clustersize = 124
+splitting feature:
+((-0.0604,0.374)-(0.817,-0.506))"] ;
+n070 -- n071 ;
+n071 [label="clustersize = 58
+splitting feature:
+((-0.0533,0.928)-(-0.462,-0.217))"] ;
+n071 -- n072 ;
+n072 [label="clustersize = 12
+pupil avg:
+[ 0.04703014  0.06291347]"] ;
+n071 -- n073 ;
+n073 [label="clustersize = 46
+pupil avg:
+[-0.33944267  0.19356816]"] ;
+n070 -- n074 ;
+n074 [label="clustersize = 66
+splitting feature:
+((0.0205,-0.508)-(0.354,0.794))"] ;
+n074 -- n075 ;
+n075 [label="clustersize = 55
+pupil avg:
+[-0.20490471  0.32531564]"] ;
+n074 -- n076 ;
+n076 [label="clustersize = 11
+pupil avg:
+[-0.00770171  0.33835684]"] ;
+n069 -- n077 ;
+n077 [label="clustersize = 35
+splitting feature:
+((0.66,-0.186)-(0.934,0.447))"] ;
+n077 -- n078 ;
+n078 [label="clustersize = 23
+splitting feature:
+((-0.468,0.665)-(-0.403,0.26))"] ;
+n078 -- n079 ;
+n079 [label="clustersize = 12
+pupil avg:
+[-0.05455646  0.27179684]"] ;
+n078 -- n080 ;
+n080 [label="clustersize = 11
+pupil avg:
+[ 0.28900899  0.27187913]"] ;
+n077 -- n081 ;
+n081 [label="clustersize = 12
+splitting feature:
+((-0.525,-0.878)-(-0.129,-0.837))"] ;
+n081 -- n082 ;
+n082 [label="clustersize = 7
+pupil avg:
+[-0.38154783  0.38424972]"] ;
+n081 -- n083 ;
+n083 [label="clustersize = 5
+pupil avg:
+[-0.02518233  0.1985843 ]"] ;
+n068 -- n084 ;
+n084 [label="clustersize = 290
+splitting feature:
+((-0.0303,0.433)-(-0.192,-0.397))"] ;
+n084 -- n085 ;
+n085 [label="clustersize = 78
+splitting feature:
+((-0.864,0.582)-(0.0904,0.561))"] ;
+n085 -- n086 ;
+n086 [label="clustersize = 12
+splitting feature:
+((0.107,0.533)-(-0.369,0.0834))"] ;
+n086 -- n087 ;
+n087 [label="clustersize = 4
+pupil avg:
+[ 0.00689291  0.2180543 ]"] ;
+n086 -- n088 ;
+n088 [label="clustersize = 8
+pupil avg:
+[ 0.28835041 -0.10731785]"] ;
+n085 -- n089 ;
+n089 [label="clustersize = 66
+splitting feature:
+((0.604,0.387)-(-0.529,0.622))"] ;
+n089 -- n090 ;
+n090 [label="clustersize = 41
+pupil avg:
+[-0.30163528  0.1889974 ]"] ;
+n089 -- n091 ;
+n091 [label="clustersize = 25
+pupil avg:
+[-0.0713953   0.10751431]"] ;
+n084 -- n092 ;
+n092 [label="clustersize = 212
+splitting feature:
+((0.488,-0.302)-(-0.416,-0.0968))"] ;
+n092 -- n093 ;
+n093 [label="clustersize = 91
+splitting feature:
+((-0.884,0.149)-(0.137,-0.721))"] ;
+n093 -- n094 ;
+n094 [label="clustersize = 39
+pupil avg:
+[-0.2530161   0.11089013]"] ;
+n093 -- n095 ;
+n095 [label="clustersize = 52
+pupil avg:
+[-0.38495004  0.17161467]"] ;
+n092 -- n096 ;
+n096 [label="clustersize = 121
+splitting feature:
+((0.249,0.36)-(-0.356,0.443))"] ;
+n096 -- n097 ;
+n097 [label="clustersize = 63
+pupil avg:
+[-0.34038813  0.05169393]"] ;
+n096 -- n098 ;
+n098 [label="clustersize = 58
+pupil avg:
+[-0.31313859 -0.15630091]"] ;
+n067 -- n099 ;
+n099 [label="clustersize = 1044
+splitting feature:
+((0.144,0.93)-(0.892,0.258))"] ;
+n099 -- n100 ;
+n100 [label="clustersize = 775
+splitting feature:
+((-0.843,-0.539)-(0.148,0.271))"] ;
+n100 -- n101 ;
+n101 [label="clustersize = 177
+splitting feature:
+((-0.962,0.84)-(-0.125,0.823))"] ;
+n101 -- n102 ;
+n102 [label="clustersize = 32
+splitting feature:
+((0.407,-0.858)-(-0.693,-0.709))"] ;
+n102 -- n103 ;
+n103 [label="clustersize = 7
+pupil avg:
+[ 0.00503388  0.01819289]"] ;
+n102 -- n104 ;
+n104 [label="clustersize = 25
+pupil avg:
+[-0.42102133 -0.04398122]"] ;
+n101 -- n105 ;
+n105 [label="clustersize = 145
+splitting feature:
+((-0.199,0.288)-(0.226,-0.891))"] ;
+n105 -- n106 ;
+n106 [label="clustersize = 110
+pupil avg:
+[ 0.00796459 -0.02390163]"] ;
+n105 -- n107 ;
+n107 [label="clustersize = 35
+pupil avg:
+[-0.14991586  0.09093838]"] ;
+n100 -- n108 ;
+n108 [label="clustersize = 598
+splitting feature:
+((-0.139,0.815)-(-0.294,-0.587))"] ;
+n108 -- n109 ;
+n109 [label="clustersize = 289
+splitting feature:
+((-0.955,0.825)-(0.849,-0.212))"] ;
+n109 -- n110 ;
+n110 [label="clustersize = 51
+pupil avg:
+[ 0.13771675 -0.02186332]"] ;
+n109 -- n111 ;
+n111 [label="clustersize = 238
+pupil avg:
+[ 0.15085317  0.15873119]"] ;
+n108 -- n112 ;
+n112 [label="clustersize = 309
+splitting feature:
+((-0.323,-0.899)-(-0.00939,0.899))"] ;
+n112 -- n113 ;
+n113 [label="clustersize = 176
+pupil avg:
+[-0.06650227  0.1139308 ]"] ;
+n112 -- n114 ;
+n114 [label="clustersize = 133
+pupil avg:
+[ 0.14748983  0.09705456]"] ;
+n099 -- n115 ;
+n115 [label="clustersize = 269
+splitting feature:
+((-0.992,-0.19)-(-0.605,-0.522))"] ;
+n115 -- n116 ;
+n116 [label="clustersize = 87
+splitting feature:
+((0.0919,0.111)-(-0.374,-0.623))"] ;
+n116 -- n117 ;
+n117 [label="clustersize = 38
+splitting feature:
+((-0.915,-0.92)-(0.692,-0.473))"] ;
+n117 -- n118 ;
+n118 [label="clustersize = 25
+pupil avg:
+[-0.26586338 -0.06409716]"] ;
+n117 -- n119 ;
+n119 [label="clustersize = 13
+pupil avg:
+[ 0.0016615   0.00950339]"] ;
+n116 -- n120 ;
+n120 [label="clustersize = 49
+splitting feature:
+((-0.197,-0.359)-(0.0905,-0.114))"] ;
+n120 -- n121 ;
+n121 [label="clustersize = 41
+pupil avg:
+[-0.39143512 -0.18863887]"] ;
+n120 -- n122 ;
+n122 [label="clustersize = 8
+pupil avg:
+[-0.15968476  0.00572344]"] ;
+n115 -- n123 ;
+n123 [label="clustersize = 182
+splitting feature:
+((0.884,-0.71)-(-0.871,0.591))"] ;
+n123 -- n124 ;
+n124 [label="clustersize = 91
+splitting feature:
+((-0.219,0.933)-(-0.0566,-0.403))"] ;
+n124 -- n125 ;
+n125 [label="clustersize = 13
+pupil avg:
+[ 0.10737293  0.1813038 ]"] ;
+n124 -- n126 ;
+n126 [label="clustersize = 78
+pupil avg:
+[-0.17950995  0.17949851]"] ;
+n123 -- n127 ;
+n127 [label="clustersize = 91
+splitting feature:
+((0.0119,-0.2)-(0.0397,0.851))"] ;
+n127 -- n128 ;
+n128 [label="clustersize = 74
+pupil avg:
+[-0.02239865 -0.01171075]"] ;
+n127 -- n129 ;
+n129 [label="clustersize = 17
+pupil avg:
+[ 0.25699292  0.09592945]"] ;
+n002 -- n130 ;
+n130 [label="clustersize = 1929
+splitting feature:
+((0.171,0.222)-(-0.424,0.801))"] ;
+n130 -- n131 ;
+n131 [label="clustersize = 1359
+splitting feature:
+((0.461,0.729)-(-0.44,0.612))"] ;
+n131 -- n132 ;
+n132 [label="clustersize = 482
+splitting feature:
+((0.205,0.532)-(0.486,0.0825))"] ;
+n132 -- n133 ;
+n133 [label="clustersize = 342
+splitting feature:
+((-0.827,0.968)-(0.0483,-0.654))"] ;
+n133 -- n134 ;
+n134 [label="clustersize = 160
+splitting feature:
+((0.17,-0.404)-(-0.618,-0.733))"] ;
+n134 -- n135 ;
+n135 [label="clustersize = 123
+splitting feature:
+((-0.57,0.346)-(0.115,0.712))"] ;
+n135 -- n136 ;
+n136 [label="clustersize = 33
+pupil avg:
+[ 0.30584799  0.10976984]"] ;
+n135 -- n137 ;
+n137 [label="clustersize = 90
+pupil avg:
+[ 0.44458343  0.10644611]"] ;
+n134 -- n138 ;
+n138 [label="clustersize = 37
+splitting feature:
+((-0.0239,-0.235)-(-0.35,0.816))"] ;
+n138 -- n139 ;
+n139 [label="clustersize = 22
+pupil avg:
+[ 0.33806921  0.08066333]"] ;
+n138 -- n140 ;
+n140 [label="clustersize = 15
+pupil avg:
+[ 0.18570802  0.00816633]"] ;
+n133 -- n141 ;
+n141 [label="clustersize = 182
+splitting feature:
+((-0.469,-0.922)-(-0.216,0.939))"] ;
+n141 -- n142 ;
+n142 [label="clustersize = 55
+splitting feature:
+((0.17,-0.303)-(-0.0235,0.521))"] ;
+n142 -- n143 ;
+n143 [label="clustersize = 27
+pupil avg:
+[-0.06718689  0.13152347]"] ;
+n142 -- n144 ;
+n144 [label="clustersize = 28
+pupil avg:
+[ 0.17561901  0.08226594]"] ;
+n141 -- n145 ;
+n145 [label="clustersize = 127
+splitting feature:
+((-0.00919,0.0195)-(0.261,0.571))"] ;
+n145 -- n146 ;
+n146 [label="clustersize = 71
+pupil avg:
+[ 0.20263667  0.04001424]"] ;
+n145 -- n147 ;
+n147 [label="clustersize = 56
+pupil avg:
+[ 0.38914373  0.12476504]"] ;
+n132 -- n148 ;
+n148 [label="clustersize = 140
+splitting feature:
+((0.754,-0.928)-(-0.313,0.917))"] ;
+n148 -- n149 ;
+n149 [label="clustersize = 53
+splitting feature:
+((-0.621,0.319)-(-0.985,0.409))"] ;
+n149 -- n150 ;
+n150 [label="clustersize = 28
+splitting feature:
+((0.658,-0.368)-(-0.865,-0.332))"] ;
+n150 -- n151 ;
+n151 [label="clustersize = 18
+pupil avg:
+[ 0.15726469  0.21023988]"] ;
+n150 -- n152 ;
+n152 [label="clustersize = 10
+pupil avg:
+[ 0.0856142   0.07802744]"] ;
+n149 -- n153 ;
+n153 [label="clustersize = 25
+splitting feature:
+((-0.757,0.22)-(0.202,-0.419))"] ;
+n153 -- n154 ;
+n154 [label="clustersize = 15
+pupil avg:
+[ 0.11427305  0.17564636]"] ;
+n153 -- n155 ;
+n155 [label="clustersize = 10
+pupil avg:
+[-0.25960573  0.30542135]"] ;
+n148 -- n156 ;
+n156 [label="clustersize = 87
+splitting feature:
+((0.0881,-0.533)-(0.997,0.927))"] ;
+n156 -- n157 ;
+n157 [label="clustersize = 79
+splitting feature:
+((0.717,-0.354)-(0.202,0.313))"] ;
+n157 -- n158 ;
+n158 [label="clustersize = 5
+pupil avg:
+[ 0.56614386  0.13745255]"] ;
+n157 -- n159 ;
+n159 [label="clustersize = 74
+pupil avg:
+[ 0.14552794  0.08410177]"] ;
+n156 -- n160 ;
+n160 [label="clustersize = 8
+splitting feature:
+((0.763,0.121)-(0.58,0.999))"] ;
+n160 -- n161 ;
+n161 [label="clustersize = 4
+pupil avg:
+[-0.02681159 -0.01666667]"] ;
+n160 -- n162 ;
+n162 [label="clustersize = 4
+pupil avg:
+[-0.33557856 -0.04894432]"] ;
+n131 -- n163 ;
+n163 [label="clustersize = 877
+splitting feature:
+((-0.0947,0.93)-(0.0258,-0.869))"] ;
+n163 -- n164 ;
+n164 [label="clustersize = 658
+splitting feature:
+((0.835,-0.514)-(0.389,-0.734))"] ;
+n164 -- n165 ;
+n165 [label="clustersize = 235
+splitting feature:
+((0.14,-0.157)-(-0.157,0.894))"] ;
+n165 -- n166 ;
+n166 [label="clustersize = 124
+splitting feature:
+((0.225,0.985)-(-0.302,0.249))"] ;
+n166 -- n167 ;
+n167 [label="clustersize = 24
+pupil avg:
+[ 0.30687695  0.19305326]"] ;
+n166 -- n168 ;
+n168 [label="clustersize = 100
+pupil avg:
+[-0.05648378 -0.02249215]"] ;
+n165 -- n169 ;
+n169 [label="clustersize = 111
+splitting feature:
+((0.391,0.467)-(0.43,-0.3))"] ;
+n169 -- n170 ;
+n170 [label="clustersize = 106
+pupil avg:
+[ 0.17210883 -0.0385905 ]"] ;
+n169 -- n171 ;
+n171 [label="clustersize = 5
+pupil avg:
+[ 0.66816935  0.0388317 ]"] ;
+n164 -- n172 ;
+n172 [label="clustersize = 423
+splitting feature:
+((-0.837,-0.233)-(0.299,0.369))"] ;
+n172 -- n173 ;
+n173 [label="clustersize = 225
+splitting feature:
+((-0.661,-0.747)-(-0.381,0.188))"] ;
+n173 -- n174 ;
+n174 [label="clustersize = 71
+pupil avg:
+[ 0.18105289  0.04318448]"] ;
+n173 -- n175 ;
+n175 [label="clustersize = 154
+pupil avg:
+[ 0.19911074 -0.07503419]"] ;
+n172 -- n176 ;
+n176 [label="clustersize = 198
+splitting feature:
+((-0.209,0.171)-(-0.835,-0.203))"] ;
+n176 -- n177 ;
+n177 [label="clustersize = 163
+pupil avg:
+[ 0.27190985  0.04445489]"] ;
+n176 -- n178 ;
+n178 [label="clustersize = 35
+pupil avg:
+[ 0.26675606  0.16774202]"] ;
+n163 -- n179 ;
+n179 [label="clustersize = 219
+splitting feature:
+((-0.257,0.929)-(-0.657,-0.575))"] ;
+n179 -- n180 ;
+n180 [label="clustersize = 38
+splitting feature:
+((0.704,0.474)-(-0.247,0.635))"] ;
+n180 -- n181 ;
+n181 [label="clustersize = 10
+splitting feature:
+((-0.958,0.853)-(-0.185,0.558))"] ;
+n181 -- n182 ;
+n182 [label="clustersize = 4
+pupil avg:
+[-0.01655983  0.26666667]"] ;
+n181 -- n183 ;
+n183 [label="clustersize = 6
+pupil avg:
+[ 0.25073981  0.18266092]"] ;
+n180 -- n184 ;
+n184 [label="clustersize = 28
+splitting feature:
+((-0.568,-0.705)-(-0.985,-0.827))"] ;
+n184 -- n185 ;
+n185 [label="clustersize = 21
+pupil avg:
+[ 0.38067716 -0.10598613]"] ;
+n184 -- n186 ;
+n186 [label="clustersize = 7
+pupil avg:
+[ 0.10592187 -0.02201825]"] ;
+n179 -- n187 ;
+n187 [label="clustersize = 181
+splitting feature:
+((0.777,-0.385)-(-0.449,0.318))"] ;
+n187 -- n188 ;
+n188 [label="clustersize = 32
+splitting feature:
+((-0.828,-0.679)-(-0.145,0.187))"] ;
+n188 -- n189 ;
+n189 [label="clustersize = 9
+pupil avg:
+[-0.01553555  0.20713896]"] ;
+n188 -- n190 ;
+n190 [label="clustersize = 23
+pupil avg:
+[ 0.19405721  0.05043564]"] ;
+n187 -- n191 ;
+n191 [label="clustersize = 149
+splitting feature:
+((0.78,0.412)-(0.918,-0.618))"] ;
+n191 -- n192 ;
+n192 [label="clustersize = 72
+pupil avg:
+[ 0.01593159  0.00553455]"] ;
+n191 -- n193 ;
+n193 [label="clustersize = 77
+pupil avg:
+[-0.17162627 -0.04072198]"] ;
+n130 -- n194 ;
+n194 [label="clustersize = 570
+splitting feature:
+((0.0766,0.163)-(-0.393,0.907))"] ;
+n194 -- n195 ;
+n195 [label="clustersize = 199
+splitting feature:
+((-0.00389,-0.24)-(-0.339,0.49))"] ;
+n195 -- n196 ;
+n196 [label="clustersize = 91
+splitting feature:
+((-0.017,0.768)-(0.042,-0.25))"] ;
+n196 -- n197 ;
+n197 [label="clustersize = 38
+splitting feature:
+((-0.638,-0.267)-(-0.61,0.98))"] ;
+n197 -- n198 ;
+n198 [label="clustersize = 18
+splitting feature:
+((-0.941,-0.187)-(-0.446,-0.996))"] ;
+n198 -- n199 ;
+n199 [label="clustersize = 14
+pupil avg:
+[ 0.1720739   0.08545102]"] ;
+n198 -- n200 ;
+n200 [label="clustersize = 4
+pupil avg:
+[ 0.5193584   0.13566951]"] ;
+n197 -- n201 ;
+n201 [label="clustersize = 20
+splitting feature:
+((-0.879,-0.0249)-(-0.27,0.939))"] ;
+n201 -- n202 ;
+n202 [label="clustersize = 4
+pupil avg:
+[ 0.20042894  0.04233167]"] ;
+n201 -- n203 ;
+n203 [label="clustersize = 16
+pupil avg:
+[ 0.58315172  0.12983513]"] ;
+n196 -- n204 ;
+n204 [label="clustersize = 53
+splitting feature:
+((0.988,-0.267)-(0.604,-0.179))"] ;
+n204 -- n205 ;
+n205 [label="clustersize = 9
+splitting feature:
+((-0.428,-0.183)-(-0.725,0.292))"] ;
+n205 -- n206 ;
+n206 [label="clustersize = 5
+pupil avg:
+[ 0.4155973  -0.18897531]"] ;
+n205 -- n207 ;
+n207 [label="clustersize = 4
+pupil avg:
+[ 0.22380921  0.11524159]"] ;
+n204 -- n208 ;
+n208 [label="clustersize = 44
+splitting feature:
+((-0.931,-0.325)-(0.758,0.43))"] ;
+n208 -- n209 ;
+n209 [label="clustersize = 24
+pupil avg:
+[-0.08380426 -0.00996189]"] ;
+n208 -- n210 ;
+n210 [label="clustersize = 20
+pupil avg:
+[ 0.15275661  0.12487802]"] ;
+n195 -- n211 ;
+n211 [label="clustersize = 108
+splitting feature:
+((0.501,0.872)-(-0.223,-0.79))"] ;
+n211 -- n212 ;
+n212 [label="clustersize = 41
+splitting feature:
+((-0.333,0.547)-(0.218,0.432))"] ;
+n212 -- n213 ;
+n213 [label="clustersize = 32
+splitting feature:
+((0.301,0.59)-(0.364,-0.294))"] ;
+n213 -- n214 ;
+n214 [label="clustersize = 27
+pupil avg:
+[ 0.32281954 -0.1068505 ]"] ;
+n213 -- n215 ;
+n215 [label="clustersize = 5
+pupil avg:
+[ 0.73205294 -0.0959469 ]"] ;
+n212 -- n216 ;
+n216 [label="clustersize = 9
+splitting feature:
+((-0.419,-0.614)-(0.804,0.548))"] ;
+n216 -- n217 ;
+n217 [label="clustersize = 5
+pupil avg:
+[-0.08934335 -0.12484478]"] ;
+n216 -- n218 ;
+n218 [label="clustersize = 4
+pupil avg:
+[ 0.46594579  0.08354602]"] ;
+n211 -- n219 ;
+n219 [label="clustersize = 67
+splitting feature:
+((0.663,0.619)-(0.959,-0.163))"] ;
+n219 -- n220 ;
+n220 [label="clustersize = 49
+splitting feature:
+((-0.84,-0.634)-(0.83,0.803))"] ;
+n220 -- n221 ;
+n221 [label="clustersize = 36
+pupil avg:
+[ 0.26083473 -0.1372171 ]"] ;
+n220 -- n222 ;
+n222 [label="clustersize = 13
+pupil avg:
+[ 0.1017634  -0.08027944]"] ;
+n219 -- n223 ;
+n223 [label="clustersize = 18
+splitting feature:
+((-0.667,0.362)-(-0.0583,-0.0624))"] ;
+n223 -- n224 ;
+n224 [label="clustersize = 5
+pupil avg:
+[ 0.15334996 -0.21655786]"] ;
+n223 -- n225 ;
+n225 [label="clustersize = 13
+pupil avg:
+[-0.02921758 -0.13212186]"] ;
+n194 -- n226 ;
+n226 [label="clustersize = 371
+splitting feature:
+((0.396,0.499)-(-0.472,0.244))"] ;
+n226 -- n227 ;
+n227 [label="clustersize = 63
+splitting feature:
+((0.205,-0.475)-(-0.0613,-0.924))"] ;
+n227 -- n228 ;
+n228 [label="clustersize = 47
+splitting feature:
+((0.38,0.508)-(0.0997,-0.283))"] ;
+n228 -- n229 ;
+n229 [label="clustersize = 30
+splitting feature:
+((0.22,-0.56)-(0.571,-0.404))"] ;
+n229 -- n230 ;
+n230 [label="clustersize = 18
+pupil avg:
+[ 0.50060268  0.12718614]"] ;
+n229 -- n231 ;
+n231 [label="clustersize = 12
+pupil avg:
+[ 0.65059223  0.17034854]"] ;
+n228 -- n232 ;
+n232 [label="clustersize = 17
+splitting feature:
+((-0.404,0.178)-(0.855,0.707))"] ;
+n232 -- n233 ;
+n233 [label="clustersize = 13
+pupil avg:
+[ 0.53932161 -0.08145478]"] ;
+n232 -- n234 ;
+n234 [label="clustersize = 4
+pupil avg:
+[ 0.27309041  0.10035991]"] ;
+n227 -- n235 ;
+n235 [label="clustersize = 16
+splitting feature:
+((-0.422,-0.586)-(-0.0185,0.987))"] ;
+n235 -- n236 ;
+n236 [label="clustersize = 8
+splitting feature:
+((-0.782,-0.779)-(0.258,-0.0965))"] ;
+n236 -- n237 ;
+n237 [label="clustersize = 4
+pupil avg:
+[-0.29008779 -0.09621759]"] ;
+n236 -- n238 ;
+n238 [label="clustersize = 4
+pupil avg:
+[-0.17884197  0.11266041]"] ;
+n235 -- n239 ;
+n239 [label="clustersize = 8
+splitting feature:
+((0.999,-0.419)-(0.993,-0.525))"] ;
+n239 -- n240 ;
+n240 [label="clustersize = 4
+pupil avg:
+[ 0.41796604 -0.09468122]"] ;
+n239 -- n241 ;
+n241 [label="clustersize = 4
+pupil avg:
+[ 0.52779263  0.07548891]"] ;
+n226 -- n242 ;
+n242 [label="clustersize = 308
+splitting feature:
+((-0.0297,0.452)-(-0.215,0.228))"] ;
+n242 -- n243 ;
+n243 [label="clustersize = 176
+splitting feature:
+((0.218,0.766)-(-0.859,0.3))"] ;
+n243 -- n244 ;
+n244 [label="clustersize = 57
+splitting feature:
+((-0.609,-0.597)-(0.846,0.106))"] ;
+n244 -- n245 ;
+n245 [label="clustersize = 32
+pupil avg:
+[ 0.62455392 -0.13725513]"] ;
+n244 -- n246 ;
+n246 [label="clustersize = 25
+pupil avg:
+[ 0.46182049 -0.01259734]"] ;
+n243 -- n247 ;
+n247 [label="clustersize = 119
+splitting feature:
+((-0.245,0.564)-(-0.846,-0.188))"] ;
+n247 -- n248 ;
+n248 [label="clustersize = 82
+pupil avg:
+[ 0.49612522 -0.20750929]"] ;
+n247 -- n249 ;
+n249 [label="clustersize = 37
+pupil avg:
+[ 0.35823055 -0.15594747]"] ;
+n242 -- n250 ;
+n250 [label="clustersize = 132
+splitting feature:
+((0.673,0.00934)-(0.524,0.712))"] ;
+n250 -- n251 ;
+n251 [label="clustersize = 56
+splitting feature:
+((-0.425,0.947)-(-0.179,0.169))"] ;
+n251 -- n252 ;
+n252 [label="clustersize = 9
+pupil avg:
+[ 0.51386889 -0.27941035]"] ;
+n251 -- n253 ;
+n253 [label="clustersize = 47
+pupil avg:
+[ 0.21080786 -0.182476  ]"] ;
+n250 -- n254 ;
+n254 [label="clustersize = 76
+splitting feature:
+((-0.363,-0.393)-(-0.535,-0.202))"] ;
+n254 -- n255 ;
+n255 [label="clustersize = 24
+pupil avg:
+[ 0.25549488 -0.20303143]"] ;
+n254 -- n256 ;
+n256 [label="clustersize = 52
+pupil avg:
+[ 0.46209421 -0.243613  ]"] ;
+n001 -- n257 ;
+n257 [label="clustersize = 4359
+splitting feature:
+((-0.107,0.852)-(0.647,0.371))"] ;
+n257 -- n258 ;
+n258 [label="clustersize = 2875
+splitting feature:
+((-0.371,-0.501)-(-0.99,0.377))"] ;
+n258 -- n259 ;
+n259 [label="clustersize = 2136
+splitting feature:
+((-0.881,0.056)-(0.985,-0.974))"] ;
+n259 -- n260 ;
+n260 [label="clustersize = 1497
+splitting feature:
+((-0.304,0.826)-(-0.889,-0.75))"] ;
+n260 -- n261 ;
+n261 [label="clustersize = 788
+splitting feature:
+((-0.198,0.251)-(-0.494,-0.763))"] ;
+n261 -- n262 ;
+n262 [label="clustersize = 525
+splitting feature:
+((-0.508,0.687)-(-0.152,-0.501))"] ;
+n262 -- n263 ;
+n263 [label="clustersize = 136
+splitting feature:
+((0.262,-0.687)-(-0.477,0.977))"] ;
+n263 -- n264 ;
+n264 [label="clustersize = 57
+pupil avg:
+[ 0.06998339 -0.05139926]"] ;
+n263 -- n265 ;
+n265 [label="clustersize = 79
+pupil avg:
+[ 0.28608384 -0.12404485]"] ;
+n262 -- n266 ;
+n266 [label="clustersize = 389
+splitting feature:
+((-0.215,0.398)-(0.0668,-0.397))"] ;
+n266 -- n267 ;
+n267 [label="clustersize = 248
+pupil avg:
+[ 0.08678386 -0.04334088]"] ;
+n266 -- n268 ;
+n268 [label="clustersize = 141
+pupil avg:
+[-0.10001719 -0.0046905 ]"] ;
+n261 -- n269 ;
+n269 [label="clustersize = 263
+splitting feature:
+((0.642,-0.262)-(0.82,0.91))"] ;
+n269 -- n270 ;
+n270 [label="clustersize = 156
+splitting feature:
+((-0.464,0.503)-(-0.461,-0.191))"] ;
+n270 -- n271 ;
+n271 [label="clustersize = 30
+pupil avg:
+[ 0.25616669 -0.05404249]"] ;
+n270 -- n272 ;
+n272 [label="clustersize = 126
+pupil avg:
+[-0.10599739  0.0219988 ]"] ;
+n269 -- n273 ;
+n273 [label="clustersize = 107
+splitting feature:
+((-0.0173,0.29)-(-0.314,-0.0723))"] ;
+n273 -- n274 ;
+n274 [label="clustersize = 35
+pupil avg:
+[-0.00014364 -0.02205015]"] ;
+n273 -- n275 ;
+n275 [label="clustersize = 72
+pupil avg:
+[-0.25681829 -0.20919076]"] ;
+n260 -- n276 ;
+n276 [label="clustersize = 709
+splitting feature:
+((-0.31,-0.392)-(0.11,-0.105))"] ;
+n276 -- n277 ;
+n277 [label="clustersize = 388
+splitting feature:
+((-0.617,0.0996)-(0.203,0.542))"] ;
+n277 -- n278 ;
+n278 [label="clustersize = 319
+splitting feature:
+((-0.562,-0.598)-(-0.17,0.687))"] ;
+n278 -- n279 ;
+n279 [label="clustersize = 222
+pupil avg:
+[-0.35351745 -0.17682013]"] ;
+n278 -- n280 ;
+n280 [label="clustersize = 97
+pupil avg:
+[-0.10226297 -0.11753056]"] ;
+n277 -- n281 ;
+n281 [label="clustersize = 69
+splitting feature:
+((-0.0435,-0.421)-(0.227,0.0647))"] ;
+n281 -- n282 ;
+n282 [label="clustersize = 49
+pupil avg:
+[-0.25453351 -0.07877771]"] ;
+n281 -- n283 ;
+n283 [label="clustersize = 20
+pupil avg:
+[ 0.0535123   0.02778692]"] ;
+n276 -- n284 ;
+n284 [label="clustersize = 321
+splitting feature:
+((-0.101,0.918)-(0.0233,-0.702))"] ;
+n284 -- n285 ;
+n285 [label="clustersize = 64
+splitting feature:
+((-0.139,-0.287)-(0.213,0.595))"] ;
+n285 -- n286 ;
+n286 [label="clustersize = 44
+pupil avg:
+[-0.08921325 -0.01991163]"] ;
+n285 -- n287 ;
+n287 [label="clustersize = 20
+pupil avg:
+[ 0.43053434  0.10626611]"] ;
+n284 -- n288 ;
+n288 [label="clustersize = 257
+splitting feature:
+((0.138,0.0444)-(0.261,-0.557))"] ;
+n288 -- n289 ;
+n289 [label="clustersize = 177
+pupil avg:
+[-0.10371455  0.03060239]"] ;
+n288 -- n290 ;
+n290 [label="clustersize = 80
+pupil avg:
+[-0.26048605  0.03988282]"] ;
+n259 -- n291 ;
+n291 [label="clustersize = 639
+splitting feature:
+((0.0669,-0.606)-(-0.547,0.783))"] ;
+n291 -- n292 ;
+n292 [label="clustersize = 424
+splitting feature:
+((0.372,-0.065)-(-0.96,-0.587))"] ;
+n292 -- n293 ;
+n293 [label="clustersize = 292
+splitting feature:
+((0.768,-0.32)-(-0.12,0.733))"] ;
+n293 -- n294 ;
+n294 [label="clustersize = 65
+splitting feature:
+((-0.219,0.496)-(-0.219,-0.925))"] ;
+n294 -- n295 ;
+n295 [label="clustersize = 16
+pupil avg:
+[ 0.03013604  0.08024908]"] ;
+n294 -- n296 ;
+n296 [label="clustersize = 49
+pupil avg:
+[-0.29861416  0.18537241]"] ;
+n293 -- n297 ;
+n297 [label="clustersize = 227
+splitting feature:
+((0.0884,-0.962)-(-0.976,-0.968))"] ;
+n297 -- n298 ;
+n298 [label="clustersize = 183
+pupil avg:
+[-0.04510178  0.09690282]"] ;
+n297 -- n299 ;
+n299 [label="clustersize = 44
+pupil avg:
+[ 0.18304542  0.02258652]"] ;
+n292 -- n300 ;
+n300 [label="clustersize = 132
+splitting feature:
+((0.3,-0.339)-(-0.234,0.797))"] ;
+n300 -- n301 ;
+n301 [label="clustersize = 43
+splitting feature:
+((-0.286,0.606)-(-0.323,-0.442))"] ;
+n301 -- n302 ;
+n302 [label="clustersize = 21
+pupil avg:
+[ 0.19643338  0.0048228 ]"] ;
+n301 -- n303 ;
+n303 [label="clustersize = 22
+pupil avg:
+[-0.35078107  0.02428402]"] ;
+n300 -- n304 ;
+n304 [label="clustersize = 89
+splitting feature:
+((0.723,-0.828)-(0.591,0.522))"] ;
+n304 -- n305 ;
+n305 [label="clustersize = 60
+pupil avg:
+[ 0.41340688 -0.03505882]"] ;
+n304 -- n306 ;
+n306 [label="clustersize = 29
+pupil avg:
+[ 0.02396615 -0.0867051 ]"] ;
+n291 -- n307 ;
+n307 [label="clustersize = 215
+splitting feature:
+((0.682,0.801)-(-0.997,-0.416))"] ;
+n307 -- n308 ;
+n308 [label="clustersize = 85
+splitting feature:
+((-0.163,-0.182)-(0.0685,0.827))"] ;
+n308 -- n309 ;
+n309 [label="clustersize = 46
+splitting feature:
+((-0.384,-0.721)-(-0.316,0.697))"] ;
+n309 -- n310 ;
+n310 [label="clustersize = 25
+pupil avg:
+[-0.16785558  0.01119837]"] ;
+n309 -- n311 ;
+n311 [label="clustersize = 21
+pupil avg:
+[ 0.22439046 -0.06416978]"] ;
+n308 -- n312 ;
+n312 [label="clustersize = 39
+splitting feature:
+((-0.511,-0.784)-(-0.427,-0.993))"] ;
+n312 -- n313 ;
+n313 [label="clustersize = 14
+pupil avg:
+[ 0.17878302  0.06371039]"] ;
+n312 -- n314 ;
+n314 [label="clustersize = 25
+pupil avg:
+[ 0.53736105  0.16966286]"] ;
+n307 -- n315 ;
+n315 [label="clustersize = 130
+splitting feature:
+((-0.434,0.0996)-(-0.323,0.966))"] ;
+n315 -- n316 ;
+n316 [label="clustersize = 49
+splitting feature:
+((-0.398,0.821)-(-0.354,0.209))"] ;
+n316 -- n317 ;
+n317 [label="clustersize = 21
+pupil avg:
+[ 0.38731469 -0.1264417 ]"] ;
+n316 -- n318 ;
+n318 [label="clustersize = 28
+pupil avg:
+[ 0.17122185 -0.26841291]"] ;
+n315 -- n319 ;
+n319 [label="clustersize = 81
+splitting feature:
+((-0.493,-0.237)-(0.147,-0.98))"] ;
+n319 -- n320 ;
+n320 [label="clustersize = 22
+pupil avg:
+[ 0.47222193 -0.21674947]"] ;
+n319 -- n321 ;
+n321 [label="clustersize = 59
+pupil avg:
+[ 0.59552718  0.01747334]"] ;
+n258 -- n322 ;
+n322 [label="clustersize = 739
+splitting feature:
+((-0.13,0.899)-(0.162,-0.34))"] ;
+n322 -- n323 ;
+n323 [label="clustersize = 481
+splitting feature:
+((0.093,-0.7)-(0.55,0.432))"] ;
+n323 -- n324 ;
+n324 [label="clustersize = 390
+splitting feature:
+((0.11,-0.0637)-(-0.979,0.917))"] ;
+n324 -- n325 ;
+n325 [label="clustersize = 258
+splitting feature:
+((-0.0353,0.55)-(-0.895,-0.391))"] ;
+n325 -- n326 ;
+n326 [label="clustersize = 97
+splitting feature:
+((-0.739,-0.406)-(0.14,-0.451))"] ;
+n326 -- n327 ;
+n327 [label="clustersize = 50
+pupil avg:
+[ 0.14181655 -0.06111277]"] ;
+n326 -- n328 ;
+n328 [label="clustersize = 47
+pupil avg:
+[ 0.42033264 -0.0886292 ]"] ;
+n325 -- n329 ;
+n329 [label="clustersize = 161
+splitting feature:
+((0.709,-0.45)-(-0.808,-0.955))"] ;
+n329 -- n330 ;
+n330 [label="clustersize = 21
+pupil avg:
+[ 0.23668362 -0.08809805]"] ;
+n329 -- n331 ;
+n331 [label="clustersize = 140
+pupil avg:
+[ 0.0536631  -0.04001147]"] ;
+n324 -- n332 ;
+n332 [label="clustersize = 132
+splitting feature:
+((0.714,-0.667)-(0.49,0.587))"] ;
+n332 -- n333 ;
+n333 [label="clustersize = 88
+splitting feature:
+((0.874,0.127)-(-0.794,-0.531))"] ;
+n333 -- n334 ;
+n334 [label="clustersize = 8
+pupil avg:
+[ 0.6988922 -0.2093006]"] ;
+n333 -- n335 ;
+n335 [label="clustersize = 80
+pupil avg:
+[ 0.34622339 -0.1331652 ]"] ;
+n332 -- n336 ;
+n336 [label="clustersize = 44
+splitting feature:
+((0.366,-0.0771)-(-0.634,0.764))"] ;
+n336 -- n337 ;
+n337 [label="clustersize = 16
+pupil avg:
+[ 0.33921533 -0.15516774]"] ;
+n336 -- n338 ;
+n338 [label="clustersize = 28
+pupil avg:
+[ 0.08486766 -0.17498831]"] ;
+n323 -- n339 ;
+n339 [label="clustersize = 91
+splitting feature:
+((0.296,0.693)-(-0.206,-0.0725))"] ;
+n339 -- n340 ;
+n340 [label="clustersize = 42
+splitting feature:
+((0.13,-0.0299)-(-0.458,-0.237))"] ;
+n340 -- n341 ;
+n341 [label="clustersize = 31
+splitting feature:
+((-0.0706,-0.604)-(0.429,-0.592))"] ;
+n341 -- n342 ;
+n342 [label="clustersize = 9
+pupil avg:
+[ 0.4808562   0.08384204]"] ;
+n341 -- n343 ;
+n343 [label="clustersize = 22
+pupil avg:
+[ 0.62818137  0.20280108]"] ;
+n340 -- n344 ;
+n344 [label="clustersize = 11
+splitting feature:
+((-0.0222,0.25)-(0.139,-0.904))"] ;
+n344 -- n345 ;
+n345 [label="clustersize = 7
+pupil avg:
+[ 0.34210234 -0.16090119]"] ;
+n344 -- n346 ;
+n346 [label="clustersize = 4
+pupil avg:
+[ 0.57017235 -0.07374088]"] ;
+n339 -- n347 ;
+n347 [label="clustersize = 49
+splitting feature:
+((-0.596,-0.29)-(-0.131,0.857))"] ;
+n347 -- n348 ;
+n348 [label="clustersize = 8
+splitting feature:
+((0.301,-0.271)-(0.318,0.423))"] ;
+n348 -- n349 ;
+n349 [label="clustersize = 4
+pupil avg:
+[ 0.0508547   0.04349978]"] ;
+n348 -- n350 ;
+n350 [label="clustersize = 4
+pupil avg:
+[-0.05681818 -0.03991841]"] ;
+n347 -- n351 ;
+n351 [label="clustersize = 41
+splitting feature:
+((-0.967,-0.3)-(-0.0291,0.872))"] ;
+n351 -- n352 ;
+n352 [label="clustersize = 17
+pupil avg:
+[ 0.1460753  -0.08281011]"] ;
+n351 -- n353 ;
+n353 [label="clustersize = 24
+pupil avg:
+[ 0.49071365 -0.11704693]"] ;
+n322 -- n354 ;
+n354 [label="clustersize = 258
+splitting feature:
+((-0.322,-0.607)-(0.0626,-0.216))"] ;
+n354 -- n355 ;
+n355 [label="clustersize = 78
+splitting feature:
+((0.145,-0.523)-(0.0872,-0.0204))"] ;
+n355 -- n356 ;
+n356 [label="clustersize = 39
+splitting feature:
+((0.889,-0.441)-(-0.696,-0.992))"] ;
+n356 -- n357 ;
+n357 [label="clustersize = 21
+splitting feature:
+((-0.737,-0.0502)-(-0.592,0.797))"] ;
+n357 -- n358 ;
+n358 [label="clustersize = 12
+pupil avg:
+[ 0.34416352 -0.06772281]"] ;
+n357 -- n359 ;
+n359 [label="clustersize = 9
+pupil avg:
+[ 0.46240841 -0.30999055]"] ;
+n356 -- n360 ;
+n360 [label="clustersize = 18
+splitting feature:
+((0.478,0.492)-(0.696,0.162))"] ;
+n360 -- n361 ;
+n361 [label="clustersize = 11
+pupil avg:
+[ 0.24137564 -0.18408101]"] ;
+n360 -- n362 ;
+n362 [label="clustersize = 7
+pupil avg:
+[-0.14966189 -0.11793001]"] ;
+n355 -- n363 ;
+n363 [label="clustersize = 39
+splitting feature:
+((-0.543,0.753)-(0.054,0.246))"] ;
+n363 -- n364 ;
+n364 [label="clustersize = 8
+splitting feature:
+((-0.738,0.81)-(-0.942,0.687))"] ;
+n364 -- n365 ;
+n365 [label="clustersize = 4
+pupil avg:
+[-0.22125104  0.02558942]"] ;
+n364 -- n366 ;
+n366 [label="clustersize = 4
+pupil avg:
+[-0.00463603 -0.06813783]"] ;
+n363 -- n367 ;
+n367 [label="clustersize = 31
+splitting feature:
+((-0.554,-0.126)-(-0.782,0.744))"] ;
+n367 -- n368 ;
+n368 [label="clustersize = 6
+pupil avg:
+[ 0.17914083 -0.23076364]"] ;
+n367 -- n369 ;
+n369 [label="clustersize = 25
+pupil avg:
+[ 0.08125963 -0.00206345]"] ;
+n354 -- n370 ;
+n370 [label="clustersize = 180
+splitting feature:
+((-0.0747,-0.198)-(0.049,0.569))"] ;
+n370 -- n371 ;
+n371 [label="clustersize = 126
+splitting feature:
+((-0.312,0.376)-(-0.0366,-0.52))"] ;
+n371 -- n372 ;
+n372 [label="clustersize = 41
+splitting feature:
+((-0.804,0.386)-(0.894,-0.647))"] ;
+n372 -- n373 ;
+n373 [label="clustersize = 33
+pupil avg:
+[ 0.00954347 -0.0948516 ]"] ;
+n372 -- n374 ;
+n374 [label="clustersize = 8
+pupil avg:
+[ 0.39455391 -0.28919931]"] ;
+n371 -- n375 ;
+n375 [label="clustersize = 85
+splitting feature:
+((0.716,-0.605)-(0.249,-0.388))"] ;
+n375 -- n376 ;
+n376 [label="clustersize = 23
+pupil avg:
+[-0.0293347   0.08487603]"] ;
+n375 -- n377 ;
+n377 [label="clustersize = 62
+pupil avg:
+[-0.19044549  0.03729193]"] ;
+n370 -- n378 ;
+n378 [label="clustersize = 54
+splitting feature:
+((-0.259,0.746)-(-0.875,-0.247))"] ;
+n378 -- n379 ;
+n379 [label="clustersize = 15
+splitting feature:
+((0.967,-0.599)-(0.477,0.487))"] ;
+n379 -- n380 ;
+n380 [label="clustersize = 7
+pupil avg:
+[ 0.57412137 -0.13398673]"] ;
+n379 -- n381 ;
+n381 [label="clustersize = 8
+pupil avg:
+[ 0.15011096 -0.06260536]"] ;
+n378 -- n382 ;
+n382 [label="clustersize = 39
+splitting feature:
+((0.903,-0.239)-(-0.924,-0.681))"] ;
+n382 -- n383 ;
+n383 [label="clustersize = 8
+pupil avg:
+[ 0.20874557  0.06210418]"] ;
+n382 -- n384 ;
+n384 [label="clustersize = 31
+pupil avg:
+[ 0.00648006  0.01268974]"] ;
+n257 -- n385 ;
+n385 [label="clustersize = 1484
+splitting feature:
+((0.199,0.367)-(-0.45,0.96))"] ;
+n385 -- n386 ;
+n386 [label="clustersize = 1151
+splitting feature:
+((-0.0773,-0.97)-(0.23,-0.323))"] ;
+n386 -- n387 ;
+n387 [label="clustersize = 492
+splitting feature:
+((0.057,0.847)-(-0.68,-0.363))"] ;
+n387 -- n388 ;
+n388 [label="clustersize = 77
+splitting feature:
+((0.726,0.031)-(0.894,0.648))"] ;
+n388 -- n389 ;
+n389 [label="clustersize = 29
+splitting feature:
+((0.789,-0.604)-(-0.706,-0.762))"] ;
+n389 -- n390 ;
+n390 [label="clustersize = 9
+splitting feature:
+((0.77,0.598)-(-0.599,0.47))"] ;
+n390 -- n391 ;
+n391 [label="clustersize = 4
+pupil avg:
+[-0.36074825 -0.00111361]"] ;
+n390 -- n392 ;
+n392 [label="clustersize = 5
+pupil avg:
+[ 0.15089121  0.05768028]"] ;
+n389 -- n393 ;
+n393 [label="clustersize = 20
+splitting feature:
+((0.341,-0.931)-(-0.327,0.0403))"] ;
+n393 -- n394 ;
+n394 [label="clustersize = 14
+pupil avg:
+[ 0.54894007  0.21826726]"] ;
+n393 -- n395 ;
+n395 [label="clustersize = 6
+pupil avg:
+[ 0.13214384 -0.04481801]"] ;
+n388 -- n396 ;
+n396 [label="clustersize = 48
+splitting feature:
+((-0.659,-0.344)-(-0.447,0.438))"] ;
+n396 -- n397 ;
+n397 [label="clustersize = 11
+splitting feature:
+((0.883,-0.098)-(0.921,0.00141))"] ;
+n397 -- n398 ;
+n398 [label="clustersize = 7
+pupil avg:
+[ 0.05143378  0.28767365]"] ;
+n397 -- n399 ;
+n399 [label="clustersize = 4
+pupil avg:
+[-0.25592518  0.02167547]"] ;
+n396 -- n400 ;
+n400 [label="clustersize = 37
+splitting feature:
+((0.979,-0.959)-(0.302,-0.0761))"] ;
+n400 -- n401 ;
+n401 [label="clustersize = 7
+pupil avg:
+[-0.18803181 -0.08179153]"] ;
+n400 -- n402 ;
+n402 [label="clustersize = 30
+pupil avg:
+[-0.36332065 -0.10321678]"] ;
+n387 -- n403 ;
+n403 [label="clustersize = 415
+splitting feature:
+((0.551,-0.124)-(-0.677,-0.911))"] ;
+n403 -- n404 ;
+n404 [label="clustersize = 90
+splitting feature:
+((-0.764,0.0423)-(0.184,-0.362))"] ;
+n404 -- n405 ;
+n405 [label="clustersize = 46
+splitting feature:
+((-0.86,-0.0953)-(0.00138,0.234))"] ;
+n405 -- n406 ;
+n406 [label="clustersize = 17
+pupil avg:
+[-0.16222593 -0.02821651]"] ;
+n405 -- n407 ;
+n407 [label="clustersize = 29
+pupil avg:
+[ 0.08002504  0.03342578]"] ;
+n404 -- n408 ;
+n408 [label="clustersize = 44
+splitting feature:
+((-0.312,-0.134)-(0.668,0.85))"] ;
+n408 -- n409 ;
+n409 [label="clustersize = 38
+pupil avg:
+[-0.28099032 -0.01368609]"] ;
+n408 -- n410 ;
+n410 [label="clustersize = 6
+pupil avg:
+[-0.64455391  0.2969896 ]"] ;
+n403 -- n411 ;
+n411 [label="clustersize = 325
+splitting feature:
+((0.109,-0.821)-(-0.519,-0.639))"] ;
+n411 -- n412 ;
+n412 [label="clustersize = 166
+splitting feature:
+((-0.223,-0.0889)-(0.509,0.986))"] ;
+n412 -- n413 ;
+n413 [label="clustersize = 153
+pupil avg:
+[-0.40849155 -0.02385694]"] ;
+n412 -- n414 ;
+n414 [label="clustersize = 13
+pupil avg:
+[-0.12227543  0.04538887]"] ;
+n411 -- n415 ;
+n415 [label="clustersize = 159
+splitting feature:
+((-0.0447,-0.516)-(-0.412,-0.401))"] ;
+n415 -- n416 ;
+n416 [label="clustersize = 57
+pupil avg:
+[-0.33781657 -0.0605029 ]"] ;
+n415 -- n417 ;
+n417 [label="clustersize = 102
+pupil avg:
+[-0.37087006 -0.23688822]"] ;
+n386 -- n418 ;
+n418 [label="clustersize = 659
+splitting feature:
+((0.443,-0.952)-(-0.995,0.308))"] ;
+n418 -- n419 ;
+n419 [label="clustersize = 528
+splitting feature:
+((0.624,0.0241)-(-0.972,-0.217))"] ;
+n419 -- n420 ;
+n420 [label="clustersize = 370
+splitting feature:
+((0.0595,-0.46)-(0.108,0.209))"] ;
+n420 -- n421 ;
+n421 [label="clustersize = 261
+splitting feature:
+((0.0946,-0.911)-(0.154,0.581))"] ;
+n421 -- n422 ;
+n422 [label="clustersize = 225
+pupil avg:
+[-0.3292189   0.18163515]"] ;
+n421 -- n423 ;
+n423 [label="clustersize = 36
+pupil avg:
+[-0.18060957  0.15664902]"] ;
+n420 -- n424 ;
+n424 [label="clustersize = 109
+splitting feature:
+((0.394,0.0388)-(-0.0141,-0.417))"] ;
+n424 -- n425 ;
+n425 [label="clustersize = 56
+pupil avg:
+[-0.06263736  0.24844728]"] ;
+n424 -- n426 ;
+n426 [label="clustersize = 53
+pupil avg:
+[-0.19930915  0.18148101]"] ;
+n419 -- n427 ;
+n427 [label="clustersize = 158
+splitting feature:
+((-0.278,-0.443)-(0.15,-0.61))"] ;
+n427 -- n428 ;
+n428 [label="clustersize = 77
+splitting feature:
+((-0.418,-0.915)-(-0.0523,0.494))"] ;
+n428 -- n429 ;
+n429 [label="clustersize = 44
+pupil avg:
+[-0.3808779  -0.08087453]"] ;
+n428 -- n430 ;
+n430 [label="clustersize = 33
+pupil avg:
+[-0.26953939  0.06243398]"] ;
+n427 -- n431 ;
+n431 [label="clustersize = 81
+splitting feature:
+((0.851,-0.204)-(-0.411,0.752))"] ;
+n431 -- n432 ;
+n432 [label="clustersize = 47
+pupil avg:
+[-0.42073522  0.14144156]"] ;
+n431 -- n433 ;
+n433 [label="clustersize = 34
+pupil avg:
+[-0.23930337  0.09748411]"] ;
+n418 -- n434 ;
+n434 [label="clustersize = 131
+splitting feature:
+((-0.341,-0.162)-(-0.0796,0.927))"] ;
+n434 -- n435 ;
+n435 [label="clustersize = 112
+splitting feature:
+((-0.996,-0.701)-(0.934,0.573))"] ;
+n435 -- n436 ;
+n436 [label="clustersize = 94
+splitting feature:
+((-0.475,0.0805)-(0.108,-0.905))"] ;
+n436 -- n437 ;
+n437 [label="clustersize = 42
+pupil avg:
+[-0.19555187 -0.14406743]"] ;
+n436 -- n438 ;
+n438 [label="clustersize = 52
+pupil avg:
+[-0.31300229 -0.0187151 ]"] ;
+n435 -- n439 ;
+n439 [label="clustersize = 18
+splitting feature:
+((-0.353,0.826)-(-0.503,0.11))"] ;
+n439 -- n440 ;
+n440 [label="clustersize = 4
+pupil avg:
+[ 0.24344716 -0.10011203]"] ;
+n439 -- n441 ;
+n441 [label="clustersize = 14
+pupil avg:
+[-0.08852756  0.1573591 ]"] ;
+n434 -- n442 ;
+n442 [label="clustersize = 19
+splitting feature:
+((0.143,0.631)-(-0.819,-0.784))"] ;
+n442 -- n443 ;
+n443 [label="clustersize = 9
+splitting feature:
+((-0.741,-0.727)-(0.998,-0.114))"] ;
+n443 -- n444 ;
+n444 [label="clustersize = 5
+pupil avg:
+[ 0.1152048   0.12282384]"] ;
+n443 -- n445 ;
+n445 [label="clustersize = 4
+pupil avg:
+[ 0.63282428  0.20984163]"] ;
+n442 -- n446 ;
+n446 [label="clustersize = 10
+splitting feature:
+((0.797,-0.771)-(-0.234,0.741))"] ;
+n446 -- n447 ;
+n447 [label="clustersize = 5
+pupil avg:
+[-0.35543457  0.11334546]"] ;
+n446 -- n448 ;
+n448 [label="clustersize = 5
+pupil avg:
+[-0.0551384   0.10946249]"] ;
+n385 -- n449 ;
+n449 [label="clustersize = 333
+splitting feature:
+((-0.293,0.704)-(0.623,-0.338))"] ;
+n449 -- n450 ;
+n450 [label="clustersize = 128
+splitting feature:
+((-0.64,-0.795)-(-0.292,0.394))"] ;
+n450 -- n451 ;
+n451 [label="clustersize = 48
+splitting feature:
+((-0.464,-0.744)-(0.0263,0.125))"] ;
+n451 -- n452 ;
+n452 [label="clustersize = 24
+splitting feature:
+((-0.497,0.601)-(-0.264,-0.6))"] ;
+n452 -- n453 ;
+n453 [label="clustersize = 10
+splitting feature:
+((-0.461,0.838)-(-0.0518,-0.41))"] ;
+n453 -- n454 ;
+n454 [label="clustersize = 4
+pupil avg:
+[ 0.28988199 -0.31053322]"] ;
+n453 -- n455 ;
+n455 [label="clustersize = 6
+pupil avg:
+[-0.11804102 -0.2801518 ]"] ;
+n452 -- n456 ;
+n456 [label="clustersize = 14
+splitting feature:
+((-0.998,0.55)-(-0.98,0.646))"] ;
+n456 -- n457 ;
+n457 [label="clustersize = 7
+pupil avg:
+[-0.18851866 -0.19279988]"] ;
+n456 -- n458 ;
+n458 [label="clustersize = 7
+pupil avg:
+[-0.63660976 -0.20192899]"] ;
+n451 -- n459 ;
+n459 [label="clustersize = 24
+splitting feature:
+((0.968,-0.369)-(0.552,-0.705))"] ;
+n459 -- n460 ;
+n460 [label="clustersize = 9
+splitting feature:
+((0.991,-0.195)-(0.475,0.662))"] ;
+n460 -- n461 ;
+n461 [label="clustersize = 4
+pupil avg:
+[ 0.27602544 -0.24226592]"] ;
+n460 -- n462 ;
+n462 [label="clustersize = 5
+pupil avg:
+[-0.07887652  0.09410493]"] ;
+n459 -- n463 ;
+n463 [label="clustersize = 15
+splitting feature:
+((-0.858,-0.0682)-(-0.354,0.65))"] ;
+n463 -- n464 ;
+n464 [label="clustersize = 8
+pupil avg:
+[-0.00114225  0.04585144]"] ;
+n463 -- n465 ;
+n465 [label="clustersize = 7
+pupil avg:
+[-0.28781492  0.1286325 ]"] ;
+n450 -- n466 ;
+n466 [label="clustersize = 80
+splitting feature:
+((-0.206,0.558)-(-0.484,-0.29))"] ;
+n466 -- n467 ;
+n467 [label="clustersize = 43
+splitting feature:
+((0.585,0.701)-(0.937,-0.168))"] ;
+n467 -- n468 ;
+n468 [label="clustersize = 25
+splitting feature:
+((-0.126,-0.609)-(0.812,0.144))"] ;
+n468 -- n469 ;
+n469 [label="clustersize = 21
+pupil avg:
+[ 0.22145374 -0.12736157]"] ;
+n468 -- n470 ;
+n470 [label="clustersize = 4
+pupil avg:
+[ 0.7476264   0.16973439]"] ;
+n467 -- n471 ;
+n471 [label="clustersize = 18
+splitting feature:
+((-0.49,-0.782)-(0.0939,-0.313))"] ;
+n471 -- n472 ;
+n472 [label="clustersize = 4
+pupil avg:
+[ 0.33632422 -0.34247738]"] ;
+n471 -- n473 ;
+n473 [label="clustersize = 14
+pupil avg:
+[ 0.53976619 -0.26002389]"] ;
+n466 -- n474 ;
+n474 [label="clustersize = 37
+splitting feature:
+((-0.365,-0.209)-(-0.416,0.572))"] ;
+n474 -- n475 ;
+n475 [label="clustersize = 19
+splitting feature:
+((-0.862,-0.761)-(-0.677,0.603))"] ;
+n475 -- n476 ;
+n476 [label="clustersize = 9
+pupil avg:
+[-0.27360696 -0.197627  ]"] ;
+n475 -- n477 ;
+n477 [label="clustersize = 10
+pupil avg:
+[ 0.03394003 -0.11645252]"] ;
+n474 -- n478 ;
+n478 [label="clustersize = 18
+splitting feature:
+((0.986,-0.973)-(-0.941,-0.351))"] ;
+n478 -- n479 ;
+n479 [label="clustersize = 7
+pupil avg:
+[ 0.10423449  0.30727455]"] ;
+n478 -- n480 ;
+n480 [label="clustersize = 11
+pupil avg:
+[ 0.28880695 -0.22910767]"] ;
+n449 -- n481 ;
+n481 [label="clustersize = 205
+splitting feature:
+((0.329,-0.14)-(-0.369,-0.998))"] ;
+n481 -- n482 ;
+n482 [label="clustersize = 114
+splitting feature:
+((-0.424,0.942)-(-0.0714,-0.257))"] ;
+n482 -- n483 ;
+n483 [label="clustersize = 23
+splitting feature:
+((0.396,-0.409)-(-0.506,0.762))"] ;
+n483 -- n484 ;
+n484 [label="clustersize = 15
+splitting feature:
+((0.777,0.508)-(0.181,0.643))"] ;
+n484 -- n485 ;
+n485 [label="clustersize = 4
+pupil avg:
+[-0.35457516  0.0122549 ]"] ;
+n484 -- n486 ;
+n486 [label="clustersize = 11
+pupil avg:
+[ 0.01189047  0.19638146]"] ;
+n483 -- n487 ;
+n487 [label="clustersize = 8
+splitting feature:
+((-0.399,0.945)-(0.135,0.388))"] ;
+n487 -- n488 ;
+n488 [label="clustersize = 4
+pupil avg:
+[ 0.28481    -0.17699655]"] ;
+n487 -- n489 ;
+n489 [label="clustersize = 4
+pupil avg:
+[ 0.46830568  0.27130205]"] ;
+n482 -- n490 ;
+n490 [label="clustersize = 91
+splitting feature:
+((-0.407,0.278)-(-0.617,-0.922))"] ;
+n490 -- n491 ;
+n491 [label="clustersize = 25
+splitting feature:
+((0.0657,0.4)-(0.832,-0.532))"] ;
+n491 -- n492 ;
+n492 [label="clustersize = 17
+pupil avg:
+[-0.05606024  0.15156084]"] ;
+n491 -- n493 ;
+n493 [label="clustersize = 8
+pupil avg:
+[ 0.17336545  0.0952445 ]"] ;
+n490 -- n494 ;
+n494 [label="clustersize = 66
+splitting feature:
+((-0.358,-0.156)-(0.59,-0.278))"] ;
+n494 -- n495 ;
+n495 [label="clustersize = 27
+pupil avg:
+[-0.23665783  0.0375215 ]"] ;
+n494 -- n496 ;
+n496 [label="clustersize = 39
+pupil avg:
+[-0.12039362  0.1793337 ]"] ;
+n481 -- n497 ;
+n497 [label="clustersize = 91
+splitting feature:
+((0.762,0.613)-(0.899,0.269))"] ;
+n497 -- n498 ;
+n498 [label="clustersize = 20
+splitting feature:
+((0.1,7.05e-05)-(-0.119,-0.147))"] ;
+n498 -- n499 ;
+n499 [label="clustersize = 11
+splitting feature:
+((-0.355,-0.453)-(0.415,-0.77))"] ;
+n499 -- n500 ;
+n500 [label="clustersize = 4
+pupil avg:
+[ 0.52829553  0.27909631]"] ;
+n499 -- n501 ;
+n501 [label="clustersize = 7
+pupil avg:
+[ 0.03587085  0.11918345]"] ;
+n498 -- n502 ;
+n502 [label="clustersize = 9
+splitting feature:
+((0.0301,0.773)-(-0.339,0.706))"] ;
+n502 -- n503 ;
+n503 [label="clustersize = 5
+pupil avg:
+[-0.22250317  0.07576986]"] ;
+n502 -- n504 ;
+n504 [label="clustersize = 4
+pupil avg:
+[-0.4126302  -0.26231166]"] ;
+n497 -- n505 ;
+n505 [label="clustersize = 71
+splitting feature:
+((0.101,-0.279)-(-0.311,-0.357))"] ;
+n505 -- n506 ;
+n506 [label="clustersize = 27
+splitting feature:
+((0.927,-0.412)-(-0.0736,0.496))"] ;
+n506 -- n507 ;
+n507 [label="clustersize = 8
+pupil avg:
+[-0.57953895  0.08214864]"] ;
+n506 -- n508 ;
+n508 [label="clustersize = 19
+pupil avg:
+[-0.33886802  0.0294528 ]"] ;
+n505 -- n509 ;
+n509 [label="clustersize = 44
+splitting feature:
+((-0.552,0.422)-(-0.169,-0.428))"] ;
+n509 -- n510 ;
+n510 [label="clustersize = 4
+pupil avg:
+[ 0.07440272 -0.20340229]"] ;
+n509 -- n511 ;
+n511 [label="clustersize = 40
+pupil avg:
+[-0.40885159 -0.19365584]"] ;
+n000 -- n512 ;
+n512 [label="clustersize = 4980
+splitting feature:
+((0.0373,0.532)-(0.123,-0.515))"] ;
+n512 -- n513 ;
+n513 [label="clustersize = 3195
+splitting feature:
+((-0.345,-0.509)-(0.161,-0.375))"] ;
+n513 -- n514 ;
+n514 [label="clustersize = 1594
+splitting feature:
+((-0.934,0.771)-(-0.161,-0.789))"] ;
+n514 -- n515 ;
+n515 [label="clustersize = 985
+splitting feature:
+((-0.47,0.966)-(-0.929,-0.558))"] ;
+n515 -- n516 ;
+n516 [label="clustersize = 653
+splitting feature:
+((-0.466,0.664)-(0.464,0.184))"] ;
+n516 -- n517 ;
+n517 [label="clustersize = 548
+splitting feature:
+((0.141,-0.215)-(-0.745,-0.0979))"] ;
+n517 -- n518 ;
+n518 [label="clustersize = 199
+splitting feature:
+((-0.28,-0.573)-(0.292,0.41))"] ;
+n518 -- n519 ;
+n519 [label="clustersize = 110
+splitting feature:
+((0.376,0.0529)-(-0.421,0.214))"] ;
+n519 -- n520 ;
+n520 [label="clustersize = 13
+pupil avg:
+[ 0.16121896  0.01168784]"] ;
+n519 -- n521 ;
+n521 [label="clustersize = 97
+pupil avg:
+[ 0.24809719 -0.20288124]"] ;
+n518 -- n522 ;
+n522 [label="clustersize = 89
+splitting feature:
+((-0.609,-0.772)-(0.6,-0.577))"] ;
+n522 -- n523 ;
+n523 [label="clustersize = 48
+pupil avg:
+[ 0.49064618 -0.10668346]"] ;
+n522 -- n524 ;
+n524 [label="clustersize = 41
+pupil avg:
+[ 0.39631083  0.04403289]"] ;
+n517 -- n525 ;
+n525 [label="clustersize = 349
+splitting feature:
+((0.0625,0.417)-(-0.46,0.107))"] ;
+n525 -- n526 ;
+n526 [label="clustersize = 134
+splitting feature:
+((0.144,0.83)-(-0.0319,0.165))"] ;
+n526 -- n527 ;
+n527 [label="clustersize = 69
+pupil avg:
+[ 0.49994109 -0.11440848]"] ;
+n526 -- n528 ;
+n528 [label="clustersize = 65
+pupil avg:
+[ 0.37574064 -0.11085273]"] ;
+n525 -- n529 ;
+n529 [label="clustersize = 215
+splitting feature:
+((-0.998,0.0683)-(-0.357,0.689))"] ;
+n529 -- n530 ;
+n530 [label="clustersize = 59
+pupil avg:
+[ 0.35956153 -0.228618  ]"] ;
+n529 -- n531 ;
+n531 [label="clustersize = 156
+pupil avg:
+[ 0.53217598 -0.21049423]"] ;
+n516 -- n532 ;
+n532 [label="clustersize = 105
+splitting feature:
+((-0.207,0.296)-(-0.0662,0.778))"] ;
+n532 -- n533 ;
+n533 [label="clustersize = 60
+splitting feature:
+((-0.164,-0.296)-(-0.917,0.523))"] ;
+n533 -- n534 ;
+n534 [label="clustersize = 28
+splitting feature:
+((0.25,0.837)-(-0.374,-0.522))"] ;
+n534 -- n535 ;
+n535 [label="clustersize = 5
+pupil avg:
+[ 0.43133484 -0.04692685]"] ;
+n534 -- n536 ;
+n536 [label="clustersize = 23
+pupil avg:
+[-0.08732357  0.06422771]"] ;
+n533 -- n537 ;
+n537 [label="clustersize = 32
+splitting feature:
+((-0.596,0.993)-(0.0639,0.396))"] ;
+n537 -- n538 ;
+n538 [label="clustersize = 11
+pupil avg:
+[ 0.05405681  0.08140168]"] ;
+n537 -- n539 ;
+n539 [label="clustersize = 21
+pupil avg:
+[ 0.41450584  0.03899905]"] ;
+n532 -- n540 ;
+n540 [label="clustersize = 45
+splitting feature:
+((0.0371,-0.792)-(-0.898,0.4))"] ;
+n540 -- n541 ;
+n541 [label="clustersize = 13
+splitting feature:
+((-0.479,0.63)-(-0.674,0.0802))"] ;
+n541 -- n542 ;
+n542 [label="clustersize = 8
+pupil avg:
+[-0.0005916   0.11759002]"] ;
+n541 -- n543 ;
+n543 [label="clustersize = 5
+pupil avg:
+[ 0.39928761  0.06121092]"] ;
+n540 -- n544 ;
+n544 [label="clustersize = 32
+splitting feature:
+((-0.582,0.0964)-(-0.999,-0.873))"] ;
+n544 -- n545 ;
+n545 [label="clustersize = 25
+pupil avg:
+[ 0.54799419  0.061121  ]"] ;
+n544 -- n546 ;
+n546 [label="clustersize = 7
+pupil avg:
+[ 0.37656617  0.12461591]"] ;
+n515 -- n547 ;
+n547 [label="clustersize = 332
+splitting feature:
+((-0.0887,-0.433)-(0.0853,0.366))"] ;
+n547 -- n548 ;
+n548 [label="clustersize = 182
+splitting feature:
+((0.199,0.97)-(0.564,0.309))"] ;
+n548 -- n549 ;
+n549 [label="clustersize = 135
+splitting feature:
+((0.612,-0.947)-(-0.346,0.956))"] ;
+n549 -- n550 ;
+n550 [label="clustersize = 43
+splitting feature:
+((0.614,0.5)-(-0.0572,-0.663))"] ;
+n550 -- n551 ;
+n551 [label="clustersize = 6
+pupil avg:
+[-0.18078814 -0.11968368]"] ;
+n550 -- n552 ;
+n552 [label="clustersize = 37
+pupil avg:
+[ 0.03657995  0.0160208 ]"] ;
+n549 -- n553 ;
+n553 [label="clustersize = 92
+splitting feature:
+((-0.103,0.211)-(-0.505,-0.681))"] ;
+n553 -- n554 ;
+n554 [label="clustersize = 72
+pupil avg:
+[ 0.22239416 -0.17725836]"] ;
+n553 -- n555 ;
+n555 [label="clustersize = 20
+pupil avg:
+[-0.12360605 -0.22738781]"] ;
+n548 -- n556 ;
+n556 [label="clustersize = 47
+splitting feature:
+((0.0145,0.113)-(-0.357,0.155))"] ;
+n556 -- n557 ;
+n557 [label="clustersize = 9
+splitting feature:
+((0.952,0.0124)-(0.141,0.428))"] ;
+n557 -- n558 ;
+n558 [label="clustersize = 5
+pupil avg:
+[-0.1907563  -0.07983193]"] ;
+n557 -- n559 ;
+n559 [label="clustersize = 4
+pupil avg:
+[ 0.2245214  -0.14258543]"] ;
+n556 -- n560 ;
+n560 [label="clustersize = 38
+splitting feature:
+((-0.9,0.61)-(-0.517,-0.659))"] ;
+n560 -- n561 ;
+n561 [label="clustersize = 11
+pupil avg:
+[-0.11874679 -0.18181166]"] ;
+n560 -- n562 ;
+n562 [label="clustersize = 27
+pupil avg:
+[-0.31418634 -0.22413082]"] ;
+n547 -- n563 ;
+n563 [label="clustersize = 150
+splitting feature:
+((-0.605,0.559)-(0.786,-0.536))"] ;
+n563 -- n564 ;
+n564 [label="clustersize = 97
+splitting feature:
+((-0.503,0.312)-(0.705,0.351))"] ;
+n564 -- n565 ;
+n565 [label="clustersize = 88
+splitting feature:
+((-0.173,-0.478)-(-0.331,-0.864))"] ;
+n565 -- n566 ;
+n566 [label="clustersize = 54
+pupil avg:
+[ 0.215489  -0.1422841]"] ;
+n565 -- n567 ;
+n567 [label="clustersize = 34
+pupil avg:
+[-0.05620683 -0.16988832]"] ;
+n564 -- n568 ;
+n568 [label="clustersize = 9
+splitting feature:
+((0.625,0.431)-(-0.29,-0.514))"] ;
+n568 -- n569 ;
+n569 [label="clustersize = 4
+pupil avg:
+[ 0.68815988  0.19868024]"] ;
+n568 -- n570 ;
+n570 [label="clustersize = 5
+pupil avg:
+[ 0.33603785  0.07339977]"] ;
+n563 -- n571 ;
+n571 [label="clustersize = 53
+splitting feature:
+((0.233,-0.43)-(-0.88,-0.832))"] ;
+n571 -- n572 ;
+n572 [label="clustersize = 17
+splitting feature:
+((-0.0223,-0.984)-(0.081,0.999))"] ;
+n572 -- n573 ;
+n573 [label="clustersize = 7
+pupil avg:
+[-0.03053874 -0.09837865]"] ;
+n572 -- n574 ;
+n574 [label="clustersize = 10
+pupil avg:
+[ 0.38686531 -0.01282947]"] ;
+n571 -- n575 ;
+n575 [label="clustersize = 36
+splitting feature:
+((-0.376,0.357)-(0.186,0.735))"] ;
+n575 -- n576 ;
+n576 [label="clustersize = 13
+pupil avg:
+[ 0.35675826 -0.11683681]"] ;
+n575 -- n577 ;
+n577 [label="clustersize = 23
+pupil avg:
+[ 0.57415821  0.05152875]"] ;
+n514 -- n578 ;
+n578 [label="clustersize = 609
+splitting feature:
+((0.51,0.176)-(0.956,0.863))"] ;
+n578 -- n579 ;
+n579 [label="clustersize = 394
+splitting feature:
+((0.303,0.421)-(-0.437,0.126))"] ;
+n579 -- n580 ;
+n580 [label="clustersize = 135
+splitting feature:
+((0.232,0.603)-(-0.0362,0.63))"] ;
+n580 -- n581 ;
+n581 [label="clustersize = 47
+splitting feature:
+((-0.168,0.819)-(0.468,0.825))"] ;
+n581 -- n582 ;
+n582 [label="clustersize = 19
+splitting feature:
+((-0.543,-0.723)-(-0.927,-0.574))"] ;
+n582 -- n583 ;
+n583 [label="clustersize = 11
+pupil avg:
+[ 0.46723765  0.09627995]"] ;
+n582 -- n584 ;
+n584 [label="clustersize = 8
+pupil avg:
+[-0.1163397   0.11406884]"] ;
+n581 -- n585 ;
+n585 [label="clustersize = 28
+splitting feature:
+((0.467,-0.973)-(0.224,0.199))"] ;
+n585 -- n586 ;
+n586 [label="clustersize = 6
+pupil avg:
+[ 0.80597295  0.3120491 ]"] ;
+n585 -- n587 ;
+n587 [label="clustersize = 22
+pupil avg:
+[ 0.37816567  0.26984311]"] ;
+n580 -- n588 ;
+n588 [label="clustersize = 88
+splitting feature:
+((0.496,0.56)-(0.2,-0.0285))"] ;
+n588 -- n589 ;
+n589 [label="clustersize = 18
+splitting feature:
+((-0.161,-0.466)-(-0.775,0.771))"] ;
+n589 -- n590 ;
+n590 [label="clustersize = 11
+pupil avg:
+[ 0.23068964  0.04446442]"] ;
+n589 -- n591 ;
+n591 [label="clustersize = 7
+pupil avg:
+[ 0.75080088 -0.00142608]"] ;
+n588 -- n592 ;
+n592 [label="clustersize = 70
+splitting feature:
+((-0.48,0.915)-(0.311,0.00997))"] ;
+n592 -- n593 ;
+n593 [label="clustersize = 14
+pupil avg:
+[ 0.22660117 -0.05921542]"] ;
+n592 -- n594 ;
+n594 [label="clustersize = 56
+pupil avg:
+[ 0.02252769  0.01073852]"] ;
+n579 -- n595 ;
+n595 [label="clustersize = 259
+splitting feature:
+((-0.936,0.183)-(-0.0524,0.814))"] ;
+n595 -- n596 ;
+n596 [label="clustersize = 119
+splitting feature:
+((0.326,-0.474)-(-0.346,0.731))"] ;
+n596 -- n597 ;
+n597 [label="clustersize = 39
+splitting feature:
+((0.324,-0.0131)-(0.0826,0.975))"] ;
+n597 -- n598 ;
+n598 [label="clustersize = 31
+pupil avg:
+[-0.16925468 -0.08330718]"] ;
+n597 -- n599 ;
+n599 [label="clustersize = 8
+pupil avg:
+[ 0.04914366  0.02311574]"] ;
+n596 -- n600 ;
+n600 [label="clustersize = 80
+splitting feature:
+((-0.382,0.746)-(-0.73,-0.179))"] ;
+n600 -- n601 ;
+n601 [label="clustersize = 67
+pupil avg:
+[ 0.07205061 -0.1728144 ]"] ;
+n600 -- n602 ;
+n602 [label="clustersize = 13
+pupil avg:
+[-0.15185993 -0.07899905]"] ;
+n595 -- n603 ;
+n603 [label="clustersize = 140
+splitting feature:
+((-0.508,0.402)-(-0.513,0.249))"] ;
+n603 -- n604 ;
+n604 [label="clustersize = 40
+splitting feature:
+((-0.0925,0.944)-(0.0232,0.0154))"] ;
+n604 -- n605 ;
+n605 [label="clustersize = 14
+pupil avg:
+[ 0.45676095 -0.11151191]"] ;
+n604 -- n606 ;
+n606 [label="clustersize = 26
+pupil avg:
+[ 0.18194688 -0.03812109]"] ;
+n603 -- n607 ;
+n607 [label="clustersize = 100
+splitting feature:
+((-0.778,0.0905)-(-0.444,-0.365))"] ;
+n607 -- n608 ;
+n608 [label="clustersize = 5
+pupil avg:
+[ 0.52954365  0.12117044]"] ;
+n607 -- n609 ;
+n609 [label="clustersize = 95
+pupil avg:
+[ 0.0654311  0.0070491]"] ;
+n578 -- n610 ;
+n610 [label="clustersize = 215
+splitting feature:
+((-0.267,-0.421)-(0.305,-0.239))"] ;
+n610 -- n611 ;
+n611 [label="clustersize = 174
+splitting feature:
+((-0.682,0.775)-(-0.19,-0.217))"] ;
+n611 -- n612 ;
+n612 [label="clustersize = 39
+splitting feature:
+((-0.0184,0.842)-(-0.292,-0.00835))"] ;
+n612 -- n613 ;
+n613 [label="clustersize = 13
+splitting feature:
+((-0.502,-0.371)-(-0.825,-0.815))"] ;
+n613 -- n614 ;
+n614 [label="clustersize = 6
+pupil avg:
+[ 0.24317376 -0.15335447]"] ;
+n613 -- n615 ;
+n615 [label="clustersize = 7
+pupil avg:
+[ 0.72186769 -0.06578321]"] ;
+n612 -- n616 ;
+n616 [label="clustersize = 26
+splitting feature:
+((-0.527,0.413)-(-0.886,0.482))"] ;
+n616 -- n617 ;
+n617 [label="clustersize = 17
+pupil avg:
+[ 0.19491036 -0.24829502]"] ;
+n616 -- n618 ;
+n618 [label="clustersize = 9
+pupil avg:
+[-0.10137615 -0.16566407]"] ;
+n611 -- n619 ;
+n619 [label="clustersize = 135
+splitting feature:
+((-0.0288,-0.75)-(-0.137,-0.934))"] ;
+n619 -- n620 ;
+n620 [label="clustersize = 54
+splitting feature:
+((-0.19,0.24)-(-0.726,0.522))"] ;
+n620 -- n621 ;
+n621 [label="clustersize = 46
+pupil avg:
+[ 0.03507389 -0.14167398]"] ;
+n620 -- n622 ;
+n622 [label="clustersize = 8
+pupil avg:
+[-0.1526964  -0.16156893]"] ;
+n619 -- n623 ;
+n623 [label="clustersize = 81
+splitting feature:
+((0.87,-0.836)-(0.666,-0.806))"] ;
+n623 -- n624 ;
+n624 [label="clustersize = 33
+pupil avg:
+[-0.03700419 -0.1958991 ]"] ;
+n623 -- n625 ;
+n625 [label="clustersize = 48
+pupil avg:
+[-0.17228795 -0.24740561]"] ;
+n610 -- n626 ;
+n626 [label="clustersize = 41
+splitting feature:
+((-0.752,-0.891)-(-0.183,-0.117))"] ;
+n626 -- n627 ;
+n627 [label="clustersize = 22
+splitting feature:
+((0.676,-0.78)-(-0.579,-0.219))"] ;
+n627 -- n628 ;
+n628 [label="clustersize = 11
+splitting feature:
+((0.998,-0.798)-(0.526,-0.792))"] ;
+n628 -- n629 ;
+n629 [label="clustersize = 7
+pupil avg:
+[ 0.79051484 -0.21437848]"] ;
+n628 -- n630 ;
+n630 [label="clustersize = 4
+pupil avg:
+[ 0.71634258  0.14722966]"] ;
+n627 -- n631 ;
+n631 [label="clustersize = 11
+splitting feature:
+((0.39,0.59)-(-0.243,0.0375))"] ;
+n631 -- n632 ;
+n632 [label="clustersize = 7
+pupil avg:
+[ 0.63397944  0.13777164]"] ;
+n631 -- n633 ;
+n633 [label="clustersize = 4
+pupil avg:
+[ 0.03064014 -0.17564671]"] ;
+n626 -- n634 ;
+n634 [label="clustersize = 19
+splitting feature:
+((0.544,0.921)-(0.307,0.0309))"] ;
+n634 -- n635 ;
+n635 [label="clustersize = 8
+splitting feature:
+((0.671,-0.345)-(-0.623,0.589))"] ;
+n635 -- n636 ;
+n636 [label="clustersize = 4
+pupil avg:
+[ 0.019448   -0.19650469]"] ;
+n635 -- n637 ;
+n637 [label="clustersize = 4
+pupil avg:
+[-0.07147193 -0.30528846]"] ;
+n634 -- n638 ;
+n638 [label="clustersize = 11
+splitting feature:
+((-0.0172,-0.377)-(0.143,0.763))"] ;
+n638 -- n639 ;
+n639 [label="clustersize = 7
+pupil avg:
+[-0.02848671 -0.02730002]"] ;
+n638 -- n640 ;
+n640 [label="clustersize = 4
+pupil avg:
+[ 0.2638905 -0.0559572]"] ;
+n513 -- n641 ;
+n641 [label="clustersize = 1601
+splitting feature:
+((-0.977,0.0279)-(0.345,-0.473))"] ;
+n641 -- n642 ;
+n642 [label="clustersize = 839
+splitting feature:
+((-0.381,-0.176)-(-0.917,0.803))"] ;
+n642 -- n643 ;
+n643 [label="clustersize = 265
+splitting feature:
+((0.863,0.0783)-(0.258,0.94))"] ;
+n643 -- n644 ;
+n644 [label="clustersize = 66
+splitting feature:
+((0.115,0.241)-(-0.145,0.608))"] ;
+n644 -- n645 ;
+n645 [label="clustersize = 26
+splitting feature:
+((0.447,0.422)-(-0.51,0.49))"] ;
+n645 -- n646 ;
+n646 [label="clustersize = 10
+splitting feature:
+((-0.638,0.479)-(0.456,-0.48))"] ;
+n646 -- n647 ;
+n647 [label="clustersize = 4
+pupil avg:
+[-0.0360119   0.26607143]"] ;
+n646 -- n648 ;
+n648 [label="clustersize = 6
+pupil avg:
+[-0.23234309  0.20922547]"] ;
+n645 -- n649 ;
+n649 [label="clustersize = 16
+splitting feature:
+((0.119,0.777)-(0.555,-0.929))"] ;
+n649 -- n650 ;
+n650 [label="clustersize = 7
+pupil avg:
+[ 0.08946067 -0.15783079]"] ;
+n649 -- n651 ;
+n651 [label="clustersize = 9
+pupil avg:
+[-0.19404318 -0.07201028]"] ;
+n644 -- n652 ;
+n652 [label="clustersize = 40
+splitting feature:
+((-0.212,-0.966)-(0.364,0.455))"] ;
+n652 -- n653 ;
+n653 [label="clustersize = 23
+splitting feature:
+((0.358,0.245)-(-0.617,0.916))"] ;
+n653 -- n654 ;
+n654 [label="clustersize = 18
+pupil avg:
+[-0.09285578 -0.07908461]"] ;
+n653 -- n655 ;
+n655 [label="clustersize = 5
+pupil avg:
+[ 0.19001745 -0.21786653]"] ;
+n652 -- n656 ;
+n656 [label="clustersize = 17
+splitting feature:
+((0.24,0.326)-(0.084,-0.402))"] ;
+n656 -- n657 ;
+n657 [label="clustersize = 12
+pupil avg:
+[ 0.11792013 -0.10881382]"] ;
+n656 -- n658 ;
+n658 [label="clustersize = 5
+pupil avg:
+[ 0.43675648 -0.07531613]"] ;
+n643 -- n659 ;
+n659 [label="clustersize = 199
+splitting feature:
+((-0.764,0.134)-(0.736,0.525))"] ;
+n659 -- n660 ;
+n660 [label="clustersize = 102
+splitting feature:
+((0.996,-0.372)-(-0.0358,-0.516))"] ;
+n660 -- n661 ;
+n661 [label="clustersize = 9
+splitting feature:
+((0.518,-0.645)-(0.465,0.799))"] ;
+n661 -- n662 ;
+n662 [label="clustersize = 4
+pupil avg:
+[-0.18787185 -0.15111556]"] ;
+n661 -- n663 ;
+n663 [label="clustersize = 5
+pupil avg:
+[ 0.1452193  -0.18383754]"] ;
+n660 -- n664 ;
+n664 [label="clustersize = 93
+splitting feature:
+((-0.248,-0.336)-(0.0905,0.585))"] ;
+n664 -- n665 ;
+n665 [label="clustersize = 50
+pupil avg:
+[ 0.28477889 -0.13341484]"] ;
+n664 -- n666 ;
+n666 [label="clustersize = 43
+pupil avg:
+[ 0.4630392  -0.03020546]"] ;
+n659 -- n667 ;
+n667 [label="clustersize = 97
+splitting feature:
+((0.482,0.2)-(-0.314,-0.744))"] ;
+n667 -- n668 ;
+n668 [label="clustersize = 67
+splitting feature:
+((-0.406,-0.362)-(0.957,0.407))"] ;
+n668 -- n669 ;
+n669 [label="clustersize = 26
+pupil avg:
+[ 0.13545743  0.0762768 ]"] ;
+n668 -- n670 ;
+n670 [label="clustersize = 41
+pupil avg:
+[ 0.4337541   0.14638698]"] ;
+n667 -- n671 ;
+n671 [label="clustersize = 30
+splitting feature:
+((-0.504,-0.911)-(-0.123,-0.204))"] ;
+n671 -- n672 ;
+n672 [label="clustersize = 9
+pupil avg:
+[ 0.23463421  0.08519191]"] ;
+n671 -- n673 ;
+n673 [label="clustersize = 21
+pupil avg:
+[-0.02766946 -0.0921131 ]"] ;
+n642 -- n674 ;
+n674 [label="clustersize = 574
+splitting feature:
+((0.143,0.0966)-(-0.31,0.865))"] ;
+n674 -- n675 ;
+n675 [label="clustersize = 226
+splitting feature:
+((-0.903,-0.237)-(-0.39,-0.99))"] ;
+n675 -- n676 ;
+n676 [label="clustersize = 157
+splitting feature:
+((0.248,-0.921)-(0.683,0.237))"] ;
+n676 -- n677 ;
+n677 [label="clustersize = 84
+splitting feature:
+((0.326,-0.885)-(0.534,0.998))"] ;
+n677 -- n678 ;
+n678 [label="clustersize = 59
+pupil avg:
+[ 0.21381479  0.03174004]"] ;
+n677 -- n679 ;
+n679 [label="clustersize = 25
+pupil avg:
+[ 0.4218491   0.06859124]"] ;
+n676 -- n680 ;
+n680 [label="clustersize = 73
+splitting feature:
+((-0.158,-0.953)-(0.644,0.698))"] ;
+n680 -- n681 ;
+n681 [label="clustersize = 15
+pupil avg:
+[ 0.22082935 -0.05853187]"] ;
+n680 -- n682 ;
+n682 [label="clustersize = 58
+pupil avg:
+[ 0.501041    0.05040721]"] ;
+n675 -- n683 ;
+n683 [label="clustersize = 69
+splitting feature:
+((-0.769,0.972)-(-0.56,0.659))"] ;
+n683 -- n684 ;
+n684 [label="clustersize = 58
+splitting feature:
+((-0.0576,-0.0618)-(0.335,0.913))"] ;
+n684 -- n685 ;
+n685 [label="clustersize = 33
+pupil avg:
+[ 0.61405526  0.03764125]"] ;
+n684 -- n686 ;
+n686 [label="clustersize = 25
+pupil avg:
+[ 0.65507265  0.17559377]"] ;
+n683 -- n687 ;
+n687 [label="clustersize = 11
+splitting feature:
+((-0.853,-0.17)-(-0.765,0.4))"] ;
+n687 -- n688 ;
+n688 [label="clustersize = 6
+pupil avg:
+[ 0.58200904  0.04907946]"] ;
+n687 -- n689 ;
+n689 [label="clustersize = 5
+pupil avg:
+[ 0.05642502  0.07038476]"] ;
+n674 -- n690 ;
+n690 [label="clustersize = 348
+splitting feature:
+((0.221,0.198)-(-0.504,0.196))"] ;
+n690 -- n691 ;
+n691 [label="clustersize = 172
+splitting feature:
+((0.912,-0.787)-(0.172,0.342))"] ;
+n691 -- n692 ;
+n692 [label="clustersize = 19
+splitting feature:
+((0.0851,0.219)-(0.761,-0.281))"] ;
+n692 -- n693 ;
+n693 [label="clustersize = 7
+pupil avg:
+[ 0.68466516 -0.07067044]"] ;
+n692 -- n694 ;
+n694 [label="clustersize = 12
+pupil avg:
+[ 0.6228667  -0.08481632]"] ;
+n691 -- n695 ;
+n695 [label="clustersize = 153
+splitting feature:
+((0.788,-0.232)-(0.286,0.908))"] ;
+n695 -- n696 ;
+n696 [label="clustersize = 14
+pupil avg:
+[ 0.28470511  0.00162603]"] ;
+n695 -- n697 ;
+n697 [label="clustersize = 139
+pupil avg:
+[ 0.47411091 -0.04766588]"] ;
+n690 -- n698 ;
+n698 [label="clustersize = 176
+splitting feature:
+((-0.934,0.952)-(0.212,0.0222))"] ;
+n698 -- n699 ;
+n699 [label="clustersize = 159
+splitting feature:
+((-0.366,0.78)-(0.181,0.578))"] ;
+n699 -- n700 ;
+n700 [label="clustersize = 121
+pupil avg:
+[ 0.56599917 -0.17354761]"] ;
+n699 -- n701 ;
+n701 [label="clustersize = 38
+pupil avg:
+[ 0.54484805 -0.0023056 ]"] ;
+n698 -- n702 ;
+n702 [label="clustersize = 17
+splitting feature:
+((0.21,0.758)-(-0.858,0.95))"] ;
+n702 -- n703 ;
+n703 [label="clustersize = 8
+pupil avg:
+[ 0.53016045  0.09071605]"] ;
+n702 -- n704 ;
+n704 [label="clustersize = 9
+pupil avg:
+[ 0.36584483 -0.05925875]"] ;
+n641 -- n705 ;
+n705 [label="clustersize = 762
+splitting feature:
+((0.229,0.816)-(-0.131,-0.0753))"] ;
+n705 -- n706 ;
+n706 [label="clustersize = 400
+splitting feature:
+((0.366,0.842)-(0.493,-0.668))"] ;
+n706 -- n707 ;
+n707 [label="clustersize = 325
+splitting feature:
+((-0.755,0.903)-(0.375,0.324))"] ;
+n707 -- n708 ;
+n708 [label="clustersize = 128
+splitting feature:
+((-0.118,0.962)-(0.425,-0.621))"] ;
+n708 -- n709 ;
+n709 [label="clustersize = 97
+splitting feature:
+((-0.124,-0.0462)-(-0.107,-0.715))"] ;
+n709 -- n710 ;
+n710 [label="clustersize = 81
+pupil avg:
+[ 0.6721333   0.12189209]"] ;
+n709 -- n711 ;
+n711 [label="clustersize = 16
+pupil avg:
+[ 0.53094062 -0.01535797]"] ;
+n708 -- n712 ;
+n712 [label="clustersize = 31
+splitting feature:
+((-0.817,-0.0759)-(0.678,0.646))"] ;
+n712 -- n713 ;
+n713 [label="clustersize = 6
+pupil avg:
+[ 0.48226506  0.15957757]"] ;
+n712 -- n714 ;
+n714 [label="clustersize = 25
+pupil avg:
+[ 0.6672633   0.27678539]"] ;
+n707 -- n715 ;
+n715 [label="clustersize = 197
+splitting feature:
+((-0.339,-0.0813)-(0.143,0.272))"] ;
+n715 -- n716 ;
+n716 [label="clustersize = 32
+splitting feature:
+((-0.982,0.515)-(-0.0165,-0.983))"] ;
+n716 -- n717 ;
+n717 [label="clustersize = 8
+pupil avg:
+[ 0.6795529   0.08500296]"] ;
+n716 -- n718 ;
+n718 [label="clustersize = 24
+pupil avg:
+[ 0.51566697  0.20984112]"] ;
+n715 -- n719 ;
+n719 [label="clustersize = 165
+splitting feature:
+((0.671,0.256)-(-0.566,0.52))"] ;
+n719 -- n720 ;
+n720 [label="clustersize = 79
+pupil avg:
+[ 0.33643514  0.27225951]"] ;
+n719 -- n721 ;
+n721 [label="clustersize = 86
+pupil avg:
+[ 0.46630211  0.22139891]"] ;
+n706 -- n722 ;
+n722 [label="clustersize = 75
+splitting feature:
+((-0.541,0.445)-(-0.271,0.814))"] ;
+n722 -- n723 ;
+n723 [label="clustersize = 30
+splitting feature:
+((0.255,0.898)-(-0.144,-0.94))"] ;
+n723 -- n724 ;
+n724 [label="clustersize = 22
+splitting feature:
+((0.353,0.409)-(0.0561,-0.0782))"] ;
+n724 -- n725 ;
+n725 [label="clustersize = 14
+pupil avg:
+[ 0.42130385  0.27552479]"] ;
+n724 -- n726 ;
+n726 [label="clustersize = 8
+pupil avg:
+[ 0.22661134  0.09294872]"] ;
+n723 -- n727 ;
+n727 [label="clustersize = 8
+splitting feature:
+((0.123,-0.689)-(0.582,-0.722))"] ;
+n727 -- n728 ;
+n728 [label="clustersize = 4
+pupil avg:
+[-0.55012077 -0.10330167]"] ;
+n727 -- n729 ;
+n729 [label="clustersize = 4
+pupil avg:
+[ 0.25963175  0.12104529]"] ;
+n722 -- n730 ;
+n730 [label="clustersize = 45
+splitting feature:
+((0.0999,0.471)-(-0.886,0.0925))"] ;
+n730 -- n731 ;
+n731 [label="clustersize = 36
+splitting feature:
+((0.544,0.11)-(-0.862,0.339))"] ;
+n731 -- n732 ;
+n732 [label="clustersize = 19
+pupil avg:
+[ 0.23948765  0.18770082]"] ;
+n731 -- n733 ;
+n733 [label="clustersize = 17
+pupil avg:
+[ 0.56907595  0.09415717]"] ;
+n730 -- n734 ;
+n734 [label="clustersize = 9
+splitting feature:
+((0.203,-0.753)-(-0.953,0.498))"] ;
+n734 -- n735 ;
+n735 [label="clustersize = 4
+pupil avg:
+[ 0.71074879  0.00255636]"] ;
+n734 -- n736 ;
+n736 [label="clustersize = 5
+pupil avg:
+[ 0.68864684 -0.17719592]"] ;
+n705 -- n737 ;
+n737 [label="clustersize = 362
+splitting feature:
+((0.02,0.198)-(-0.752,0.497))"] ;
+n737 -- n738 ;
+n738 [label="clustersize = 256
+splitting feature:
+((-0.683,0.69)-(0.771,-0.0374))"] ;
+n738 -- n739 ;
+n739 [label="clustersize = 108
+splitting feature:
+((0.991,-0.626)-(-0.104,-0.964))"] ;
+n739 -- n740 ;
+n740 [label="clustersize = 45
+splitting feature:
+((0.115,0.206)-(0.565,0.178))"] ;
+n740 -- n741 ;
+n741 [label="clustersize = 36
+pupil avg:
+[ 0.4028528  0.136275 ]"] ;
+n740 -- n742 ;
+n742 [label="clustersize = 9
+pupil avg:
+[ 0.59066413  0.20763095]"] ;
+n739 -- n743 ;
+n743 [label="clustersize = 63
+splitting feature:
+((-0.295,-0.499)-(-0.839,0.665))"] ;
+n743 -- n744 ;
+n744 [label="clustersize = 30
+pupil avg:
+[ 0.23814147  0.06297988]"] ;
+n743 -- n745 ;
+n745 [label="clustersize = 33
+pupil avg:
+[ 0.40650533  0.08683419]"] ;
+n738 -- n746 ;
+n746 [label="clustersize = 148
+splitting feature:
+((0.413,-0.292)-(-0.896,0.858))"] ;
+n746 -- n747 ;
+n747 [label="clustersize = 96
+splitting feature:
+((0.0879,-0.866)-(0.109,0.988))"] ;
+n747 -- n748 ;
+n748 [label="clustersize = 52
+pupil avg:
+[-0.14212207  0.18491863]"] ;
+n747 -- n749 ;
+n749 [label="clustersize = 44
+pupil avg:
+[ 0.2402567   0.20935902]"] ;
+n746 -- n750 ;
+n750 [label="clustersize = 52
+splitting feature:
+((-0.958,0.999)-(-0.419,0.834))"] ;
+n750 -- n751 ;
+n751 [label="clustersize = 32
+pupil avg:
+[ 0.50896782 -0.02319358]"] ;
+n750 -- n752 ;
+n752 [label="clustersize = 20
+pupil avg:
+[ 0.2288392   0.09503268]"] ;
+n737 -- n753 ;
+n753 [label="clustersize = 106
+splitting feature:
+((0.0439,0.328)-(-0.788,0.00629))"] ;
+n753 -- n754 ;
+n754 [label="clustersize = 85
+splitting feature:
+((0.735,-0.111)-(-0.316,-0.532))"] ;
+n754 -- n755 ;
+n755 [label="clustersize = 34
+splitting feature:
+((-0.424,0.195)-(0.0631,0.366))"] ;
+n755 -- n756 ;
+n756 [label="clustersize = 7
+pupil avg:
+[ 0.91715893 -0.0016299 ]"] ;
+n755 -- n757 ;
+n757 [label="clustersize = 27
+pupil avg:
+[ 0.45634245  0.17425227]"] ;
+n754 -- n758 ;
+n758 [label="clustersize = 51
+splitting feature:
+((-0.314,0.892)-(-0.543,-0.853))"] ;
+n758 -- n759 ;
+n759 [label="clustersize = 42
+pupil avg:
+[ 0.47504172 -0.00617148]"] ;
+n758 -- n760 ;
+n760 [label="clustersize = 9
+pupil avg:
+[ 0.22859433  0.00813814]"] ;
+n753 -- n761 ;
+n761 [label="clustersize = 21
+splitting feature:
+((0.452,0.877)-(0.905,-0.67))"] ;
+n761 -- n762 ;
+n762 [label="clustersize = 9
+splitting feature:
+((0.147,0.361)-(-0.157,-0.206))"] ;
+n762 -- n763 ;
+n763 [label="clustersize = 5
+pupil avg:
+[ 0.53918082  0.13686314]"] ;
+n762 -- n764 ;
+n764 [label="clustersize = 4
+pupil avg:
+[ 0.6277582  -0.02991326]"] ;
+n761 -- n765 ;
+n765 [label="clustersize = 12
+splitting feature:
+((0.135,0.76)-(-0.392,-0.45))"] ;
+n765 -- n766 ;
+n766 [label="clustersize = 8
+pupil avg:
+[ 0.68456904 -0.05400327]"] ;
+n765 -- n767 ;
+n767 [label="clustersize = 4
+pupil avg:
+[ 0.57211139 -0.11941615]"] ;
+n512 -- n768 ;
+n768 [label="clustersize = 1785
+splitting feature:
+((0.328,0.109)-(-0.205,0.628))"] ;
+n768 -- n769 ;
+n769 [label="clustersize = 686
+splitting feature:
+((0.898,-0.276)-(0.344,0.792))"] ;
+n769 -- n770 ;
+n770 [label="clustersize = 270
+splitting feature:
+((-0.951,0.196)-(0.788,-0.509))"] ;
+n770 -- n771 ;
+n771 [label="clustersize = 84
+splitting feature:
+((-0.288,-0.461)-(0.178,0.071))"] ;
+n771 -- n772 ;
+n772 [label="clustersize = 46
+splitting feature:
+((0.294,-0.428)-(-0.976,-0.815))"] ;
+n772 -- n773 ;
+n773 [label="clustersize = 22
+splitting feature:
+((-0.944,0.589)-(-0.507,-0.789))"] ;
+n773 -- n774 ;
+n774 [label="clustersize = 10
+splitting feature:
+((-0.406,0.63)-(0.968,0.305))"] ;
+n774 -- n775 ;
+n775 [label="clustersize = 6
+pupil avg:
+[ 0.55351066 -0.1773882 ]"] ;
+n774 -- n776 ;
+n776 [label="clustersize = 4
+pupil avg:
+[-0.12527473  0.05164835]"] ;
+n773 -- n777 ;
+n777 [label="clustersize = 12
+splitting feature:
+((-0.206,0.823)-(-0.853,-0.306))"] ;
+n777 -- n778 ;
+n778 [label="clustersize = 4
+pupil avg:
+[-0.43253968  0.14687627]"] ;
+n777 -- n779 ;
+n779 [label="clustersize = 8
+pupil avg:
+[-0.26282638 -0.04287868]"] ;
+n772 -- n780 ;
+n780 [label="clustersize = 24
+splitting feature:
+((0.0983,0.473)-(-0.991,0.558))"] ;
+n780 -- n781 ;
+n781 [label="clustersize = 8
+splitting feature:
+((-0.117,0.632)-(-0.344,0.673))"] ;
+n781 -- n782 ;
+n782 [label="clustersize = 4
+pupil avg:
+[-0.32701149 -0.14310345]"] ;
+n781 -- n783 ;
+n783 [label="clustersize = 4
+pupil avg:
+[-0.30051057  0.0477294 ]"] ;
+n780 -- n784 ;
+n784 [label="clustersize = 16
+splitting feature:
+((-0.316,0.543)-(0.0175,0.269))"] ;
+n784 -- n785 ;
+n785 [label="clustersize = 9
+pupil avg:
+[-0.26542021 -0.23716434]"] ;
+n784 -- n786 ;
+n786 [label="clustersize = 7
+pupil avg:
+[-0.42540317 -0.24837813]"] ;
+n771 -- n787 ;
+n787 [label="clustersize = 38
+splitting feature:
+((-0.38,-0.235)-(0.141,0.887))"] ;
+n787 -- n788 ;
+n788 [label="clustersize = 17
+splitting feature:
+((-0.966,0.526)-(0.365,0.0624))"] ;
+n788 -- n789 ;
+n789 [label="clustersize = 8
+splitting feature:
+((-0.711,0.469)-(-0.739,-0.176))"] ;
+n789 -- n790 ;
+n790 [label="clustersize = 4
+pupil avg:
+[-0.07061826  0.00744278]"] ;
+n789 -- n791 ;
+n791 [label="clustersize = 4
+pupil avg:
+[ 0.09654065 -0.18801915]"] ;
+n788 -- n792 ;
+n792 [label="clustersize = 9
+splitting feature:
+((0.521,-0.0162)-(-0.935,0.857))"] ;
+n792 -- n793 ;
+n793 [label="clustersize = 5
+pupil avg:
+[-0.24127268  0.1616492 ]"] ;
+n792 -- n794 ;
+n794 [label="clustersize = 4
+pupil avg:
+[-0.60293586  0.29479142]"] ;
+n787 -- n795 ;
+n795 [label="clustersize = 21
+splitting feature:
+((-0.646,-0.657)-(0.652,0.164))"] ;
+n795 -- n796 ;
+n796 [label="clustersize = 9
+splitting feature:
+((0.14,0.382)-(0.319,0.58))"] ;
+n796 -- n797 ;
+n797 [label="clustersize = 4
+pupil avg:
+[ 0.30092593  0.08154762]"] ;
+n796 -- n798 ;
+n798 [label="clustersize = 5
+pupil avg:
+[ 0.07482496 -0.0015083 ]"] ;
+n795 -- n799 ;
+n799 [label="clustersize = 12
+splitting feature:
+((-0.64,0.962)-(0.343,-0.39))"] ;
+n799 -- n800 ;
+n800 [label="clustersize = 4
+pupil avg:
+[-0.33463234  0.22128832]"] ;
+n799 -- n801 ;
+n801 [label="clustersize = 8
+pupil avg:
+[ 0.05852889  0.1572702 ]"] ;
+n770 -- n802 ;
+n802 [label="clustersize = 186
+splitting feature:
+((0.187,0.072)-(0.89,-0.277))"] ;
+n802 -- n803 ;
+n803 [label="clustersize = 145
+splitting feature:
+((0.36,-0.187)-(-0.683,-0.838))"] ;
+n803 -- n804 ;
+n804 [label="clustersize = 122
+splitting feature:
+((-0.449,0.722)-(0.663,-0.621))"] ;
+n804 -- n805 ;
+n805 [label="clustersize = 36
+splitting feature:
+((0.24,0.786)-(0.355,-0.458))"] ;
+n805 -- n806 ;
+n806 [label="clustersize = 4
+pupil avg:
+[ 0.09027778  0.2375    ]"] ;
+n805 -- n807 ;
+n807 [label="clustersize = 32
+pupil avg:
+[-0.30568362  0.13907907]"] ;
+n804 -- n808 ;
+n808 [label="clustersize = 86
+splitting feature:
+((-0.147,0.73)-(-0.0241,-0.253))"] ;
+n808 -- n809 ;
+n809 [label="clustersize = 4
+pupil avg:
+[ 0.12020638  0.19041951]"] ;
+n808 -- n810 ;
+n810 [label="clustersize = 82
+pupil avg:
+[-0.42980725  0.27405147]"] ;
+n803 -- n811 ;
+n811 [label="clustersize = 23
+splitting feature:
+((-0.541,0.973)-(-0.615,0.695))"] ;
+n811 -- n812 ;
+n812 [label="clustersize = 15
+splitting feature:
+((-0.685,-0.489)-(0.484,-0.55))"] ;
+n812 -- n813 ;
+n813 [label="clustersize = 8
+pupil avg:
+[-0.71310606  0.04668561]"] ;
+n812 -- n814 ;
+n814 [label="clustersize = 7
+pupil avg:
+[-0.50399184  0.19031156]"] ;
+n811 -- n815 ;
+n815 [label="clustersize = 8
+splitting feature:
+((-0.28,-0.71)-(-0.247,0.215))"] ;
+n815 -- n816 ;
+n816 [label="clustersize = 4
+pupil avg:
+[-0.52428571 -0.18142857]"] ;
+n815 -- n817 ;
+n817 [label="clustersize = 4
+pupil avg:
+[-0.07909982 -0.04083111]"] ;
+n802 -- n818 ;
+n818 [label="clustersize = 41
+splitting feature:
+((-0.365,0.113)-(0.263,-0.259))"] ;
+n818 -- n819 ;
+n819 [label="clustersize = 16
+splitting feature:
+((0.0953,-0.66)-(-0.932,0.736))"] ;
+n819 -- n820 ;
+n820 [label="clustersize = 8
+splitting feature:
+((-0.206,0.537)-(0.212,-0.584))"] ;
+n820 -- n821 ;
+n821 [label="clustersize = 4
+pupil avg:
+[ 0.03359073 -0.22509653]"] ;
+n820 -- n822 ;
+n822 [label="clustersize = 4
+pupil avg:
+[-0.51091897 -0.24843544]"] ;
+n819 -- n823 ;
+n823 [label="clustersize = 8
+splitting feature:
+((-0.899,0.632)-(-0.622,-0.399))"] ;
+n823 -- n824 ;
+n824 [label="clustersize = 4
+pupil avg:
+[ 0.26123545  0.18897025]"] ;
+n823 -- n825 ;
+n825 [label="clustersize = 4
+pupil avg:
+[ 0.23884111 -0.29528392]"] ;
+n818 -- n826 ;
+n826 [label="clustersize = 25
+splitting feature:
+((0.551,0.0537)-(0.097,0.602))"] ;
+n826 -- n827 ;
+n827 [label="clustersize = 12
+splitting feature:
+((-0.866,0.569)-(0.455,0.79))"] ;
+n827 -- n828 ;
+n828 [label="clustersize = 7
+pupil avg:
+[-0.38951659  0.09263203]"] ;
+n827 -- n829 ;
+n829 [label="clustersize = 5
+pupil avg:
+[-0.44329749  0.36996416]"] ;
+n826 -- n830 ;
+n830 [label="clustersize = 13
+splitting feature:
+((0.839,-0.437)-(0.56,0.0571))"] ;
+n830 -- n831 ;
+n831 [label="clustersize = 4
+pupil avg:
+[ 0.11294261  0.04236874]"] ;
+n830 -- n832 ;
+n832 [label="clustersize = 9
+pupil avg:
+[-0.31112131  0.08456469]"] ;
+n769 -- n833 ;
+n833 [label="clustersize = 416
+splitting feature:
+((-0.791,0.332)-(-0.733,-0.45))"] ;
+n833 -- n834 ;
+n834 [label="clustersize = 246
+splitting feature:
+((-0.476,-0.966)-(0.539,0.739))"] ;
+n834 -- n835 ;
+n835 [label="clustersize = 106
+splitting feature:
+((0.753,-0.682)-(-0.819,0.167))"] ;
+n835 -- n836 ;
+n836 [label="clustersize = 37
+splitting feature:
+((0.132,-0.826)-(0.0387,0.364))"] ;
+n836 -- n837 ;
+n837 [label="clustersize = 17
+splitting feature:
+((0.659,0.31)-(-0.558,-0.285))"] ;
+n837 -- n838 ;
+n838 [label="clustersize = 4
+pupil avg:
+[-0.06102306  0.05411223]"] ;
+n837 -- n839 ;
+n839 [label="clustersize = 13
+pupil avg:
+[-0.51003953  0.20628446]"] ;
+n836 -- n840 ;
+n840 [label="clustersize = 20
+splitting feature:
+((-0.821,-0.582)-(0.433,0.515))"] ;
+n840 -- n841 ;
+n841 [label="clustersize = 7
+pupil avg:
+[ 0.21441133 -0.1001646 ]"] ;
+n840 -- n842 ;
+n842 [label="clustersize = 13
+pupil avg:
+[ 0.13028951  0.15475543]"] ;
+n835 -- n843 ;
+n843 [label="clustersize = 69
+splitting feature:
+((-0.289,-0.522)-(0.36,0.45))"] ;
+n843 -- n844 ;
+n844 [label="clustersize = 44
+splitting feature:
+((0.434,-0.487)-(-0.229,0.539))"] ;
+n844 -- n845 ;
+n845 [label="clustersize = 23
+pupil avg:
+[-0.01963036 -0.01687582]"] ;
+n844 -- n846 ;
+n846 [label="clustersize = 21
+pupil avg:
+[ 0.14526883 -0.06603907]"] ;
+n843 -- n847 ;
+n847 [label="clustersize = 25
+splitting feature:
+((0.0791,0.51)-(-0.266,0.117))"] ;
+n847 -- n848 ;
+n848 [label="clustersize = 12
+pupil avg:
+[ 0.41592498  0.13774495]"] ;
+n847 -- n849 ;
+n849 [label="clustersize = 13
+pupil avg:
+[ 0.1460794  -0.00436778]"] ;
+n834 -- n850 ;
+n850 [label="clustersize = 140
+splitting feature:
+((-0.108,-0.965)-(-0.48,0.89))"] ;
+n850 -- n851 ;
+n851 [label="clustersize = 60
+splitting feature:
+((-0.0448,-0.44)-(-0.771,-0.0916))"] ;
+n851 -- n852 ;
+n852 [label="clustersize = 52
+splitting feature:
+((0.536,-0.891)-(0.612,-0.159))"] ;
+n852 -- n853 ;
+n853 [label="clustersize = 19
+pupil avg:
+[ 0.10160578  0.13419233]"] ;
+n852 -- n854 ;
+n854 [label="clustersize = 33
+pupil avg:
+[-0.06729569  0.27414328]"] ;
+n851 -- n855 ;
+n855 [label="clustersize = 8
+splitting feature:
+((0.0616,-0.283)-(0.649,-0.766))"] ;
+n855 -- n856 ;
+n856 [label="clustersize = 4
+pupil avg:
+[ 0.38858696  0.32469807]"] ;
+n855 -- n857 ;
+n857 [label="clustersize = 4
+pupil avg:
+[ 0.18066899  0.15663437]"] ;
+n850 -- n858 ;
+n858 [label="clustersize = 80
+splitting feature:
+((0.313,-0.458)-(-0.0533,-0.416))"] ;
+n858 -- n859 ;
+n859 [label="clustersize = 30
+splitting feature:
+((0.578,-0.576)-(-0.0863,-0.897))"] ;
+n859 -- n860 ;
+n860 [label="clustersize = 24
+pupil avg:
+[ 0.47635641  0.29129177]"] ;
+n859 -- n861 ;
+n861 [label="clustersize = 6
+pupil avg:
+[ 0.12510544  0.1606217 ]"] ;
+n858 -- n862 ;
+n862 [label="clustersize = 50
+splitting feature:
+((0.135,-0.597)-(-0.987,-0.285))"] ;
+n862 -- n863 ;
+n863 [label="clustersize = 42
+pupil avg:
+[ 0.15210358  0.2310822 ]"] ;
+n862 -- n864 ;
+n864 [label="clustersize = 8
+pupil avg:
+[ 0.16720883 -0.08055286]"] ;
+n833 -- n865 ;
+n865 [label="clustersize = 170
+splitting feature:
+((0.294,-0.465)-(-0.899,-0.754))"] ;
+n865 -- n866 ;
+n866 [label="clustersize = 103
+splitting feature:
+((-0.335,-0.914)-(0.327,0.374))"] ;
+n866 -- n867 ;
+n867 [label="clustersize = 52
+splitting feature:
+((-0.182,0.979)-(-0.122,-0.903))"] ;
+n867 -- n868 ;
+n868 [label="clustersize = 20
+splitting feature:
+((-0.594,0.272)-(-0.544,-0.77))"] ;
+n868 -- n869 ;
+n869 [label="clustersize = 4
+pupil avg:
+[-0.233878  -0.1120915]"] ;
+n868 -- n870 ;
+n870 [label="clustersize = 16
+pupil avg:
+[-0.46166689  0.21272866]"] ;
+n867 -- n871 ;
+n871 [label="clustersize = 32
+splitting feature:
+((-0.0495,0.897)-(0.278,0.0722))"] ;
+n871 -- n872 ;
+n872 [label="clustersize = 9
+pupil avg:
+[-0.01391895 -0.18160993]"] ;
+n871 -- n873 ;
+n873 [label="clustersize = 23
+pupil avg:
+[-0.26048664  0.04776751]"] ;
+n866 -- n874 ;
+n874 [label="clustersize = 51
+splitting feature:
+((0.0898,0.483)-(-0.898,0.0407))"] ;
+n874 -- n875 ;
+n875 [label="clustersize = 32
+splitting feature:
+((-0.903,-0.498)-(-0.727,-0.708))"] ;
+n875 -- n876 ;
+n876 [label="clustersize = 10
+pupil avg:
+[ 0.19803362  0.12986432]"] ;
+n875 -- n877 ;
+n877 [label="clustersize = 22
+pupil avg:
+[-0.15669936  0.18541017]"] ;
+n874 -- n878 ;
+n878 [label="clustersize = 19
+splitting feature:
+((0.529,0.0276)-(0.246,-0.801))"] ;
+n878 -- n879 ;
+n879 [label="clustersize = 8
+pupil avg:
+[ 0.443168    0.15913149]"] ;
+n878 -- n880 ;
+n880 [label="clustersize = 11
+pupil avg:
+[ 0.06752758  0.04405654]"] ;
+n865 -- n881 ;
+n881 [label="clustersize = 67
+splitting feature:
+((0.737,-0.233)-(-0.714,0.819))"] ;
+n881 -- n882 ;
+n882 [label="clustersize = 18
+splitting feature:
+((-0.114,-0.576)-(0.155,-0.217))"] ;
+n882 -- n883 ;
+n883 [label="clustersize = 8
+splitting feature:
+((-0.962,0.274)-(0.136,0.362))"] ;
+n883 -- n884 ;
+n884 [label="clustersize = 4
+pupil avg:
+[-0.40563354 -0.26822998]"] ;
+n883 -- n885 ;
+n885 [label="clustersize = 4
+pupil avg:
+[ 0.12848004 -0.18213928]"] ;
+n882 -- n886 ;
+n886 [label="clustersize = 10
+splitting feature:
+((-0.624,-0.523)-(0.321,-0.958))"] ;
+n886 -- n887 ;
+n887 [label="clustersize = 5
+pupil avg:
+[-0.00106082  0.25995011]"] ;
+n886 -- n888 ;
+n888 [label="clustersize = 5
+pupil avg:
+[-0.41263158  0.05236931]"] ;
+n881 -- n889 ;
+n889 [label="clustersize = 49
+splitting feature:
+((-0.388,0.162)-(0.251,-0.662))"] ;
+n889 -- n890 ;
+n890 [label="clustersize = 38
+splitting feature:
+((0.688,0.0792)-(-0.799,0.932))"] ;
+n890 -- n891 ;
+n891 [label="clustersize = 6
+pupil avg:
+[-0.2656746 -0.1672619]"] ;
+n890 -- n892 ;
+n892 [label="clustersize = 32
+pupil avg:
+[ 0.19909824 -0.22914219]"] ;
+n889 -- n893 ;
+n893 [label="clustersize = 11
+splitting feature:
+((-0.97,0.361)-(-0.582,-0.998))"] ;
+n893 -- n894 ;
+n894 [label="clustersize = 4
+pupil avg:
+[-0.16307815  0.05263158]"] ;
+n893 -- n895 ;
+n895 [label="clustersize = 7
+pupil avg:
+[ 0.72613363  0.07903874]"] ;
+n768 -- n896 ;
+n896 [label="clustersize = 1099
+splitting feature:
+((-0.0814,-0.487)-(-0.9,0.384))"] ;
+n896 -- n897 ;
+n897 [label="clustersize = 680
+splitting feature:
+((0.315,0.713)-(-0.42,-0.317))"] ;
+n897 -- n898 ;
+n898 [label="clustersize = 187
+splitting feature:
+((-0.0117,0.0788)-(-0.0226,0.364))"] ;
+n898 -- n899 ;
+n899 [label="clustersize = 123
+splitting feature:
+((-0.447,-0.0572)-(-0.242,0.609))"] ;
+n899 -- n900 ;
+n900 [label="clustersize = 18
+splitting feature:
+((-0.0257,-0.76)-(0.415,0.0152))"] ;
+n900 -- n901 ;
+n901 [label="clustersize = 8
+splitting feature:
+((0.452,-0.912)-(-0.0615,0.504))"] ;
+n901 -- n902 ;
+n902 [label="clustersize = 4
+pupil avg:
+[-0.44633735  0.15362986]"] ;
+n901 -- n903 ;
+n903 [label="clustersize = 4
+pupil avg:
+[-0.16965812 -0.17168803]"] ;
+n900 -- n904 ;
+n904 [label="clustersize = 10
+splitting feature:
+((-0.0404,-0.231)-(0.476,0.111))"] ;
+n904 -- n905 ;
+n905 [label="clustersize = 6
+pupil avg:
+[-0.00568687  0.12663045]"] ;
+n904 -- n906 ;
+n906 [label="clustersize = 4
+pupil avg:
+[ 0.28954775  0.34442863]"] ;
+n899 -- n907 ;
+n907 [label="clustersize = 105
+splitting feature:
+((-0.897,0.422)-(0.594,-0.174))"] ;
+n907 -- n908 ;
+n908 [label="clustersize = 73
+splitting feature:
+((-0.451,0.111)-(0.59,0.658))"] ;
+n908 -- n909 ;
+n909 [label="clustersize = 39
+pupil avg:
+[ 0.21581294 -0.02148556]"] ;
+n908 -- n910 ;
+n910 [label="clustersize = 34
+pupil avg:
+[ 0.09910796 -0.02884287]"] ;
+n907 -- n911 ;
+n911 [label="clustersize = 32
+splitting feature:
+((-0.303,0.839)-(-0.656,0.757))"] ;
+n911 -- n912 ;
+n912 [label="clustersize = 27
+pupil avg:
+[ 0.11057668  0.11736836]"] ;
+n911 -- n913 ;
+n913 [label="clustersize = 5
+pupil avg:
+[-0.30403836  0.23309361]"] ;
+n898 -- n914 ;
+n914 [label="clustersize = 64
+splitting feature:
+((-0.256,-0.111)-(0.0293,0.989))"] ;
+n914 -- n915 ;
+n915 [label="clustersize = 39
+splitting feature:
+((-0.168,-0.84)-(0.741,-0.073))"] ;
+n915 -- n916 ;
+n916 [label="clustersize = 29
+splitting feature:
+((0.537,0.492)-(0.0623,0.000247))"] ;
+n916 -- n917 ;
+n917 [label="clustersize = 5
+pupil avg:
+[-0.07531582 -0.0016474 ]"] ;
+n916 -- n918 ;
+n918 [label="clustersize = 24
+pupil avg:
+[ 0.19644208 -0.03188952]"] ;
+n915 -- n919 ;
+n919 [label="clustersize = 10
+splitting feature:
+((0.356,-0.179)-(-0.105,0.175))"] ;
+n919 -- n920 ;
+n920 [label="clustersize = 4
+pupil avg:
+[-0.25843862  0.28251426]"] ;
+n919 -- n921 ;
+n921 [label="clustersize = 6
+pupil avg:
+[ 0.47012636  0.11456672]"] ;
+n914 -- n922 ;
+n922 [label="clustersize = 25
+splitting feature:
+((-0.214,-0.0653)-(-0.696,0.492))"] ;
+n922 -- n923 ;
+n923 [label="clustersize = 15
+splitting feature:
+((-0.939,-0.65)-(0.104,0.0712))"] ;
+n923 -- n924 ;
+n924 [label="clustersize = 4
+pupil avg:
+[ 0.53236368  0.05858004]"] ;
+n923 -- n925 ;
+n925 [label="clustersize = 11
+pupil avg:
+[ 0.18318155  0.04753643]"] ;
+n922 -- n926 ;
+n926 [label="clustersize = 10
+splitting feature:
+((-0.657,0.222)-(-0.594,0.22))"] ;
+n926 -- n927 ;
+n927 [label="clustersize = 6
+pupil avg:
+[ 0.48148957  0.0352952 ]"] ;
+n926 -- n928 ;
+n928 [label="clustersize = 4
+pupil avg:
+[ 0.88467172 -0.27622896]"] ;
+n897 -- n929 ;
+n929 [label="clustersize = 493
+splitting feature:
+((-0.204,0.554)-(0.249,-0.361))"] ;
+n929 -- n930 ;
+n930 [label="clustersize = 339
+splitting feature:
+((-0.485,-0.666)-(-0.951,0.812))"] ;
+n930 -- n931 ;
+n931 [label="clustersize = 207
+splitting feature:
+((0.63,0.69)-(-0.642,-0.964))"] ;
+n931 -- n932 ;
+n932 [label="clustersize = 38
+splitting feature:
+((-0.8,0.349)-(-0.174,-0.901))"] ;
+n932 -- n933 ;
+n933 [label="clustersize = 16
+pupil avg:
+[ 0.24838639 -0.02842163]"] ;
+n932 -- n934 ;
+n934 [label="clustersize = 22
+pupil avg:
+[-0.01697765 -0.12232676]"] ;
+n931 -- n935 ;
+n935 [label="clustersize = 169
+splitting feature:
+((-0.241,0.225)-(-0.293,-0.418))"] ;
+n935 -- n936 ;
+n936 [label="clustersize = 94
+pupil avg:
+[-0.01905592 -0.19475244]"] ;
+n935 -- n937 ;
+n937 [label="clustersize = 75
+pupil avg:
+[-0.24706398 -0.19198081]"] ;
+n930 -- n938 ;
+n938 [label="clustersize = 132
+splitting feature:
+((-0.433,-0.66)-(-0.463,0.731))"] ;
+n938 -- n939 ;
+n939 [label="clustersize = 58
+splitting feature:
+((-0.137,0.401)-(-0.874,0.867))"] ;
+n939 -- n940 ;
+n940 [label="clustersize = 38
+pupil avg:
+[ 0.23232383 -0.11245243]"] ;
+n939 -- n941 ;
+n941 [label="clustersize = 20
+pupil avg:
+[ 0.03685006 -0.15849283]"] ;
+n938 -- n942 ;
+n942 [label="clustersize = 74
+splitting feature:
+((0.99,-0.439)-(0.487,0.726))"] ;
+n942 -- n943 ;
+n943 [label="clustersize = 27
+pupil avg:
+[ 0.39768887 -0.23125573]"] ;
+n942 -- n944 ;
+n944 [label="clustersize = 47
+pupil avg:
+[ 0.22010904 -0.12991895]"] ;
+n929 -- n945 ;
+n945 [label="clustersize = 154
+splitting feature:
+((-0.352,-0.706)-(0.262,-0.852))"] ;
+n945 -- n946 ;
+n946 [label="clustersize = 100
+splitting feature:
+((-0.33,0.196)-(0.322,-0.804))"] ;
+n946 -- n947 ;
+n947 [label="clustersize = 76
+splitting feature:
+((0.34,-0.19)-(-0.23,0.303))"] ;
+n947 -- n948 ;
+n948 [label="clustersize = 13
+pupil avg:
+[-0.24927537  0.04799523]"] ;
+n947 -- n949 ;
+n949 [label="clustersize = 63
+pupil avg:
+[-0.1977078  -0.15921394]"] ;
+n946 -- n950 ;
+n950 [label="clustersize = 24
+splitting feature:
+((0.961,-0.541)-(-0.763,-0.608))"] ;
+n950 -- n951 ;
+n951 [label="clustersize = 13
+pupil avg:
+[-0.29706259  0.23868174]"] ;
+n950 -- n952 ;
+n952 [label="clustersize = 11
+pupil avg:
+[-0.33710762 -0.05443769]"] ;
+n945 -- n953 ;
+n953 [label="clustersize = 54
+splitting feature:
+((-0.318,0.688)-(0.29,-0.22))"] ;
+n953 -- n954 ;
+n954 [label="clustersize = 20
+splitting feature:
+((0.425,-0.544)-(-0.812,-0.844))"] ;
+n954 -- n955 ;
+n955 [label="clustersize = 9
+pupil avg:
+[ 0.01907812 -0.09937525]"] ;
+n954 -- n956 ;
+n956 [label="clustersize = 11
+pupil avg:
+[ 0.2833608  -0.16467878]"] ;
+n953 -- n957 ;
+n957 [label="clustersize = 34
+splitting feature:
+((-0.833,0.467)-(0.768,-0.403))"] ;
+n957 -- n958 ;
+n958 [label="clustersize = 21
+pupil avg:
+[-0.00937844  0.08971465]"] ;
+n957 -- n959 ;
+n959 [label="clustersize = 13
+pupil avg:
+[-0.25703665  0.1735578 ]"] ;
+n896 -- n960 ;
+n960 [label="clustersize = 419
+splitting feature:
+((-0.545,-0.907)-(0.79,0.365))"] ;
+n960 -- n961 ;
+n961 [label="clustersize = 342
+splitting feature:
+((-0.685,-0.255)-(-0.434,-0.811))"] ;
+n961 -- n962 ;
+n962 [label="clustersize = 106
+splitting feature:
+((-0.0333,0.164)-(-0.462,0.72))"] ;
+n962 -- n963 ;
+n963 [label="clustersize = 64
+splitting feature:
+((0.114,-0.986)-(0.999,-0.186))"] ;
+n963 -- n964 ;
+n964 [label="clustersize = 55
+splitting feature:
+((-0.832,-0.895)-(0.169,0.0798))"] ;
+n964 -- n965 ;
+n965 [label="clustersize = 9
+pupil avg:
+[ 0.36510531 -0.04673907]"] ;
+n964 -- n966 ;
+n966 [label="clustersize = 46
+pupil avg:
+[ 0.17744198 -0.04293329]"] ;
+n963 -- n967 ;
+n967 [label="clustersize = 9
+splitting feature:
+((0.278,0.579)-(-0.952,-0.295))"] ;
+n967 -- n968 ;
+n968 [label="clustersize = 5
+pupil avg:
+[ 0.52868687  0.07171717]"] ;
+n967 -- n969 ;
+n969 [label="clustersize = 4
+pupil avg:
+[ 0.30385091 -0.06123476]"] ;
+n962 -- n970 ;
+n970 [label="clustersize = 42
+splitting feature:
+((0.637,0.205)-(0.856,0.376))"] ;
+n970 -- n971 ;
+n971 [label="clustersize = 27
+splitting feature:
+((0.165,0.53)-(-0.478,0.136))"] ;
+n971 -- n972 ;
+n972 [label="clustersize = 8
+pupil avg:
+[ 0.53777813  0.07471441]"] ;
+n971 -- n973 ;
+n973 [label="clustersize = 19
+pupil avg:
+[ 0.51550891 -0.24326208]"] ;
+n970 -- n974 ;
+n974 [label="clustersize = 15
+splitting feature:
+((-0.462,-0.722)-(-0.728,-0.501))"] ;
+n974 -- n975 ;
+n975 [label="clustersize = 4
+pupil avg:
+[-0.05895419 -0.22168477]"] ;
+n974 -- n976 ;
+n976 [label="clustersize = 11
+pupil avg:
+[ 0.358931   -0.20251398]"] ;
+n961 -- n977 ;
+n977 [label="clustersize = 236
+splitting feature:
+((-0.0988,0.714)-(-0.483,0.219))"] ;
+n977 -- n978 ;
+n978 [label="clustersize = 139
+splitting feature:
+((-0.105,0.982)-(-0.406,-0.0501))"] ;
+n978 -- n979 ;
+n979 [label="clustersize = 77
+splitting feature:
+((0.459,-0.406)-(-0.982,0.919))"] ;
+n979 -- n980 ;
+n980 [label="clustersize = 41
+pupil avg:
+[ 0.10617378 -0.00092695]"] ;
+n979 -- n981 ;
+n981 [label="clustersize = 36
+pupil avg:
+[ 0.31151657 -0.05509271]"] ;
+n978 -- n982 ;
+n982 [label="clustersize = 62
+splitting feature:
+((0.457,0.395)-(-0.204,-0.731))"] ;
+n982 -- n983 ;
+n983 [label="clustersize = 8
+pupil avg:
+[ 0.41108366 -0.07401273]"] ;
+n982 -- n984 ;
+n984 [label="clustersize = 54
+pupil avg:
+[ 0.00428293 -0.10225394]"] ;
+n977 -- n985 ;
+n985 [label="clustersize = 97
+splitting feature:
+((-0.111,-0.161)-(-0.654,-0.761))"] ;
+n985 -- n986 ;
+n986 [label="clustersize = 71
+splitting feature:
+((0.176,-0.544)-(-0.398,-0.955))"] ;
+n986 -- n987 ;
+n987 [label="clustersize = 30
+pupil avg:
+[ 0.00929866 -0.13506616]"] ;
+n986 -- n988 ;
+n988 [label="clustersize = 41
+pupil avg:
+[-0.09528561 -0.24121757]"] ;
+n985 -- n989 ;
+n989 [label="clustersize = 26
+splitting feature:
+((-0.219,0.472)-(-0.674,0.749))"] ;
+n989 -- n990 ;
+n990 [label="clustersize = 19
+pupil avg:
+[ 0.24890715 -0.1761658 ]"] ;
+n989 -- n991 ;
+n991 [label="clustersize = 7
+pupil avg:
+[-0.01756028 -0.34444005]"] ;
+n960 -- n992 ;
+n992 [label="clustersize = 77
+splitting feature:
+((-0.927,0.912)-(-0.32,-0.635))"] ;
+n992 -- n993 ;
+n993 [label="clustersize = 45
+splitting feature:
+((-0.31,0.872)-(0.0425,0.278))"] ;
+n993 -- n994 ;
+n994 [label="clustersize = 24
+splitting feature:
+((0.03,0.119)-(-0.933,-0.29))"] ;
+n994 -- n995 ;
+n995 [label="clustersize = 10
+splitting feature:
+((0.559,0.371)-(-0.694,0.497))"] ;
+n995 -- n996 ;
+n996 [label="clustersize = 5
+pupil avg:
+[  6.68720191e-01   2.98092210e-04]"] ;
+n995 -- n997 ;
+n997 [label="clustersize = 5
+pupil avg:
+[ 0.9891129  -0.06095161]"] ;
+n994 -- n998 ;
+n998 [label="clustersize = 14
+splitting feature:
+((0.782,0.75)-(-0.121,0.00612))"] ;
+n998 -- n999 ;
+n999 [label="clustersize = 5
+pupil avg:
+[ 0.39774791 -0.2072795 ]"] ;
+n998 -- n1000 ;
+n1000 [label="clustersize = 9
+pupil avg:
+[ 0.64578987 -0.10940993]"] ;
+n993 -- n1001 ;
+n1001 [label="clustersize = 21
+splitting feature:
+((-0.224,0.0628)-(-0.86,0.683))"] ;
+n1001 -- n1002 ;
+n1002 [label="clustersize = 13
+splitting feature:
+((-0.104,-0.914)-(0.911,0.232))"] ;
+n1002 -- n1003 ;
+n1003 [label="clustersize = 4
+pupil avg:
+[ 0.09109992 -0.11298442]"] ;
+n1002 -- n1004 ;
+n1004 [label="clustersize = 9
+pupil avg:
+[ 0.2895854  -0.05908547]"] ;
+n1001 -- n1005 ;
+n1005 [label="clustersize = 8
+splitting feature:
+((0.371,-0.942)-(0.815,0.548))"] ;
+n1005 -- n1006 ;
+n1006 [label="clustersize = 4
+pupil avg:
+[ 0.67859703  0.09881379]"] ;
+n1005 -- n1007 ;
+n1007 [label="clustersize = 4
+pupil avg:
+[ 0.37142857 -0.01114983]"] ;
+n992 -- n1008 ;
+n1008 [label="clustersize = 32
+splitting feature:
+((-0.427,0.631)-(-0.388,-0.849))"] ;
+n1008 -- n1009 ;
+n1009 [label="clustersize = 16
+splitting feature:
+((-0.794,0.876)-(-0.363,0.921))"] ;
+n1009 -- n1010 ;
+n1010 [label="clustersize = 8
+splitting feature:
+((0.551,-0.197)-(0.269,-0.808))"] ;
+n1010 -- n1011 ;
+n1011 [label="clustersize = 4
+pupil avg:
+[-0.07782738 -0.01815476]"] ;
+n1010 -- n1012 ;
+n1012 [label="clustersize = 4
+pupil avg:
+[ 0.16145833 -0.07638889]"] ;
+n1009 -- n1013 ;
+n1013 [label="clustersize = 8
+splitting feature:
+((-0.386,0.313)-(-0.255,0.748))"] ;
+n1013 -- n1014 ;
+n1014 [label="clustersize = 4
+pupil avg:
+[ 0.24342692 -0.10795455]"] ;
+n1013 -- n1015 ;
+n1015 [label="clustersize = 4
+pupil avg:
+[ 0.572959   -0.13113785]"] ;
+n1008 -- n1016 ;
+n1016 [label="clustersize = 16
+splitting feature:
+((-0.364,0.122)-(-0.076,0.685))"] ;
+n1016 -- n1017 ;
+n1017 [label="clustersize = 8
+splitting feature:
+((0.787,0.936)-(-0.625,-0.879))"] ;
+n1017 -- n1018 ;
+n1018 [label="clustersize = 4
+pupil avg:
+[ 0.05643939 -0.1387987 ]"] ;
+n1017 -- n1019 ;
+n1019 [label="clustersize = 4
+pupil avg:
+[-0.33778247 -0.23135987]"] ;
+n1016 -- n1020 ;
+n1020 [label="clustersize = 8
+splitting feature:
+((-0.649,0.692)-(-0.498,-0.173))"] ;
+n1020 -- n1021 ;
+n1021 [label="clustersize = 4
+pupil avg:
+[ 0.20540541  0.00675676]"] ;
+n1020 -- n1022 ;
+n1022 [label="clustersize = 4
+pupil avg:
+[ 0.01830885  0.03146675]"] ;
+}

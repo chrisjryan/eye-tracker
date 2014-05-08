@@ -10,14 +10,12 @@ Features:
 * Saving and loading of pre-trained parameter sets in XML files.
 * Saving trained tree parameter information in Graphviz format for easy visualization of regression trees in image files.
 * Various other tuning parameter specifications.
-
+* Includes pre-trained parameters for a large training set -- 100 trees of depth d=10, constructed from subsamples of 14060 images. (Note that this training set is still smaller than the original paper's and the tracker has fewer features, so the tracker is somewhat less robust).
 
 
 To do:
 
 * Finish statistical cross validation test, so that parameter choices can be assessed for statistical accuracy.
-* Include pre-trained parameters for a large training set.
-* Troubleshoot a possible bug during ensembling step.
 * Add mouse control using pupils.
 * Implement boosting ensemble method.
 
